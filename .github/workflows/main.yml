@@ -13,4 +13,4 @@ jobs:
       with:
         WPE_SSHG_KEY_PRIVATE: ${{ secrets.WPE_SSHG_KEY_PRIVATE }} 
         WPE_ENV: rutgerssasdev
-        CACHE_CLEAR: TRUE
+        CACHE_CLEAR: FALSE
