@@ -1,0 +1,11 @@
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+body {
+    @apply font-sans;
+}
+
+
+.block-editor-block-list__block, .block-editor-block-list__block * {
+    white-space: normal!important;
+}
