@@ -41,7 +41,7 @@
       ]
     },
     "typography": {
-      "fluid": true,
+      "fluid": false,
       "fontFamilies": [
         {
           "fontFace": [
@@ -49,7 +49,7 @@
               "fontFamily": "Source Sans",
               "fontStretch": "normal",
               "fontStyle": "normal",
-              "fontWeight": "var(--wp-custom--font-weight--fw-regular)",
+              "fontWeight": "400",
               "src": [
                 "file:./assets/build/fonts/source-sans/SourceSansPro-Regular.otf"
               ]
@@ -62,6 +62,15 @@
               "src": [
                 "file:./assets/build/fonts/source-sans/SourceSansPro-Bold.otf"
               ]
+            },
+            {
+              "fontFamily": "Source Sans",
+              "fontStretch": "normal",
+              "fontStyle": "normal",
+              "fontWeight": "600",
+              "src": [
+                "file:./assets/build/fonts/source-sans/SourceSansPro-Semibold.otf"
+              ]
             }
           ],
           "fontFamily": "\"Source Sans\", sans-serif",
@@ -71,49 +80,44 @@
       ],
       "fontSizes": [
         {
-          "fluid": {
-            "max": "14px",
-            "min": "14px"
-          },
-          "name": "Small",
-          "size": "14px",
-          "slug": "fs-small"
+          "name": "xSmall",
+          "size": "0.75rem",
+          "slug": "fs-xs"
         },
         {
-          "fluid": {
-            "max": "16px",
-            "min": "16px"
-          },
+          "name": "Small",
+          "size": "0.875rem",
+          "slug": "fs-sm"
+        },
+        {
           "name": "Base",
-          "size": "16px",
+          "size": "1rem",
           "slug": "fs-base"
         },
         {
-          "fluid": {
-            "max": "20px",
-            "min": "20px"
-          },
-          "name": "Medium",
-          "size": "20px",
-          "slug": "fs-medium"
-        },
-        {
-          "fluid": {
-            "max": "24px",
-            "min": "24px"
-          },
           "name": "Large",
-          "size": "24px",
-          "slug": "fs-large"
+          "size": "1.125rem",
+          "slug": "fs-lg"
         },
         {
-          "fluid": {
-            "max": "50px",
-            "min": "34px"
-          },
-          "name": "xLarge",
-          "size": "50px",
-          "slug": "fs-x-large"
+          "name": "Extra Large",
+          "size": "1.25rem",
+          "slug": "fs-xl"
+        },
+        {
+          "name": "2XL",
+          "size": "1.5rem",
+          "slug": "fs-2xl"
+        },
+        {
+          "name": "3XL",
+          "size": "1.875rem",
+          "slug": "fs-3xl"
+        },
+        {
+          "name": "4XL",
+          "size": "2.25rem",
+          "slug": "fs-4xl"
         },
         {
           "fluid": {
@@ -162,6 +166,31 @@
           "name": "0",
           "size": "0",
           "slug": "sp-00"
+        },
+        {
+          "name": "block-gap",
+          "size": "var(--wp--style--block-gap)",
+          "slug": "block-gap"
+        },
+        {
+          "name": "gap-xs",
+          "size": "0.5rem",
+          "slug": "gap-xs"
+        },
+        {
+          "name": "gap-sm",
+          "size": "1rem",
+          "slug": "gap-sm"
+        },
+        {
+          "name": "gap-lg",
+          "size": "2rem",
+          "slug": "gap-lg"
+        },
+        {
+          "name": "gap-xlg",
+          "size": "3rem",
+          "slug": "gap-xlg"
         }
       ],
       "units": ["%", "px", "em", "rem", "vh", "vw"]
@@ -194,10 +223,10 @@
           "fw-black": 900
         },
         "lineHeight": {
-          "lh-body": 1.75,
-          "lh-heading": 1.1,
-          "lh-base": 1.4,
-          "lh-one": 1
+          "lh-body": "1.75rem",
+          "lh-heading": "1.1rem",
+          "lh-base": "1.4rem",
+          "lh-one": "1rem"
         }
       }
     },
@@ -215,20 +244,15 @@
     },
     "typography": {
       "fontFamily": "var:preset|font-family|ff-source-sans",
-      "fontSize": "var(--wp--preset--font-size--fs-base)"
+      "fontSize": "var(--wp--preset--font-size--fs-base)",
+      "fontWeight": "400"
     },
 
     "color": {
       "text": "var(--wp--preset--color--clr-black)"
     },
 
-    "blocks": {
-      "core/navigation": {
-        "typography": {
-          "fontSize": "var(--wp--preset--font-size--fs-small)"
-        }
-      }
-    },
+    "blocks": {},
 
     "elements": {
       "button": {

@@ -1,15 +1,14 @@
 // Navigation toggle
-window.onload =  function () {
+window.onload = function () {
+  const btn = document.getElementById("menu-btn");
+  const menu = document.getElementById("menu");
 
-  const btn = document.getElementById('menu-btn')
-  const menu = document.getElementById('menu')
-
-  btn.addEventListener('click', navToggle)
+  btn.addEventListener("click", navToggle);
 
   function navToggle() {
-    btn.classList.toggle('open')
-    menu.classList.toggle('flex')
-    menu.classList.toggle('hidden')
+    btn.classList.toggle("open");
+    menu.classList.toggle("flex");
+    menu.classList.toggle("hidden");
   }
   var swiper = new Swiper(".swiper", {
     slidesPerView: 3,
@@ -22,25 +21,30 @@ window.onload =  function () {
       prevEl: ".swiper-button-prev",
     },
     breakpoints: {
-      // when window width is >= 320px
-      320: {
+      // when window width is >= 220px
+      220: {
         slidesPerView: 1.5,
         spaceBetween: 20,
       },
-      // when window width is >= 480px
-      480: {
+      // when window width is >= 320px
+      320: {
         slidesPerView: 1.5,
-        spaceBetween: 30,
+        spaceBetween: 50,
+      },
+      // when window width is >= 480px
+      520: {
+        slidesPerView: 2.5,
+        spaceBetween: 50,
       },
       // when window width is >= 640px
-      640: {
+      768: {
         slidesPerView: 2.5,
-        spaceBetween: 40,
+        spaceBetween: 70,
       },
       // when window width is >= 976px
-      976: {
+      1024: {
         slidesPerView: 3,
-        spaceBetween: 100,
+        spaceBetween: 75,
       },
     },
   });
@@ -58,4 +62,4 @@ window.onload =  function () {
     counter: false,
     download: false,
   });
-}
+};

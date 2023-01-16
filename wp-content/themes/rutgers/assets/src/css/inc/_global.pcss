@@ -17,35 +17,19 @@
 
 */
 
-.post-listing-widget {
-  .ta-post-title {
-    @apply text-base font-bold;
-    @media screen and (min-width: 1200px) {
-      color: green !important;
-    }
-  }
-  .ta-author {
-    @apply text-base font-bold;
-  }
-  .ta-post-date {
-    @apply text-sm;
-  }
-}
-
-ul.ta-category-listing {
-  margin-bottom: 0;
-  .ta-tags {
-    @media screen and (min-width: 976px) {
-      @apply bg-clr-primary  text-white text-xs;
-    }
-  }
-}
-
 /* Carousel common */
 
+@media screen and (max-width: theme(screens.sm)) {
+  body .ta-carousel-container.wp-block-group {
+    margin-right: calc(var(--wp--style--root--padding-right) * -1) !important;
+    margin-left: calc(var(--wp--style--root--padding-left) * -1) !important;
+  }
+}
+
 body .ta-carousel-container.wp-block-group {
-  margin-right: calc(var(--wp--style--root--padding-right) * -1) !important;
-  margin-left: calc(var(--wp--style--root--padding-left) * -1) !important;
+  .ta-carousel__button {
+    @apply inline-block text-center  mt-4 justify-center mx-auto text-white bg-clr-primary p-2 px-4 lg:px-6;
+  }
 }
 
 .swiper-pagination-bullet-active {
@@ -116,10 +100,10 @@ body .ta-carousel-container.wp-block-group {
 
 @media screen and (max-width: theme(screens.lg)) {
   .sfas-carousel .swiper-button-next {
-    right: 15%;
+    right: 23%;
   }
   .sfas-carousel .swiper-button-prev {
-    left: 15%;
+    left: 23%;
   }
   .sfas-carousel .swiper-slide {
     font-size: 16px;
@@ -128,10 +112,16 @@ body .ta-carousel-container.wp-block-group {
 
 @media screen and (max-width: theme(screens.md)) {
   .sfas-carousel .swiper-button-next {
-    right: 0;
+    right: 23%;
+    @media screen and (max-width: theme(screens.xs)) {
+      right: 5%;
+    }
   }
   .sfas-carousel .swiper-button-prev {
-    left: 0;
+    left: 23%;
+    @media screen and (max-width: theme(screens.xs)) {
+      left: 5%;
+    }
   }
 }
 
@@ -141,48 +131,62 @@ body .ta-carousel-container.wp-block-group {
   color: #f69259;
 }
 
-/* Testimonial Swiper Styling */
-
-.ta-testimonials-wrapper .swiper {
-  width: 100%;
-  height: 100%;
-}
-
 .mySwiper,
 .sfas-carousel,
 .ta-testimonials-swiper {
   width: 100%;
 }
+
 .sfas-carousel,
 .ta-testimonials-swiper {
   padding-bottom: 50px;
 }
 
-.ta-testimonials-wrapper .ta-swiper-slide {
-  text-align: center;
-  font-size: 18px;
-  background: #fff;
+/* Testimonial Swiper Styling */
 
-  /* Center slide text vertically */
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-}
+.ta-testimonials-wrapper {
+  .swiper {
+    width: 100%;
+    height: 100%;
+  }
 
-.ta-testimonials-wrapper .ta-swiper-slide img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  .ta-swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .ta-testimonial-name {
+    @apply text-lg font-fw-bold;
+  }
+
+  .ta-testimonial-title {
+    @apply text-fs-sm font-fw-regular;
+  }
+
+  .ta-testimonials-text {
+    @apply text-lg font-fw-semi-bold mb-4 leading-lh-body;
+  }
 }
 
 /* Sidebar Widgets */
@@ -263,6 +267,14 @@ body .ta-carousel-container.wp-block-group {
   @apply text-lg;
 }
 
+.ta-sidebar-search {
+  @apply hidden md:block;
+}
+
+.ta-mobile-search {
+  @apply block md:hidden;
+}
+
 /* Staff page */
 
 .ta-team-member-wrapper {
@@ -338,7 +350,69 @@ body .ta-featured-items.wp-block-group {
       @apply table;
     }
     h4 {
-      @apply text-center bg-none mt-5 pl-0;
+      @apply text-fs-lg text-center bg-none mt-5 pl-0;
+    }
+  }
+}
+
+/* Student Success Stories / Sidebar Blog Widget  */
+.ta-sidebar-blog-widget {
+  @apply flex flex-col space-y-6;
+  .ta-sidebar-blog-widget__blog-item {
+    @apply flex flex-col space-y-3 pb-6 border-0 border-solid border-b border-clr-secondary border-opacity-30 last:border-0;
+    .ta-post-title {
+      @apply text-base font-bold;
+      @media screen and (min-width: 1200px) {
+        color: green !important;
+      }
+    }
+    .ta-author {
+      @apply text-base font-bold;
+    }
+    .ta-post-date {
+      @apply text-sm;
+    }
+    .ta-name-initials {
+      a {
+        @apply rounded-full flex leading-4 items-center justify-center bg-clr-secondary  uppercase w-12 h-12 text-white;
+      }
+    }
+  }
+}
+.ta-category-listing {
+  margin-bottom: 0;
+  .ta-tags {
+    @media screen and (min-width: 976px) {
+      @apply bg-clr-primary  text-white text-xs;
+    }
+  }
+}
+
+/* Video Popup */
+.wpzoom-video-popup-block_icon {
+  path {
+    @apply fill-white;
+  }
+}
+
+/* Footer Styling */
+.ta-footer-container.is-layout-constrained {
+  @apply p-block-gap mt-10;
+
+  & > .wp-block-group:first-child {
+    @apply mt-gap-lg;
+  }
+
+  & > * + * {
+    margin-block-start: 3rem;
+  }
+
+  .ta-footer__bottom-text {
+    @apply text-fs-sm;
+  }
+  .ta-footer__main-nav {
+    .wp-block-navigation-item__content {
+      @apply text-fs-lg font-fw-bold;
     }
   }
 }
