@@ -1,0 +1,12 @@
+/* Bulletted list */
+
+.ta-bulleted-list {
+  @apply ml-0.5;
+  li {
+    display: flex;
+    &:before {
+      content: url("/wp-content/uploads/2022/12/right-caret.svg");
+      margin-right: 10px;
+    }
+  }
+}

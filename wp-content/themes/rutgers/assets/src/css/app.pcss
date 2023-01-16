@@ -2,9 +2,18 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-@import-glob "./inc/overrides/**/*.pcss";
-@import-glob "./inc/parts/**/*.pcss";
-@import-glob "./inc/patterns/**/*.pcss";
-@import-glob "./inc/templates/**/*.pcss";
+/*Import variables*/
+@import "inc/_variables.pcss";
 
-@import "/inc/global.pcss";
+/* Resets */
+@import "inc/_reset.pcss";
+
+/*Import Block/Templates/Patterns Styles*/
+@import-glob "./inc/overrides/**/*.pcss";
+
+/* Import tempates, parts, patterns related styles */
+@import "inc/_templates.pcss";
+@import "inc/_template-parts.pcss";
+@import "inc/_block-patterns.pcss";
+
+@import "inc/_global.pcss";

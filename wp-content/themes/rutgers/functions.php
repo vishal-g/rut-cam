@@ -37,6 +37,7 @@ function tbones_setup() {
 
 	add_theme_support( 'editor-styles' );
 	add_editor_style( 'assets/build/css/editor-style.css' );
+	add_editor_style( 'assets/build/css/app.css' );
 	remove_theme_support( 'core-block-patterns' );
 }
 
@@ -55,45 +56,45 @@ function tbones_enqueue_scripts() {
 
 add_action( 'wp_enqueue_scripts', 'tbones_enqueue_scripts', 9 );
 
-
-/**
- * Enqueue individual block stylesheets.
- */
-function tbones_enqueue_block_styles() {
-
-	// Get all available block namespaces.
-	$block_namespaces = glob( dirname( __FILE__ ) . '/assets/build/css/blocks/*/' );
-	$block_namespaces = array_map(
-		function( $type_path ) { return basename( $type_path ); },
-		$block_namespaces
-	);
-
-	foreach ( $block_namespaces as $block_namespace ) {
-
-		// Get all available block styles of the given block namespace.
-		$block_styles = glob( dirname( __FILE__ ) . '/assets/build/css/blocks/' . $block_namespace . '/*.css' );
-		$block_styles = array_map(
-			function( $styles_path ) { return basename( $styles_path, '.css' ); },
-			$block_styles
-		);
-
-		foreach ( $block_styles as $block_style ) {
-
-			// Enqueue individual block stylesheets.
-			wp_enqueue_block_style(
-				$block_namespace . '/' . $block_style,
-				array(
-					'handle' => 'tbones-' . $block_namespace . '-' . $block_style . '-styles',
-					'src'    => get_theme_file_uri( 'assets/build/css/blocks/' . $block_namespace . '/' . $block_style . '.css' ),
-
-					// Add "path" to allow inlining of block styles when possible.
-					'path'   => get_theme_file_path( 'assets/build/css/blocks/' . $block_namespace . '/' . $block_style . '.css' ),
-				),
-			);
-		}
-	}
-}
-add_action( 'wp', 'tbones_enqueue_block_styles' );
+//
+///**
+// * Enqueue individual block stylesheets.
+// */
+//function tbones_enqueue_block_styles() {
+//
+//	// Get all available block namespaces.
+//	$block_namespaces = glob( dirname( __FILE__ ) . '/assets/build/css/blocks/*/' );
+//	$block_namespaces = array_map(
+//		function( $type_path ) { return basename( $type_path ); },
+//		$block_namespaces
+//	);
+//
+//	foreach ( $block_namespaces as $block_namespace ) {
+//
+//		// Get all available block styles of the given block namespace.
+//		$block_styles = glob( dirname( __FILE__ ) . '/assets/build/css/blocks/' . $block_namespace . '/*.css' );
+//		$block_styles = array_map(
+//			function( $styles_path ) { return basename( $styles_path, '.css' ); },
+//			$block_styles
+//		);
+//
+//		foreach ( $block_styles as $block_style ) {
+//
+//			// Enqueue individual block stylesheets.
+//			wp_enqueue_block_style(
+//				$block_namespace . '/' . $block_style,
+//				array(
+//					'handle' => 'tbones-' . $block_namespace . '-' . $block_style . '-styles',
+//					'src'    => get_theme_file_uri( 'assets/build/css/blocks/' . $block_namespace . '/' . $block_style . '.css' ),
+//
+//					// Add "path" to allow inlining of block styles when possible.
+//					'path'   => get_theme_file_path( 'assets/build/css/blocks/' . $block_namespace . '/' . $block_style . '.css' ),
+//				),
+//			);
+//		}
+//	}
+//}
+//add_action( 'wp', 'tbones_enqueue_block_styles' );
 
 /**
  * Register block styles.
