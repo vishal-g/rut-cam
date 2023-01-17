@@ -8,7 +8,7 @@
 <!-- wp:columns {"align":"full","style":{"spacing":{}},"className":"ta-staff-card"} -->
 <div class="wp-block-columns alignfull ta-staff-card"><!-- wp:column {"width":"50%"} -->
     <div class="wp-block-column" style="flex-basis:50%"><!-- wp:image {"id":54,"sizeSlug":"full","linkDestination":"none"} -->
-        <figure class="wp-block-image size-full"><img src="https://rutgers.test/wp-content/uploads/2022/12/team-member-1.jpg" alt="" class="wp-image-54"/></figure>
+        <figure class="wp-block-image size-full"><img src="/wp-content/uploads/2022/12/team-member-1.jpg" alt="" class="wp-image-54"/></figure>
         <!-- /wp:image --></div>
     <!-- /wp:column -->
 
