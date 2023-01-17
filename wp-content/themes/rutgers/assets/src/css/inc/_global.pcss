@@ -433,3 +433,37 @@ body .ta-featured-items.wp-block-group {
   .ta-footer-social-icons {
   }
 }
+
+/* Staff page */
+
+body .wp-site-blocks .ta-staff-card {
+  @apply text-fs-sm rounded bg-clr-white;
+  gap: var(--wp--preset--spacing--sp-sm);
+
+  p {
+    @apply text-fs-xs leading-lh-tight;
+  }
+  & * + * {
+    margin-block-start: var(--wp--preset--spacing--sp-xs);
+  }
+  &__info-wrapper {
+    margin-block-start: var(--wp--preset--spacing--sp-0);
+  }
+  &__name {
+    @apply font-fw-bold text-clr-black;
+  }
+  &__title {
+    @apply uppercase;
+  }
+  &__address {
+  }
+  &__phone {
+  }
+  &__email {
+    @apply text-clr-primary;
+    a {
+      @apply text-clr-primary;
+    }
+    margin-block-start: var(--wp--preset--spacing--sp-0);
+  }
+}

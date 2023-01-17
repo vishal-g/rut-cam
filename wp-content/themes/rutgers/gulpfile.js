@@ -21,7 +21,7 @@ gulp.task("browser-sync", function (done) {
     // server: "./",
     // startPath: "webpage/index.html", // After it browser running [File path set]
     // //    browser: 'chrome',
-    proxy: "https://rutgers.test",
+    proxy: "https://rutgers.test/staff-page/",
   });
   gulp.watch(["./**/*.html", "./theme.json"]).on("change", reload); // [File path set]
   done();
