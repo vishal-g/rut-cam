@@ -1,127 +1,211 @@
 /* ------------------- */
-/* Custom variables   */
+/* All variables   */
 /* ------------------- */
+
+/*
+  TODO Next things to implement in theme
+ - Fluid typography (https://www.smashingmagazine.com/2022/01/modern-fluid-typography-css-clamp/)
+ - Keep theme.json values mobile first as tailwind is mobile first
+
+*/
+
+/*************** BreakPoints - tailwind.config.json ***************
+
+    xs: "480px",
+    sm: "640px",
+    md: "768px",
+    lg: "1024px",
+    xl: "1280px",
+    2xl: "1536px",
+
+  - Tailwind (CSS) usage
+  ----------------------------------------
+  theme(screens.xs)
+
+  */
+
+/*************** Colors ******************************
+
+- Slugs
+----------------------------------------
+clr-base - #F4F4F4 // Rutgers Light Grey
+clr-primary - #CC0033 // Rutgers Red
+clr-secondary - #5F6A72 // Rutgers Dark grey
+clr-white - #fff
+clr-black - #000
+
+- Tailwind usage
+----------------------------------------
+text-clr-base
+bg-clr-base
+border-clr-base
+
+- WP variables
+----------------------------------------
+--wp--preset--color--clr-base
+--wp--preset--color--clr-primary
+--wp--preset--color--clr-secondary
+--wp--preset--color--clr-white
+--wp--preset--color--clr-black
+
+*/
+
+/*************** Font Sizes ******************************
+
+- Slugs
+----------------------------------------
+fs-xs - 12px / 0.75rem
+fs-sm - 14px / 0.875rem
+fs-custom - 15px / 0.938rem
+fs-base - 16px / 1rem
+fs-lg - 18px / 1.125rem
+fs-xl - 20px / 1.25rem
+fs-2-xl - 24px / 1.5rem
+fs-3-xl - 30px / 1.875rem
+fs-4-xl - 36px / 2.25rem
+fs-max-36 - 36px
+fs-max-48 - 48px
+fs-max-60 - 60px
+fs-max-72 - 72px
+
+- Tailwind usage
+----------------------------------------
+text-fs-xs
+
+- WP usage
+----------------------------------------
+--wp--preset--font-size--fs-xs
+--wp--preset--font-size--fs-custom
+--wp--preset--font-size--fs-sm
+--wp--preset--font-size--fs-base
+--wp--preset--font-size--fs-lg
+--wp--preset--font-size--fs-xl
+--wp--preset--font-size--fs-2-xl
+--wp--preset--font-size--fs-3-xl
+--wp--preset--font-size--fs-4-xl
+--wp--preset--font-size--fs-max-36
+--wp--preset--font-size--fs-max-48
+--wp--preset--font-size--fs-max-60
+--wp--preset--font-size--fs-max-72
+
+*/
+
+/*************** Font Families ******************************
+/*
+- WP based names
+----------------------------------------
+
+--ff-sans: var(--wp--preset--font-family--ff-source-sans);
+
+*/
+
+/*************** Font Weights ******************************
+
+ - Slugs
+ ----------------------------------------
+ fw-thin: 100;
+ fw-extra-light: 200;
+ fw-light: 300;
+ fw-regular: 400;
+ fw-medium: 500;
+ fw-semi-bold: 600;
+ fw-bold: 700;
+ fw-extra-bold: 800;
+ fw-black: 900;
+
+ - Tailwind usage
+ ----------------------------------------
+ font-fw-thin
+
+ - WP usage
+ ----------------------------------------
+--wp--custom--typography--font-weight--fw-thin
+--wp--custom--typography--font-weight--fw-extra-light
+--wp--custom--typography--font-weight--fw-light
+--wp--custom--typography--font-weight--fw-regular
+--wp--custom--typography--font-weight--fw-medium
+--wp--custom--typography--font-weight--fw-semi-bold
+--wp--custom--typography--font-weight--fw-bold
+--wp--custom--typography--font-weight--fw-extra-bold
+--wp--custom--typography--font-weight--fw-black
+
+
+*/
+
+
+/*************** Line Heights ******************************
+
+- Slugs
+----------------------------------------
+
+lh-none	    //  1;
+lh-tight	//  1.25;
+lh-snug	    //  1.375;
+lh-normal	//  1.5;
+lh-relaxed	//  1.625;
+lh-loose	//  2;
+
+- WP usage
+----------------------------------------
+--wp--custom--typography--line-height--lh-none: 1;
+--wp--custom--typography--line-height--lh-tight: 1.25;
+--wp--custom--typography--line-height--lh-snug: 1.375;
+--wp--custom--typography--line-height--lh-normal: 1.5;
+--wp--custom--typography--line-height--lh-relaxed: 1.625;
+--wp--custom--typography--line-height--lh-loose: 2;
+
+*/
+
+
+/*************** Spacing ******************************
+
+ - Slugs
+ ----------------------------------------
+sp-0  // 0 - 0;
+sp-xs  // 0.5rem - 8px;
+sp-sm  // 1rem - 16px;
+sp-base  // 1.5rem - 24px;
+sp-lg: // 2rem - 32px;
+sp-xl: // 2.5rem - 40px;
+
+
+- tailwind classes
+----------------------------------------
+p-sp-0
+p-sp-xs
+
+
+- WP usage
+----------------------------------------
+--wp--preset--spacing--sp-0  // 0 - 0;
+--wp--preset--spacing--sp-xs  // 0.5rem - 8px;
+--wp--preset--spacing--sp-sm  // 1rem - 16px;
+--wp--preset--spacing--sp-base  // 1.5rem - 24px;
+--wp--preset--spacing--sp-lg: // 2rem - 32px;
+--wp--preset--spacing--sp-xl: // 2.5rem - 40px;
+
+
+*/
+
+/*************** layout Sizes ******************************
+
+- WP based names
+----------------------------------------
+ --wp--style--global--content-size         // 1200px;
+ --wp--style--global--wide-size             // 1280px;
+
+*/
+
+/*************** Block Gap ******************************
+
+- WP based names
+----------------------------------------
+ --wp--style--block-gap
+
+*/
 
 :root {
 
-  /*************** Colors ***************/
-  /* Configured in theme.json */
-  /*
-  - Can be used with "text-", "bg-", "border-"
-  - Tailwind based names
-----------------------------------------
-  clr-base - #F4F4F4 // Rutgers Light Grey
-  clr-primary - #CC0033 // Rutgers Red
-  clr-secondary - #5F6A72 // Rutgers Dark grey
-  clr-white - #fff
-  clr-black - #000
-
-  */
-
-  /*************** Font Sizes ***************/
-  /* Configured in theme.json */
-  /*
-  - Tailwind based names
-  ----------------------------------------
-  text-fs-small - 14px
-  text-fs-base - 16px
-  text-fs-medium - 20px
-  text-fs-large - 24px
-  text-fs-x-large - 50px
-  text-fs-max-36 - 36px
-  text-fs-max-48 - 48px
-  text-fs-max-60 - 60px
-  text-fs-max-72 - 72px
-
-  - WP based custom names
-  ----------------------------------------
-
-  --wp--custom--typography--font-size--fs-huge
-  --wp--custom--typography--font-size--fs-gigantic
-  --wp--custom--typography--font-size--fs-colossal
-
-
-  */
-
-  /*************** Font Families ***************/
-  /* Configured in theme.json */
-  /*
-  - WP based names
-  ----------------------------------------
-  */
   --ff-sans: var(--wp--preset--font-family--ff-source-sans);
-
-
-  /*************** Font Weights ***************/
-  /* Configured in theme.json */
-  /*
-  - WP based names
-  ----------------------------------------
-
-  --wp--custom--typography--font-weight--fw-thin: 100;
-  --wp--custom--typography--font-weight--fw-extra-light: 200;
-  --wp--custom--typography--font-weight--fw-light: 300;
-  --wp--custom--typography--font-weight--fw-regular: 400;
-  --wp--custom--typography--font-weight--fw-medium: 500;
-  --wp--custom--typography--font-weight--fw-semi-bold: 600;
-  --wp--custom--typography--font-weight--fw-bold: 700;
-  --wp--custom--typography--font-weight--fw-extra-bold: 800;
-  --wp--custom--typography--font-weight--fw-black: 900;
-
-  */
-
-
-  /*************** Line Heights ***************/
-  /* Configured in theme.json */
-  /*
-  - WP based names
-  ----------------------------------------
-  --wp--custom--typography--line-height--lh-body      // 1.75
-  --wp--custom--typography--line-height--lh-heading   // 1.1
-  --wp--custom--typography--line-height--lh-medium    // 1.5
-  --wp--custom--typography--line-height--lh-one       // 1
-
-  */
-
-
-
-  /*************** Spacing ***************/
-  /* Configured in theme.json */
-  /*
-  - WP based names
-  ----------------------------------------
-  --wp--preset--spacing--sp-01  // 0.125rem - 2px;
-  --wp--preset--spacing--sp-02  // 0.25rem - 4px;
-  --wp--preset--spacing--sp-05  // 0.5rem - 8px;
-  --wp--preset--spacing--sp-10  // 1rem - 16px;
-  --wp--preset--spacing--sp-15: // 1.5rem - 24px;
-  --wp--preset--spacing--sp-20: // 2rem - 32px;
-  --wp--preset--spacing--sp-25: // 2.5rem - 40px;
-  --wp--preset--spacing--sp-30: // 3rem - 48px;
-  --wp--preset--spacing--sp-35: // 3.5rem - 56px;
-  --wp--preset--spacing--sp-40: // 4rem - 64px;
-
-  */
-
-  /*************** layout Sizes ***************/
-  /* Configured in theme.json */
-  /*
-  - WP based names
-  ----------------------------------------
-   --wp--style--global--content-size         // 1200px;
-   --wp--style--global--wide-size             // 1280px;
-
-  */
-
-  /*************** Block Gap ***************/
-  /* Configured in theme.json */
-  /*
-  - WP based names
-  ----------------------------------------
-   --wp--style--block-gap
-
-  */
-
-
 
 }

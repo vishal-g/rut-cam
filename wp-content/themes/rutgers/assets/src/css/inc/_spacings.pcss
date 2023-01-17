@@ -1,0 +1,49 @@
+
+:root {
+
+  /* Vertical Spacings */
+
+  body {
+
+    .wp-site-blocks > * + *, .is-layout-constrained > * + *{
+      margin-block-start: var(--wp--preset--spacing--sp-base);
+    }
+
+    .wp-site-blocks {
+      h1,
+      h2,
+      h3,
+      h4.h5,
+      h6 {
+        & + * {
+          margin-block-start: var(--wp--preset--spacing--sp-sm);
+        }
+      }
+    }
+
+    @media screen and (min-width: theme(screens.md)) {
+      .wp-site-blocks > * + *, .is-layout-constrained > * + * {
+        margin-block-start: var(--wp--preset--spacing--sp-xl);
+      }
+      .wp-site-blocks {
+        h1,
+        h2,
+        h3,
+        h4.h5,
+        h6 {
+          & + * {
+            margin-block-start: var(--wp--preset--spacing--sp-base);
+          }
+        }
+      }
+    }
+
+    /*Exceptions*/
+    .ta-video-container {
+      gap: var(--wp--preset--spacing--sp-sm) !important;
+      h3 + * {
+        margin-block-start: var(--wp--preset--spacing--sp-xs);
+      }
+    }
+  }
+}
