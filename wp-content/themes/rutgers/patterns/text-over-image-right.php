@@ -5,8 +5,8 @@
  * Categories: rutgers
  */
 ?>
-<!-- wp:cover {"url":"/wp-content/uploads/2022/12/disability-1.jpg","id":36,"dimRatio":0,"focalPoint":{"x":0,"y":0},"contentPosition":"center center","className":"ta-text-over-image"} -->
-<div class="wp-block-cover ta-text-over-image"><span aria-hidden="true" class="wp-block-cover__background has-background-dim-0 has-background-dim"></span><img class="wp-block-cover__image-background wp-image-36" alt="" src="https://rutgers.test/wp-content/uploads/2022/12/disability-1.jpg" style="object-position:0% 0%" data-object-fit="cover" data-object-position="0% 0%"/><div class="wp-block-cover__inner-container"><!-- wp:group {"layout":{"type":"default"}} -->
+<!-- wp:cover {"url":"/wp-content/uploads/2022/12/disability-1.jpg","id":36,"dimRatio":0,"focalPoint":{"x":0,"y":0},"contentPosition":"center center","isDark":false,"className":"ta-text-over-image"} -->
+<div class="wp-block-cover is-light ta-text-over-image"><span aria-hidden="true" class="wp-block-cover__background has-background-dim-0 has-background-dim"></span><img class="wp-block-cover__image-background wp-image-36" alt="" src="/wp-content/uploads/2022/12/disability-1.jpg" style="object-position:0% 0%" data-object-fit="cover" data-object-position="0% 0%"/><div class="wp-block-cover__inner-container"><!-- wp:group {"layout":{"type":"default"}} -->
         <div class="wp-block-group"><!-- wp:heading -->
             <h2>We Work with You<br></h2>
             <!-- /wp:heading -->
