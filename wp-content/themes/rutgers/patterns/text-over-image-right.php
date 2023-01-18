@@ -1,7 +1,7 @@
 <?php
 /**
- * Title: Text Over Image
- * Slug: tbones/text-over-image
+ * Title: Text Over Image (Right)
+ * Slug: tbones/text-over-image-right
  * Categories: rutgers
  */
 ?>
