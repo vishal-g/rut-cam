@@ -101,10 +101,12 @@ add_action( 'wp_enqueue_scripts', 'tbones_enqueue_scripts', 9 );
  *
  * @since 1.0.0
  */
-function tbones_register_block_styles() {
+function tbones_registrations() {
+
+	// Register block styles
 
 	$block_styles = array(
-		'core/paragraph'          => array(
+		'core/paragraph' => array(
 			'big-text'    => __( 'Big Text', 'tbones' )
 		)
 	);
@@ -120,8 +122,15 @@ function tbones_register_block_styles() {
 			);
 		}
 	}
+
+	// Register pattern categories
+
+	register_block_pattern_category( 'rutgers', array(
+		'label' => __( 'Rutgers', 'tbones' )
+	) );
+
 }
-add_action( 'init', 'tbones_register_block_styles' );
+add_action( 'init', 'tbones_registrations' );
 
 
 

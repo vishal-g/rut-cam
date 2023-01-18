@@ -1,17 +1,27 @@
+@import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-body {
+@layer base {
+  body .editor-styles-wrapper {
     @apply font-sans;
+  }
 }
 
-
-.block-editor-block-list__block, .block-editor-block-list__block * {
-    white-space: normal!important;
+.block-editor-block-list__block,
+.block-editor-block-list__block * {
+  white-space: normal !important;
 }
 
 /* Site Logo */
 
 a.custom-logo-link {
-    @apply block;
+  @apply block;
+}
+
+.edit-post-visual-editor__post-title-wrapper {
+  padding-right: var(--wp--style--root--padding-right);
+  padding-left: var(--wp--style--root--padding-left);
+  margin-top: var(--wp--style--block-gap);
+  margin-bottom: var(--wp--style--block-gap);
 }

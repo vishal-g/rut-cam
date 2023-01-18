@@ -6,14 +6,19 @@
       "name": "staff",
       "postTypes": ["page"],
       "title": "Staff Page"
+    },
+    {
+      "name": "starter",
+      "postTypes": ["page"],
+      "title": "Starter Page Template"
     }
   ],
   "settings": {
     "appearanceTools": true,
     "useRootPaddingAwareAlignments": true,
     "layout": {
-      "contentSize": "1200px",
-      "wideSize": "1280px"
+      "contentSize": "1580px",
+      "wideSize": "1600px"
     },
     "color": {
       "custom": false,
@@ -265,8 +270,23 @@
 
     "elements": {
       "button": {
+        "typography": {
+          "fontSize": "var(--wp--preset--font-size--fs-lg)"
+        },
         "color": {
-          "text": "var:preset|color|clr-white"
+          "text": "var:preset|color|clr-white",
+          "background": "var(--wp--preset--color--clr-primary)"
+        },
+        "spacing": {
+          "padding": {
+            "top": "0.5rem",
+            "bottom": "0.5rem",
+            "right": "1.5rem",
+            "left": "1.5rem"
+          }
+        },
+        "border": {
+          "radius": "0"
         }
       },
       "p": {

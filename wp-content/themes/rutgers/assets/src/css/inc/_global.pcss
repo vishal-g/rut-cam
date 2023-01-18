@@ -91,10 +91,10 @@ body .ta-carousel-container.wp-block-group {
   /* @apply text-white text-sm font-bold; */
 }
 .sfas-carousel .swiper-button-next {
-  right: 28%;
+  right: 28.5%;
 }
 .sfas-carousel .swiper-button-prev {
-  left: 28%;
+  left: 28.5%;
 }
 
 @media screen and (max-width: theme(screens.lg)) {
@@ -465,5 +465,90 @@ body .wp-site-blocks .ta-staff-card {
       @apply text-clr-primary;
     }
     margin-block-start: var(--wp--preset--spacing--sp-0);
+  }
+}
+
+/* Featured Box */
+
+.ta-featured-box {
+  @apply bg-clr-white rounded shadow-sh-01 p-10 pb-0 text-clr-secondary;
+  gap: var(--wp--preset--spacing--sp-base);
+
+  .wp-block-button__link {
+    @apply px-14;
+  }
+
+  &__col-1 {
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      @apply text-fs-4-xl text-clr-secondary;
+    }
+  }
+  &__col-2 {
+    ul {
+      & * + * {
+        @apply mt-3;
+      }
+      li {
+        @apply text-fs-xl;
+        @apply text-left leading-7 pl-5 bg-[url("../images/bullet-icon.svg")] bg-[left_top_0.5rem] bg-no-repeat;
+      }
+    }
+  }
+}
+
+/* Text Over Image Section */
+body .ta-text-over-image {
+  &.wp-block-cover {
+    justify-content: unset;
+    align-items: unset;
+    padding: 3rem;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .wp-block-cover__inner-container {
+    padding: 50px;
+    max-width: 600px;
+    @apply shadow-sh-01 rounded text-clr-secondary bg-clr-white;
+    .wp-block-group > * + * {
+      margin-block-start: var(--wp--preset--spacing--sp-sm);
+    }
+  }
+  .wp-block-cover__image-background {
+    width: 75%;
+    right: 0;
+    left: unset;
+    object-position: top right !important;
+  }
+  .wp-block-cover__background {
+    background: none;
+  }
+  /* Left Image */
+  &.ta-text-over-image__left {
+    @apply justify-end;
+    .wp-block-cover__image-background {
+      right: unset;
+      left: 0;
+      object-position: top left !important;
+    }
+    .wp-block-cover__inner-container {
+    }
+  }
+}
+
+/* Info block Small - Best fitted into 3 col layout */
+body .ta-info-block-small {
+  @apply p-sp-lg pb-0 bg-clr-white text-center min-h-full flex flex-col justify-between rounded;
+  & .ta-info-block-small__title {
+    @apply text-left !m-0 text-clr-secondary;
+  }
+  & .ta-info-block-small__text {
+    @apply text-left mb-auto text-clr-secondary;
+  }
+  .wp-block-buttons {
+    justify-content: center;
   }
 }
