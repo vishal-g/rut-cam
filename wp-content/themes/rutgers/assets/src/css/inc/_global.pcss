@@ -510,9 +510,8 @@ body .ta-text-over-image {
     padding-right: 0;
   }
   .wp-block-cover__inner-container {
-    padding: 40px;
     max-width: 450px;
-    @apply shadow-sh-01 rounded text-fs-base text-clr-secondary bg-clr-white;
+    @apply shadow-sh-01 p-sp-xl rounded text-fs-base text-clr-secondary bg-clr-white;
     .wp-block-group > * + * {
       margin-block-start: var(--wp--preset--spacing--sp-sm);
     }
@@ -541,7 +540,7 @@ body .ta-text-over-image {
 
 /* Info block Small - Best fitted into 3 col layout */
 body .ta-info-block-small {
-  @apply p-sp-lg pb-0 bg-clr-white text-center min-h-full flex flex-col justify-between rounded;
+  @apply p-sp-inner pb-0 bg-clr-white text-center min-h-full flex flex-col justify-between rounded;
   & .ta-info-block-small__title {
     @apply text-left !m-0 text-clr-secondary;
   }

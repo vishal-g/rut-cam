@@ -208,6 +208,11 @@
           "name": "sp-xl",
           "size": "3rem",
           "slug": "sp-xl"
+        },
+        {
+          "name": "sp-inner",
+          "size": "2rem",
+          "slug": "sp-inner"
         }
       ],
       "units": ["%", "px", "em", "rem", "vh", "vw"]
