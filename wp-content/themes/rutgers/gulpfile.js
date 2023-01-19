@@ -44,7 +44,7 @@ gulp.task("css", () => {
     .pipe(sourcemaps.write())
     .pipe(
       notify({
-        message: "sourcemaps written",
+        "message": "sourcemaps written",
       })
     )
     .pipe(gulp.dest("./assets/build/css"))

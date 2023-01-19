@@ -10,7 +10,12 @@
     {
       "name": "starter",
       "postTypes": ["page"],
-      "title": "Starter Page Template"
+      "title": "Starter Template"
+    },
+    {
+      "name": "starter-no-lottie",
+      "postTypes": ["page"],
+      "title": "Starter Template - Without Hero Animation"
     }
   ],
   "settings": {

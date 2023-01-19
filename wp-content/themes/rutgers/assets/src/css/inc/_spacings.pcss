@@ -1,11 +1,9 @@
-
 :root {
-
   /* Vertical Spacings */
 
   body {
-
-    .wp-site-blocks > * + *, .is-layout-constrained > * + *{
+    .wp-site-blocks > * + *,
+    .is-layout-constrained > * + * {
       margin-block-start: var(--wp--preset--spacing--sp-base);
     }
 
@@ -22,7 +20,8 @@
     }
 
     @media screen and (min-width: theme(screens.md)) {
-      .wp-site-blocks > * + *, .is-layout-constrained > * + * {
+      .wp-site-blocks > * + *,
+      .is-layout-constrained > * + * {
         margin-block-start: var(--wp--preset--spacing--sp-xl);
       }
       .wp-site-blocks {
@@ -37,13 +36,12 @@
         }
       }
     }
-
-    /*Exceptions*/
-    .ta-video-container {
-      gap: var(--wp--preset--spacing--sp-sm) !important;
-      h3 + * {
-        margin-block-start: var(--wp--preset--spacing--sp-xs);
-      }
-    }
+  }
+}
+/*Exceptions*/
+.ta-video-container {
+  gap: var(--wp--preset--spacing--sp-sm) !important;
+  h3 + * {
+    margin-block-start: var(--wp--preset--spacing--sp-xs);
   }
 }
