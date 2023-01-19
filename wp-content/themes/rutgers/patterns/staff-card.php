@@ -2,7 +2,7 @@
 /**
  * Title: Staff Card
  * Slug: tbones/staff-card
- * Categories: rutgers
+ * Categories: sections
  */
 ?>
 <!-- wp:columns {"align":"full","style":{"spacing":{}},"className":"ta-staff-card"} -->

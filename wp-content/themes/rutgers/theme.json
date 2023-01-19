@@ -3,19 +3,14 @@
   "version": 2,
   "customTemplates": [
     {
-      "name": "staff",
+      "name": "header-footer",
       "postTypes": ["page"],
-      "title": "Staff Page"
+      "title": "header-footer"
     },
     {
-      "name": "starter",
+      "name": "header-footer-sidebar-1",
       "postTypes": ["page"],
-      "title": "Starter Template"
-    },
-    {
-      "name": "starter-no-lottie",
-      "postTypes": ["page"],
-      "title": "Starter Template - Without Hero Animation"
+      "title": "header-footer-sidebar-1"
     }
   ],
   "settings": {

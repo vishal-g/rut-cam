@@ -2,7 +2,7 @@
 /**
  * Title: Info Box Small
  * Slug: tbones/info-box-small
- * Categories: rutgers
+ * Categories: sections
  */
 ?>
 <!-- wp:group {"className":"ta-info-block-small","layout":{"type":"constrained"}} -->

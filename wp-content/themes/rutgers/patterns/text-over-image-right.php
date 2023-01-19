@@ -2,7 +2,7 @@
 /**
  * Title: Text Over Image (Right)
  * Slug: tbones/text-over-image-right
- * Categories: rutgers
+ * Categories: sections
  */
 ?>
 <!-- wp:cover {"url":"/wp-content/uploads/2022/12/disability-1.jpg","id":36,"dimRatio":0,"focalPoint":{"x":0,"y":0},"contentPosition":"center center","isDark":false,"className":"ta-text-over-image"} -->

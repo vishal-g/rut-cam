@@ -2,7 +2,7 @@
 /**
  * Title: Featured Box
  * Slug: tbones/featured-box
- * Categories: rutgers
+ * Categories: sections
  */
 ?>
 <!-- wp:columns {"className":"ta-featured-box"} -->

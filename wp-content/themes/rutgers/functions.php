@@ -131,6 +131,13 @@ function tbones_registrations() {
 		'label' => __( 'Rutgers', 'tbones' )
 	) );
 
+	register_block_pattern_category( 'sections', array(
+		'label' => __( 'Sections', 'tbones' )
+	) );
+
+	register_block_pattern_category( 'templates', array(
+		'label' => __( 'Templates', 'tbones' )
+	) );
 }
 add_action( 'init', 'tbones_registrations' );
 
