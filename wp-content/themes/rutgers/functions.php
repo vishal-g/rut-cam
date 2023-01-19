@@ -36,8 +36,9 @@ function tbones_setup() {
 	add_theme_support( 'wp-block-styles' );
 
 	add_theme_support( 'editor-styles' );
-	add_editor_style( 'assets/build/css/app.css' );
 	add_editor_style( 'assets/build/css/editor-style.css' );
+
+	add_editor_style( 'assets/build/css/app.css' );
 
 	remove_theme_support( 'core-block-patterns' );
 }
