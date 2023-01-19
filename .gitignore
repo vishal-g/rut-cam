@@ -128,6 +128,7 @@ info.php
 /wp-content/ai1wm-backups/
 /wp-content/plugins/*
 /wp-content/themes/*
+/wp-content/mu-plugins/*
 
 !/wp-content/themes/rutgers
 !/wp-content/plugins/rutgers-plugin

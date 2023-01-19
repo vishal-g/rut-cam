@@ -436,9 +436,12 @@ body .ta-featured-items.wp-block-group {
 
 /* Staff page */
 
-body .wp-site-blocks .ta-staff-card {
+.ta-staff-card {
   @apply text-fs-sm rounded bg-clr-white;
-  gap: var(--wp--preset--spacing--sp-sm);
+
+  &.is-layout-flex {
+    gap: var(--wp--preset--spacing--sp-sm);
+  }
 
   p {
     @apply text-xs leading-lh-tight;
@@ -446,9 +449,12 @@ body .wp-site-blocks .ta-staff-card {
   & * + * {
     margin-block-start: var(--wp--preset--spacing--sp-xs);
   }
-  &__info-wrapper {
+  .ta-staff-card__info-wrapper {
     margin-block-start: var(--wp--preset--spacing--sp-0);
     @apply p-3 pl-0 self-start;
+    & * + * {
+      margin-block-start: var(--wp--preset--spacing--sp-xs);
+    }
   }
   &__name {
     @apply font-fw-bold text-clr-black;
@@ -471,7 +477,7 @@ body .wp-site-blocks .ta-staff-card {
 
 /* Featured Box */
 
-.ta-featured-box {
+body .ta-featured-box {
   @apply bg-clr-white rounded shadow-sh-01 p-10 pb-0 text-clr-secondary;
   gap: var(--wp--preset--spacing--sp-base);
 
