@@ -5,6 +5,9 @@
 .wp-block-search {
   .wp-block-search__button {
     @apply ml-0 bg-clr-secondary rounded-r box-border border border-clr-secondary;
+    @media screen and (min-width: theme(screens.md)) and (max-width: theme(screens.lg)) {
+      @apply px-2;
+    }
   }
   .wp-block-search__inside-wrapper {
     @apply rounded border-none;

@@ -35,7 +35,7 @@ div div.ta-quick-links {
 .ta-tags {
   @apply text-white text-xs bg-clr-primary rounded-full font-bold p-2 px-3 sm:text-sm sm:px-4;
 
-  @media screen and (min-width: 976px) {
+  @media screen and (min-width: theme(screens.lg)) {
     @apply text-base text-clr-primary bg-transparent font-bold p-1 px-4;
   }
 }
@@ -103,5 +103,17 @@ div div.ta-quick-links {
   }
   p {
     @apply text-fs-sm;
+  }
+}
+
+#site-menu-wrapper {
+  .ta-desktop-nav {
+    @apply hidden lg:flex flex-row justify-end lg:space-x-4 lg:text-lg xl:text-lg xl:space-x-8;
+  }
+  & > ul > li > a {
+    @apply lg:text-fs-base;
+    @media screen and (min-width: theme(screens.lg)) {
+      font-size: clamp(0.9rem, 1.5vw, 1.25rem);
+    }
   }
 }

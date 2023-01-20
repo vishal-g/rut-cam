@@ -41,6 +41,15 @@ body .ta-carousel-container.wp-block-group {
 
 /* Carousel Styling */
 
+.has-global-padding
+  :where(.has-global-padding)
+  > .alignfull.ta-carousel-container {
+  @media screen and (max-width: theme(screens.md)) {
+    margin-right: calc(var(--wp--style--root--padding-right) * -1);
+    margin-left: calc(var(--wp--style--root--padding-left) * -1);
+  }
+}
+
 .sfas-carousel .swiper-slide h4 {
   @apply text-xl leading-6 mb-3 text-left text-clr-black;
 }
@@ -91,12 +100,30 @@ body .ta-carousel-container.wp-block-group {
   left: clamp(6%, 8.5vw, 28%);
 }
 
-@media screen and (min-width: theme(screens.md)) {
+@media screen and (min-width: theme(screens.xs)) {
   .sfas-carousel .swiper-button-next {
-    right: clamp(6%, 7vw, 28%);
+    right: clamp(6%, 10.5vw, 28%);
   }
   .sfas-carousel .swiper-button-prev {
-    left: clamp(6%, 7vw, 28%);
+    left: clamp(6%, 10.5vw, 28%);
+  }
+}
+
+@media screen and (min-width: theme(screens.sm)) {
+  .sfas-carousel .swiper-button-next {
+    right: clamp(6%, 11.5vw, 28%);
+  }
+  .sfas-carousel .swiper-button-prev {
+    left: clamp(6%, 11.5vw, 28%);
+  }
+}
+
+@media screen and (min-width: theme(screens.md)) {
+  .sfas-carousel .swiper-button-next {
+    right: clamp(6%, 6.5vw, 28%);
+  }
+  .sfas-carousel .swiper-button-prev {
+    left: clamp(6%, 6.5vw, 28%);
   }
 }
 
@@ -244,6 +271,7 @@ body .ta-carousel-container.wp-block-group {
   background-size: 100% auto;
   background-position: center;
   @apply w-10 h-10;
+  top: 40%;
 }
 .sfas-carousel .swiper-button-next:after,
 .sfas-carousel .swiper-button-prev:after {
@@ -343,6 +371,12 @@ body .ta-featured-items.wp-block-group {
 
   .ta-flex-fix-featured {
     flex-grow: 1;
+    @media screen and (min-width: theme(screens.md)) and (max-width: theme(screens.lg)) {
+      flex-wrap: wrap !important;
+      .wp-block-column {
+        flex: 50%;
+      }
+    }
   }
 
   figure.wp-block-image {
