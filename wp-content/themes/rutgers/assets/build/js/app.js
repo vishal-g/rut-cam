@@ -15,7 +15,10 @@ window.onload = function () {
     centeredSlides: true,
     loop: true,
     spaceBetween: 100,
-    pagination: false,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
     navigation: {
       nextEl: ".swiper-button-next",
       prevEl: ".swiper-button-prev",
@@ -23,28 +26,28 @@ window.onload = function () {
     breakpoints: {
       // when window width is >= 220px
       220: {
-        slidesPerView: 1.5,
+        slidesPerView: 1.75,
         spaceBetween: 20,
       },
       // when window width is >= 320px
       320: {
-        slidesPerView: 1.5,
-        spaceBetween: 50,
+        slidesPerView: 1.75,
+        spaceBetween: 85,
       },
       // when window width is >= 480px
       520: {
-        slidesPerView: 2.5,
-        spaceBetween: 50,
+        slidesPerView: 1.75,
+        spaceBetween: 85,
       },
       // when window width is >= 640px
       768: {
-        slidesPerView: 2.5,
-        spaceBetween: 70,
+        slidesPerView: 1.75,
+        spaceBetween: 85,
       },
       // when window width is >= 976px
       1024: {
         slidesPerView: 3,
-        spaceBetween: 75,
+        spaceBetween: 100,
       },
     },
   });

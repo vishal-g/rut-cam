@@ -8,18 +8,6 @@
   }
 }
 
-/*
-!* Common spacing classes *!
-
-.ta-container {
-    @apply mx-auto px-8 justify-between md:px-5;
-}
-.ta-container-full {
-    @apply w-full max-w-none px-0;
-}
-
-*/
-
 /* Carousel common */
 
 @media screen and (max-width: theme(screens.sm)) {
@@ -38,11 +26,17 @@ body .ta-carousel-container.wp-block-group {
 .swiper-pagination-bullet-active {
   @apply bg-clr-primary;
 }
+
 .swiper-horizontal > .swiper-pagination-bullets,
 .swiper-pagination-bullets.swiper-pagination-horizontal,
 .swiper-pagination-custom,
 .swiper-pagination-fraction {
   bottom: auto;
+}
+
+.swiper .swiper-pagination {
+  margin-top: 3.5rem;
+  margin-bottom: 2.5rem;
 }
 
 /* Carousel Styling */
@@ -91,38 +85,57 @@ body .ta-carousel-container.wp-block-group {
   /* @apply text-white text-sm font-bold; */
 }
 .sfas-carousel .swiper-button-next {
-  right: 28.5%;
+  right: clamp(6%, 8.5vw, 28%);
 }
 .sfas-carousel .swiper-button-prev {
-  left: 28.5%;
+  left: clamp(6%, 8.5vw, 28%);
 }
 
-@media screen and (max-width: theme(screens.lg)) {
+@media screen and (min-width: theme(screens.md)) {
   .sfas-carousel .swiper-button-next {
-    right: 23%;
+    right: clamp(6%, 7vw, 28%);
   }
   .sfas-carousel .swiper-button-prev {
-    left: 23%;
+    left: clamp(6%, 7vw, 28%);
+  }
+}
+
+@media screen and (min-width: theme(screens.lg)) {
+  .sfas-carousel .swiper-button-next {
+    right: clamp(6%, 18vw, 28.5%);
+  }
+  .sfas-carousel .swiper-button-prev {
+    left: clamp(6%, 18vw, 28.5%);
+  }
+}
+
+/* 
+@media screen and (min-width: theme(screens.lg)) {
+  .sfas-carousel .swiper-button-next {
+    right: 10%;
+  }
+  .sfas-carousel .swiper-button-prev {
+    left: 10%;
   }
   .sfas-carousel .swiper-slide {
     font-size: 16px;
   }
 }
 
-@media screen and (max-width: theme(screens.md)) {
+@media screen and (min-width: theme(screens.md)) {
   .sfas-carousel .swiper-button-next {
     right: 23%;
     @media screen and (max-width: theme(screens.xs)) {
-      right: 5%;
+      right: 8.5%;
     }
   }
   .sfas-carousel .swiper-button-prev {
     left: 23%;
     @media screen and (max-width: theme(screens.xs)) {
-      left: 5%;
+      left: 8.5%;
     }
   }
-}
+} */
 
 /* ARROWS */
 .sfas-carousel .swiper-button-prev,
@@ -461,10 +474,6 @@ body .ta-featured-items.wp-block-group {
   }
   &__title {
     @apply uppercase;
-  }
-  &__address {
-  }
-  &__phone {
   }
   &__email {
     @apply text-clr-primary;
