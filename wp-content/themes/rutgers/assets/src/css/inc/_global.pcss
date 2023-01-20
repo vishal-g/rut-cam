@@ -20,6 +20,9 @@
 body .ta-carousel-container.wp-block-group {
   .ta-carousel__button {
     @apply inline-block text-center  mt-7 justify-center mx-auto text-white bg-clr-primary p-2 px-4 lg:px-6;
+    @media screen and (min-width: theme(screens.lg)) and (max-width: 1100px) {
+      @apply px-3;
+    }
   }
 }
 
