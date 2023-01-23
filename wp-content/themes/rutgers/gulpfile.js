@@ -21,7 +21,7 @@ gulp.task("browser-sync", function (done) {
     // server: "./",
     // startPath: "webpage/index.html", // After it browser running [File path set]
     // //    browser: 'chrome',
-    proxy: "https://rutgers.test/disability-services/",
+    proxy: "https://rutgers.test/staff/",
   });
   gulp.watch(["./**/*.html", "./theme.json"]).on("change", reload); // [File path set]
   done();
@@ -44,7 +44,7 @@ gulp.task("css", () => {
     .pipe(sourcemaps.write())
     .pipe(
       notify({
-        "message": "sourcemaps written",
+        message: "sourcemaps written",
       })
     )
     .pipe(gulp.dest("./assets/build/css"))
