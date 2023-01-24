@@ -1,0 +1,20 @@
+name: Deploy rutgers repo to rutgers.tspace.in
+on:
+  push:
+    branches:
+      - tspace
+jobs:
+  FTP-Deploy-Action:
+    name: FTP-Deploy-Action
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.1.0
+        with:
+          fetch-depth: 2
+      - name: FTP-Deploy-Action
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        with:
+          server: ${{ secrets.TSPACE_FTP_SERVER }}
+          username: ${{ secrets.TSPACE_FTP_USERNAME }}
+          password: ${{ secrets.TSPACE_FTP_PASSWORD }}
+          server-dir: rutgers.tspace.in/
