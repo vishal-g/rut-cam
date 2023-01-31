@@ -14,3 +14,4 @@ jobs:
           WPE_SSHG_KEY_PRIVATE: ${{ secrets.WPE_SSHG_KEY_PRIVATE }}
           WPE_ENV: rutgerssasdev
           CACHE_CLEAR: TRUE
+          FLAGS: --exclude-from=.deployignore
