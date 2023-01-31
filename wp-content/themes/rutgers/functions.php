@@ -13,8 +13,8 @@
 
 //includes
 
-include(get_theme_file_path( '/includes/class-tgm-plugin-activation.php' ))
-include(get_theme_file_path( '/includes/register-plugins.php' ))
+include(get_theme_file_path( '/includes/class-tgm-plugin-activation.php' ));
+include(get_theme_file_path( '/includes/register-plugins.php' ));
 
 
 //hooks
