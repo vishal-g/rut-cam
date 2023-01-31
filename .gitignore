@@ -9,7 +9,8 @@ __files/
 Thumbs.db
 /node_modules/
 **/node_modules/
-
+.htaccess
+.samples
 
 # wordpress specific
 wp-config.php
@@ -137,3 +138,6 @@ info.php
 wp-content/db.php
 wp-content/plugins/rutgers-plugin/package-lock.json
 
+local-xdebuginfo.php
+
+wp-content/themes/rutgers/package-lock.json
