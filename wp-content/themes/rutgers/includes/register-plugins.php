@@ -6,7 +6,7 @@ function ta_register_plugins() {
             'name' => 'Rutgers Plugin',
             'slug' => 'rutgers-plugin',
             'required' => true,
-            'source' => get_template_directory() . '/plugins/rutgers-plugin.zip';
+            'source' => get_template_directory() . '/plugins/rutgers-plugin.zip'
         ],
         [
             'name' => 'Regenerate Thumbnails',
