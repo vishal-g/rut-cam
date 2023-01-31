@@ -22,6 +22,11 @@ function ta_register_plugins() {
             'name' => 'SVG Support by BenBodhi',
             'slug' => 'svg-support',
             'required' => false
+        ],
+        [
+            'name' => 'WP All In One Migration Free',
+            'slug' => 'all-in-one-wp-migration',
+            'required' => false
         ]
     ];
     $configs = [
