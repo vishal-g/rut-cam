@@ -27,7 +27,7 @@ function ta_register_plugins() {
     $configs = [
         'id' => 'tbones',
         'menu' => 'tgmpa-install-plugins',
-        'parent_slug' => 'themes.php'
+        'parent_slug' => 'themes.php',
         'capability' => 'edit_theme_options',
         'has_notices' => true,
         'dismissable' => true
