@@ -18,7 +18,7 @@ include(get_theme_file_path( '/includes/register-plugins.php' ));
 
 
 //hooks
-add_action('tgmpa_register', 'ta_register_plugins')
+add_action('tgmpa_register', 'ta_register_plugins');
 
 
 ////////////////////////////////////////////////////////
