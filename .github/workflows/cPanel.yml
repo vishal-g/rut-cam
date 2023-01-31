@@ -18,3 +18,16 @@ jobs:
           username: ${{ secrets.TSPACE_FTP_USERNAME }}
           password: ${{ secrets.TSPACE_FTP_PASSWORD }}
           server-dir: rutgers.tspace.in/
+          exclude: |
+          **/.git*
+          **/.git*/**
+          **/node_modules/**
+          **/src/**
+          wp-content/plugins/rutgers-plugin/package.json
+          wp-content/plugins/rutgers-plugin/package-lock.json
+          wp-content/themes/rutgers/gulpfile.js
+          wp-content/themes/rutgers/package-lock.json
+          wp-content/themes/rutgers/package.json
+          wp-content/themes/rutgers/postcss.config.js
+          wp-content/themes/rutgers/tailwind.config.js
+          wp-content/themes/rutgers/safelist.txt

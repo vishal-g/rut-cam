@@ -1,0 +1,61 @@
+{
+  "$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/trunk/schemas/json/block.json",
+  "apiVersion": 2,
+  "name": "tbones-p/carousel-slider-item",
+  "title": "Carousel Item",
+  "category": "text",
+  "description": "Adds a Single Carousel Slider Item",
+  "textdomain": "tbones-p",
+  "attributes": {
+    "title": {
+      "type": "string",
+      "source": "html",
+      "selector": "h4"
+    },
+    "desc": {
+      "type": "string",
+      "source": "html",
+      "selector": "p"
+    },
+    "imgID": {
+      "type": "number",
+      "default": 0
+    },
+    "imgAlt": {
+      "type": "string",
+      "default": "",
+      "source": "attribute",
+      "selector": "img",
+      "attribute": "alt"
+    },
+    "imgURL": {
+      "type": "string",
+      "default": "",
+      "source": "attribute",
+      "selector": "img",
+      "attribute": "src"
+    },
+    "cta": {
+      "type": "object",
+      "default": {
+        "url": "#",
+        "buttonText": "facebook",
+        "target": ""
+      }
+    },
+    "showImage": {
+      "type": "string",
+      "default": true
+    },
+    "showCTA": {
+      "type": "string",
+      "default": true
+    }
+  },
+  "editorScript": "file:./index.js",
+  "style": "file:./index.css",
+  "usesContext": [
+    "tbones-p/show-image",
+    "tbones-p/show-cta"
+  ]
+}

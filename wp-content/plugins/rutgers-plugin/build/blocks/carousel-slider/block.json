@@ -1,0 +1,62 @@
+{
+  "$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/trunk/schemas/json/block.json",
+  "apiVersion": 2,
+  "name": "tbones-p/carousel-slider",
+  "title": "Carousel Slider",
+  "category": "text",
+  "description": "Adds a carousel slider",
+  "textdomain": "tbones-p",
+  "attributes": {
+    "columns": {
+      "type": "number",
+      "default": 3
+    },
+    "imageShape": {
+      "type": "string",
+      "default": "hexagon"
+    },
+    "showImage": {
+      "type": "boolean",
+      "default": true
+    },
+    "showCTA": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "editorScript": "file:./index.js",
+  "style": "file:./index.css",
+  "providesContext": {
+    "tbones-p/image-shape": "imageShape",
+    "tbones-p/show-image": "showImage",
+    "tbones-p/show-cta": "showCTA"
+  },
+  "example": {
+    "attributes": {
+      "columns": 2
+    },
+    "innerBlocks": [
+      {
+        "name": "tbones-p/carousel-slider-item",
+        "attributes": {
+          "title": "Center for Learning and Student Success",
+          "desc": "Resources to build your academic skills. Open to all students.",
+          "imgURL": "/wp-content/uploads/2022/12/sfas-1.jpg",
+          "cta": {
+            "url": "#",
+            "buttonText": "Learn More",
+            "target": ""
+          }
+        }
+      },
+      {
+        "name": "tbones-p/carousel-slider-item",
+        "attributes": {
+          "title": "Fellowships & National Awards",
+          "desc": "Providing students and alumni with information about available awards and fellowships and application assistance.",
+          "imgURL": "/wp-content/uploads/2022/12/ibs-2.jpg"
+        }
+      }
+    ]
+  }
+}

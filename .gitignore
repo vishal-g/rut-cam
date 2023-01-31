@@ -132,11 +132,8 @@ info.php
 
 !/wp-content/themes/rutgers
 !/wp-content/plugins/rutgers-plugin
-
+.vscode/**
 
 wp-content/db.php
 wp-content/plugins/rutgers-plugin/package-lock.json
 
-
-**/build/**
-wp-content/themes/rutgers/assets/build/**.*

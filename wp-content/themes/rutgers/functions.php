@@ -7,6 +7,22 @@
  *
  * @return string
  */
+
+
+//variables
+
+//includes
+
+include(get_theme_file_path( '/includes/class-tgm-plugin-activation.php' ))
+include(get_theme_file_path( '/includes/register-plugins.php' ))
+
+
+//hooks
+add_action('tgmpa_register', 'ta_register_plugins')
+
+
+////////////////////////////////////////////////////////
+
 function tbones_asset( $path ) {
 	if ( wp_get_environment_type() === 'production' ) {
 		return get_stylesheet_directory_uri() . '/' . $path;
