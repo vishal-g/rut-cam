@@ -32,5 +32,5 @@ function ta_register_plugins() {
         'has_notices' => true,
         'dismissable' => true
     ]; 
-    tgmpa($plugins, $configs)
+    tgmpa($plugins, $configs);
 }
