@@ -502,14 +502,28 @@ div.ta-content-wrapper{
     }
   }
 }
-
+@media screen and (max-width: theme(screens.md)){
+  div.ta-content-wrapper{
+    div.ta-right-content{
+      .wp-block-group.sidebar{
+        > div.wp-block-group {
+          &:last-child {
+            @apply rounded-none px-sp-lg;
+            margin-right: calc(var(--wp--style--root--padding-right) * -1) !important;
+            margin-left: calc(var(--wp--style--root--padding-left) * -1) !important;
+          }
+        }
+      }
+    }
+  }
+}
 /* page content wrapper styling*/
 
 
 /* Staff page */
 
 .ta-staff-card {
-  @apply text-fs-sm scroll-pb-sp-base rounded bg-clr-white md:p-0;
+  @apply text-fs-sm p-7 rounded bg-clr-white md:p-0;
   @apply  md:max-lg:!flex-nowrap;
   &.is-layout-flex {
     gap: var(--wp--preset--spacing--sp-sm);
@@ -586,7 +600,11 @@ div.ta-staff-block{
 body .ta-featured-box {
   @apply bg-clr-white rounded shadow-sh-01 p-10 pb-0 text-clr-secondary;
   gap: var(--wp--preset--spacing--sp-base);
-
+  .wp-block-button{
+    &:has(.wp-block-button__link){
+      @apply mx-auto md:mx-0;
+    } 
+  }
   .wp-block-button__link {
     @apply px-14;
   }

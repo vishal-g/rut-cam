@@ -21,7 +21,7 @@ gulp.task("browser-sync", function (done) {
     // server: "./",
     // startPath: "webpage/index.html", // After it browser running [File path set]
     // //    browser: 'chrome',
-    proxy: "https://rutgers.test/staff/",
+    proxy: "http://rutgerstest.local/staff/",
   });
   gulp.watch(["./**/*.html", "./theme.json"]).on("change", reload); // [File path set]
   done();
@@ -83,8 +83,8 @@ gulp.task("js", () => {
 
 gulp.task(
   "default",
-  gulp.series("css", "js", "webfonts", "images", "browser-sync", () => {
-    livereload.listen();
+  gulp.series("css", "js", "webfonts", "images", () => {
+    //livereload.listen();
     gulp.watch(
       [
         "assets/src/css/**/*.*",
