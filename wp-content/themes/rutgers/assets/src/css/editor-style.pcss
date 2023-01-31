@@ -39,6 +39,26 @@ a.custom-logo-link {
   margin-bottom: var(--wp--style--block-gap);
 }
 
-.editor-styles-wrapper .wp-block-image figure > div > div {
+.wp-block-image figure > div > div {
   margin: 0;
+}
+
+.wp-block-tbones-p-carousel-slider .sfas-carousel .swiper-slide {
+  opacity: 1;
+  justify-content: flex-start;
+}
+
+/* Editor Form Wrapper */
+.wp-block-tbones-p-carousel-slider .ta-editor-form-wrapper {
+  @apply text-fs-sm text-left bg-clr-base p-sp-base;
+  > * + * {
+    margin-block-start: var(--wp--preset--spacing--sp-sm);
+  }
+  label {
+    text-transform: none;
+    @apply text-fs-sm;
+  }
+  .components-base-control__help {
+    @apply text-fs-xs mt-1 text-left;
+  }
 }

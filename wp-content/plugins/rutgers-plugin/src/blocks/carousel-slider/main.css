@@ -1,0 +1,22 @@
+/* Team Block */
+
+.cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+/* Editor Styles */
+.wp-block-tbones-p-carousel-slider[data-type="tbones-p/carousel-slider"] {
+  display: inherit;
+}
+
+.wp-block-tbones-p-carousel-slider[data-type="tbones-p/carousel-slider"]
+  .block-editor-block-list__layout {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.wp-block-tbones-p-carousel-slider[data-type="tbones-p/carousel-slider"].cols-3
+  .block-editor-block-list__layout {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}

@@ -9,6 +9,34 @@
 }
 
 /* Carousel common */
+/* 
+const imageClass = showImage ? "" : "ta-img-hidden";
+const wrapperClass = showImage ? "" : "ta-wrapper-rounded-border";
+const ctaClass = showCTA ? "" : "ta-cta-hidden"; */
+
+.ta-carousel-container {
+  .ta-carousel-text-wrapper {
+    @apply w-full;
+  }
+  &.ta-img-hidden {
+    img {
+      display: none;
+    }
+  }
+  &.ta-wrapper-rounded-border {
+    .ta-carousel-text-wrapper {
+      @apply rounded-t;
+    }
+  }
+  &.ta-cta-hidden {
+    .ta-carousel__button {
+      display: none;
+    }
+    .ta-carousel-text-wrapper {
+      @apply pb-4;
+    }
+  }
+}
 
 @media screen and (max-width: theme(screens.sm)) {
   body .ta-carousel-container.wp-block-group {
@@ -17,7 +45,8 @@
   }
 }
 
-body .ta-carousel-container.wp-block-group {
+body .ta-carousel-container.wp-block-group,
+.wp-block-tbones-p-carousel-slider {
   .ta-carousel__button {
     @apply inline-block text-center  mt-7 justify-center mx-auto text-white bg-clr-primary p-2 px-4 lg:px-6;
     @media screen and (min-width: theme(screens.lg)) and (max-width: 1100px) {
@@ -54,7 +83,7 @@ body .ta-carousel-container.wp-block-group {
 }
 
 .sfas-carousel .swiper-slide h4 {
-  @apply text-xl leading-6 mb-3 text-left text-clr-black;
+  @apply text-xl font-bold leading-6 mb-3 text-left text-clr-black;
 }
 
 .sfas-carousel .swiper-slide p {
@@ -80,9 +109,15 @@ body .ta-carousel-container.wp-block-group {
   background: white;
   transition: all 0.3s ease;
   opacity: 0.5;
+  img {
+    @apply rounded-t;
+    &.image-hidden {
+      @apply hidden;
+    }
+  }
 }
 .sfas-carousel .swiper-slide.swiper-slide-active {
-  background: linear-gradient(45deg, #f69259, #f16975);
+  background: #fff;
   transform: scale(1.2);
   z-index: 2;
   opacity: 1;
