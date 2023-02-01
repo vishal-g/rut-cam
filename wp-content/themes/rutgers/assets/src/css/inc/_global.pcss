@@ -346,11 +346,11 @@ body .ta-carousel-container.wp-block-group,
 }
 
 .ta-sidebar-search {
-  @apply hidden md:block;
+  @apply hidden lg:block;
 }
 
 .ta-mobile-search {
-  @apply block md:hidden;
+  @apply block lg:hidden;
 }
 
 /* Staff page */
@@ -525,6 +525,9 @@ div.ta-content-wrapper{
   @apply max-lg:!flex-wrap;
   div.ta-left-content{
     @apply max-lg:!basis-full;
+    .is-layout-flex{
+      gap: var(--wp--preset--spacing--sp-base);
+    }
   }
   div.ta-right-content{
     @apply max-lg:!basis-full;
@@ -538,26 +541,22 @@ div.ta-content-wrapper{
   }
 }
 @media screen and (max-width: theme(screens.md)){
-  div.ta-content-wrapper{
     .wp-block-group.sidebar{
       > div.wp-block-group {
-        &:last-child {
           @apply rounded-none;
           margin-right: calc(var(--wp--style--root--padding-right) * -1) !important;
           margin-left: calc(var(--wp--style--root--padding-left) * -1) !important;
-        }
       }
     }
-  }
 }
 /* page content wrapper styling*/
 
 /* class page  */
-.ta-class-left-content{
+/* .ta-class-left-content{
   .is-layout-flex{
     gap: var(--wp--preset--spacing--sp-base);
   }
-}
+} */
 /* class page  */
 
 /* Staff page */
@@ -668,8 +667,7 @@ div.ta-staff-block{
 /* Featured Box */
 
 body .ta-featured-box {
-  @apply bg-clr-white rounded shadow-sh-01 p-10 pb-0 text-clr-secondary;
-  gap: var(--wp--preset--spacing--sp-base);
+  @apply bg-clr-white rounded shadow-sh-01 max-lg:p-sp-base p-10 pb-0 text-clr-secondary;
   .wp-block-button{
     &:has(.wp-block-button__link){
       @apply mx-auto md:mx-0;
@@ -687,6 +685,9 @@ body .ta-featured-box {
     h6 {
       @apply text-fs-4-xl text-clr-secondary;
     }
+    h3{
+      @apply md:max-lg:text-fs-3-xl;
+    }
   }
   &__col-2 {
     ul {
@@ -697,6 +698,9 @@ body .ta-featured-box {
         @apply text-fs-xl;
         @apply text-left leading-7 pl-5 bg-[url("../images/bullet-icon.svg")] bg-[left_top_0.5rem] bg-no-repeat;
       }
+    }
+    .ta-featured-box-ul{
+      margin-block-start: var(--wp--preset--spacing--sp-sm);
     }
   }
 }
