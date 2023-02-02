@@ -1,37 +1,12 @@
 "use strict";
 
-// Load plugins
-const autoprefixer = require("autoprefixer");
-const browsersync = require("browser-sync").create();
-// const cssnano = require("cssnano");
-// const concat = require('gulp-concat');
 const gulp = require("gulp");
-const sourcemaps = require("gulp-sourcemaps");
-// const plumber = require("gulp-plumber");
-const postcss = require("gulp-postcss");
-const rename = require("gulp-rename");
-// var sass = require('gulp-sass')(require('sass'));
-const livereload = require("gulp-livereload");
 const notify = require("gulp-notify");
-var reload = browsersync.reload;
-
-// == Browser-sync task
-gulp.task("browser-sync", function (done) {
-  browsersync.init({
-    // server: "./",
-    // startPath: "webpage/index.html", // After it browser running [File path set]
-    // //    browser: 'chrome',
-    proxy: "https://rutgers.test/staff/",
-  });
-  gulp.watch(["./**/*.html", "./theme.json"]).on("change", reload); // [File path set]
-  done();
-});
-// == Browser-sync task
 
 // CSS task
 gulp.task("css", () => {
   return gulp
-    .src(["./assets/src/css/app.pcss", "./assets/src/css/editor-style.pcss"], {
+    .src(["./src/assets/css/*.pcss"], {
       allowEmpty: true,
     })
     .pipe(sourcemaps.init())
@@ -47,9 +22,7 @@ gulp.task("css", () => {
         message: "sourcemaps written",
       })
     )
-    .pipe(gulp.dest("./assets/build/css"))
-    .pipe(browsersync.stream())
-    .pipe(livereload());
+    .pipe(gulp.dest("./build/assets/css/"));
 });
 
 // Webfonts task

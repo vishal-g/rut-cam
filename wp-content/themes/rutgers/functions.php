@@ -65,14 +65,14 @@ add_action( 'after_setup_theme', 'tbones_setup' );
 /**
  * Enqueue theme assets.
  */
-function tbones_enqueue_scripts() {
+function tbones_theme_enqueue_scripts() {
 	$theme = wp_get_theme();
-	wp_enqueue_style( 'swiper-css', "https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css", array(), $theme->get( 'Version' )  );
 	wp_enqueue_style( 'tbones-css', tbones_asset( 'assets/build/css/app.css' ), array(), $theme->get( 'Version' ) );
+	
 	wp_enqueue_script( 'tbones-js', tbones_asset( 'assets/build/js/app.js' ), array(), $theme->get( 'Version' ) );
 }
 
-add_action( 'wp_enqueue_scripts', 'tbones_enqueue_scripts', 9 );
+add_action( 'wp_enqueue_scripts', 'tbones_theme_enqueue_scripts', 9 );
 
 //
 ///**

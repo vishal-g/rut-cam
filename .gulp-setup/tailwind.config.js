@@ -1,4 +1,10 @@
-const theme = require("./theme.json");
+const settings = require("./settings.json");
+
+const themePath = settings.themePath;
+const pluginPath = settings.pluginPath;
+
+const theme = require(`${themePath}/theme.json`);
+
 const themeStringified = JSON.stringify(theme);
 const parsedThemeJson = JSON.parse(themeStringified);
 
@@ -14,14 +20,14 @@ module.exports = {
     preflight: false,
   },
   content: [
-    "./*.php",
-    "./*.html",
-    "./theme.json",
-    "./safelist.txt",
-    "./**/*.php",
-    "./**/*.html",
-    "./assets/src/css/*.css",
-    "./assets/src/js/*.js",
+    `${themePath}/*.php`,
+    `${themePath}/*.html`,
+    `${themePath}/theme.json`,
+    `${themePath}/safelist.txt`,
+    `${themePath}/**/*.php`,
+    `${themePath}/**/*.html`,
+    `${themePath}/assets/src/css/*.css`,
+    `${themePath}/assets/src/js/*.js`,
     // './safelist.txt'
   ],
   theme: {

@@ -9,7 +9,7 @@ __files/
 Thumbs.db
 /node_modules/
 **/node_modules/
-
+**/package-lock.json
 
 # wordpress specific
 wp-config.php
