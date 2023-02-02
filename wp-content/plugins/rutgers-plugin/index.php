@@ -19,11 +19,12 @@ if (!function_exists('add_action')) {
 }
 
 // Setup
-define('UP_PLUGIN_DIR', plugin_dir_path(__FILE__));
+define('TBONES_PLUGIN_DIR', plugin_dir_path (__FILE__));
+define('TBONES_PLUGIN_DIR_URL', plugin_dir_url (__FILE__));
 
 // Includes
-$rootFiles = glob(UP_PLUGIN_DIR . "includes/*.php");
-$subdirectoryFiles = glob(UP_PLUGIN_DIR . "includes/**/*.php");
+$rootFiles = glob(TBONES_PLUGIN_DIR . "includes/*.php");
+$subdirectoryFiles = glob(TBONES_PLUGIN_DIR . "includes/**/*.php");
 $allFiles = array_merge($rootFiles, $subdirectoryFiles);
 foreach ($allFiles as $filename) {
   include_once($filename);

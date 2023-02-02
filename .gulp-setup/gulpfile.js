@@ -5,11 +5,14 @@ const settings = require("./settings.json");
 const themePath = settings.themePath;
 const pluginPath = settings.pluginPath;
 
+const themeJson = require(`${themePath}/theme.json`);
+
+const gulp = require("gulp");
+
 const browsersync = require("browser-sync").create();
 const livereload = require("gulp-livereload");
 var reload = browsersync.reload;
 
-const gulp = require("gulp");
 const sourcemaps = require("gulp-sourcemaps");
 const notify = require("gulp-notify");
 const postcss = require("gulp-postcss");
@@ -17,13 +20,25 @@ const rename = require("gulp-rename");
 const tailwindcss = require("tailwindcss");
 const tailwindConfig = require("tailwindcss").Config;
 
+// == Browser-sync task
+gulp.task("browser-sync", function (done) {
+  browsersync.init({
+    // server: "./",
+    // startPath: "webpage/index.html", // After it browser running [File path set]
+    // //    browser: 'chrome',
+    proxy: "https://rutgers.test/",
+  });
+  gulp.watch([`${themePath}/**/*.html`]).on("change", reload);
+
+  done();
+});
+
 /*############################################################################*/
 // Theme related tasks
 /*############################################################################*/
 
 // Theme CSS task
 gulp.task("theme-css", () => {
-  console.log("inside themecss");
   return (
     gulp
       .src(
@@ -86,54 +101,64 @@ gulp.task("theme-js", () => {
     .pipe(livereload());
 });
 
-// == Browser-sync task
-gulp.task("browser-sync", function (done) {
-  browsersync.init({
-    // server: "./",
-    // startPath: "webpage/index.html", // After it browser running [File path set]
-    // //    browser: 'chrome',
-    proxy: "https://rutgers.test/staff/",
-  });
-  gulp.watch([`${themePath}/**/*.html`]).on("change", reload);
-
-  done();
-});
-
-// gulp watch
-gulp.task("theme-watch", () => {
-  livereload.listen();
-  // gulp.watch(["./postcss.config.js"], gulp.series("copy-postcss-config"));
-  gulp.watch(
-    [
-      `${themePath}/assets/src/css/**/*.*`,
-      `${themePath}/**/*.html`,
-      `${themePath}/**/*.php`,
-      `${themePath}/**/*.js`,
-    ],
-    gulp.series("theme-css")
-  );
-
-  gulp.watch([`${themePath}/assets/src/js/**/*`], gulp.series("theme-js"));
-  gulp.watch(
-    [`${themePath}/assets/src/fonts/*`],
-    gulp.series("theme-webfonts")
-  );
-  gulp.watch([`${themePath}/assets/src/images/*`], gulp.series("theme-images"));
-});
-
 /*############################################################################*/
 // Plugin related tasks
 /*############################################################################*/
 
 // Plugin npm watch - Run from NPM Script
 
-// Plugin CSS task
-gulp.task("plugin-css", () => {
+//---------------------------------------------------------------------
+// Plugin Block Tasks
+//----------------------------------------------------------------------
+
+// Plugin Block Task - CSS
+
+gulp.task("plugin-block-css", () => {
+  return gulp
+    .src([`${pluginPath}/src/blocks/carousel-slider/main.pcss`], {
+      allowEmpty: true,
+    })
+    .pipe(sourcemaps.init())
+    .pipe(
+      postcss([
+        require("postcss-import-ext-glob"),
+        require("postcss-import"),
+        require("postcss-extend"),
+        require("tailwindcss/nesting"),
+        tailwindcss(tailwindConfig),
+        require("autoprefixer"),
+      ])
+    )
+    .pipe(
+      rename({
+        extname: ".css",
+      })
+    )
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest(`${pluginPath}/src/blocks/carousel-slider`));
+});
+
+// Reload browser afer Plugin Block Task - CSS
+
+gulp.task(
+  "plugin-block-css-watch",
+  gulp.series("plugin-block-css", function (done) {
+    browsersync.reload();
+    done();
+  })
+);
+
+//---------------------------------------------------------------------
+// Plugin Common Tasks
+//----------------------------------------------------------------------
+
+// Plugin Assets tasks - Common Css
+gulp.task("plugin-assets-css", () => {
   return gulp
     .src(
       [
-        `${pluginPath}/assets/src/css/app.pcss`,
-        `${pluginPath}/assets/src/css/editor-style.pcss`,
+        `${pluginPath}/src/assets/css/app.pcss`,
+        `${pluginPath}/src/assets/css/editor-style.pcss`,
       ],
       {
         allowEmpty: true,
@@ -156,27 +181,20 @@ gulp.task("plugin-css", () => {
         extname: ".css",
       })
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest(`${themePath}/assets/build/css`))
+        .pipe(gulp.dest(`${pluginPath}/src/assets/build/css`))
         .pipe(browsersync.stream())
         .pipe(livereload())
     );
 });
 
-// Plugin Assets tasks - Common Css
-gulp.task("plugin-assets-vendors", () => {
-  return gulp
-    .src(`${pluginPath}/src/assets/vendors/**/*.*`)
-    .pipe(gulp.dest(`${pluginPath}/build/assets/vendors`));
-});
-
 // Plugin Assets tasks - Common Js
-gulp.task("plugin-assets-vendors", () => {
+gulp.task("plugin-assets-js", () => {
   return gulp
     .src(`${pluginPath}/src/assets/js/**/*.*`)
     .pipe(gulp.dest(`${pluginPath}/build/assets/js`));
 });
 
-// Plugin Assets tasks - Vendors
+// Plugin Assets tasks - Vendor files
 gulp.task("plugin-assets-vendors", () => {
   return gulp
     .src(`${pluginPath}/src/assets/vendors/**/*.*`)
@@ -187,4 +205,77 @@ gulp.task("plugin-assets-vendors", () => {
 // Common tasks
 /*############################################################################*/
 
-gulp.task("default", gulp.series("theme-css", "browser-sync", "theme-watch"));
+//=============================================================================
+// Default Task
+//=============================================================================
+
+gulp.task(
+  "default",
+  gulp.series(
+    "theme-css",
+    "plugin-block-css",
+    "plugin-assets-css",
+    "plugin-assets-js",
+    "plugin-assets-vendors",
+    "browser-sync",
+    () => {
+      livereload.listen();
+
+      //----------------------------------------------------------------------------
+      // Theme Related Watch
+      //-----------------------------------------------------------------------------
+
+      // gulp.watch(["./postcss.config.js"], gulp.series("copy-postcss-config"));
+      gulp.watch(
+        [
+          `${themePath}/assets/src/css/**/*.*`,
+          `${themePath}/**/*.html`,
+          `${themePath}/**/*.php`,
+        ],
+        gulp.series("theme-css")
+      );
+
+      gulp.watch([`${themePath}/assets/src/js/**/*`], gulp.series("theme-js"));
+      gulp.watch(
+        [`${themePath}/assets/src/fonts/*`],
+        gulp.series("theme-webfonts")
+      );
+      gulp.watch(
+        [`${themePath}/assets/src/images/*`],
+        gulp.series("theme-images")
+      );
+
+      //----------------------------------------------------------------------------
+      // Plugin Related Watch
+      //-----------------------------------------------------------------------------
+
+      gulp.watch(
+        [
+          `${pluginPath}/src/blocks/**/*.pcss`,
+          // `${pluginPath}/**/*.html`,
+          // `${pluginPath}/**/*.php`,
+        ],
+        gulp.series("plugin-block-css-watch")
+      );
+
+      // gulp.watch(
+      //   [`${pluginPath}/build/blocks/**/*.css`],
+      //   gulp.series("plugin-block-css-built")
+      // );
+
+      gulp.watch(
+        [`${pluginPath}/src/assets/css/**/*`],
+        gulp.series("plugin-assets-css")
+      );
+
+      gulp.watch(
+        [`${pluginPath}/src/assets/js/**/*`],
+        gulp.series("plugin-assets-js")
+      );
+      gulp.watch(
+        [`${pluginPath}/src/assets/vendors/**/*.*`],
+        gulp.series("plugin-assets-vendors")
+      );
+    }
+  )
+);

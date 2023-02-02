@@ -7,9 +7,7 @@
   "text_domain": "tspace",
   "license": "MIT",
   "scripts": {
-    "gulper-watch": "gulper",
-    "plugin-watch": "npm start --prefix ../wp-content/plugins/rutgers-plugin",
-    "dev": "npm run gulper-watch & npm run plugin-watch"
+    "plugin-start": "npm start --prefix ../wp-content/plugins/rutgers-plugin"
   },
   "devDependencies": {
     "@jeffreyvr/tailwindcss-tailpress": "^2.0.0",

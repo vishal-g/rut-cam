@@ -59,7 +59,7 @@ function tbones_setup() {
 	remove_theme_support( 'core-block-patterns' );
 }
 
-add_action( 'after_setup_theme', 'tbones_setup' );
+add_action( 'after_setup_theme', 'tbones_setup',99 );
 
 
 /**
@@ -72,7 +72,7 @@ function tbones_theme_enqueue_scripts() {
 	wp_enqueue_script( 'tbones-js', tbones_asset( 'assets/build/js/app.js' ), array(), $theme->get( 'Version' ) );
 }
 
-add_action( 'wp_enqueue_scripts', 'tbones_theme_enqueue_scripts', 9 );
+add_action( 'wp_enqueue_scripts', 'tbones_theme_enqueue_scripts', 99 );
 
 //
 ///**
