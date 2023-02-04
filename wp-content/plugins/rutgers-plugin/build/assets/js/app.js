@@ -59,10 +59,4 @@ window.onload = function () {
       clickable: true,
     },
   });
-
-  lightGallery(document.getElementById("gallery-videos-demo"), {
-    plugins: [lgVideo],
-    counter: false,
-    download: false,
-  });
 };
