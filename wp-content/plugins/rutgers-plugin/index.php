@@ -35,4 +35,5 @@ register_activation_hook(__FILE__, 'tbones_activate_plugin');
 add_action('init', 'tbones_register_blocks');
 add_action('after_setup_theme', 'tbones_setup_theme');
 add_filter('image_size_names_choose', 'tbones_custom_image_sizes');
-add_action('wp_enqueue_scripts', 'tbones_enqueue_scripts');
+add_action('wp_enqueue_scripts', 'tbones_enqueue_scripts',1);
+add_action('wp_enqueue_scripts', 'tbones_enqueue_scripts_hp',98);

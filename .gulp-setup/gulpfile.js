@@ -1,11 +1,28 @@
 "use strict";
 
+// create asymbolic link at the wp root directory
+//ln -s /Users/vishaal/code/wp-sites/rutgers/.gulp-setup/node_modules /Users/vishaal/code/wp-sites/rutgers/node_modules
+
 const settings = require("./settings.json");
 
 const themePath = settings.themePath;
 const pluginPath = settings.pluginPath;
 
-const themeJson = require(`${themePath}/theme.json`);
+const tailwindConfigTheme = require("./tailwind.config");
+const themeJson = require(settings.themeJson);
+
+console.log(settings.pluginUsesThemeStyle);
+
+let tailwindConfigPlugin = {};
+let pluginJson = {};
+
+if (settings.pluginUsesThemeStyle === true) {
+  tailwindConfigPlugin = require("./tailwind.config");
+  pluginJson = require(settings.themeJson);
+} else {
+  tailwindConfigPlugin = require("./tailwind.config.plugin");
+  pluginJson = require(settings.pluginJson);
+}
 
 const gulp = require("gulp");
 
@@ -18,7 +35,6 @@ const notify = require("gulp-notify");
 const postcss = require("gulp-postcss");
 const rename = require("gulp-rename");
 const tailwindcss = require("tailwindcss");
-const tailwindConfig = require("tailwindcss").Config;
 
 // == Browser-sync task
 gulp.task("browser-sync", function (done) {
@@ -62,7 +78,9 @@ gulp.task("theme-css", () => {
           require("postcss-import"),
           require("postcss-extend"),
           require("tailwindcss/nesting"),
-          tailwindcss(tailwindConfig),
+          tailwindcss({
+            config: tailwindConfigTheme,
+          }),
           require("autoprefixer"),
         ])
       )
@@ -95,7 +113,7 @@ gulp.task("theme-images", () => {
 // Theme js script
 gulp.task("theme-js", () => {
   return gulp
-    .src([`${themePath}/assets/src/js/app.js`])
+    .src([`${themePath}/assets/src/js/**/*.js`])
     .pipe(gulp.dest(`${themePath}/assets/build/js`))
     .pipe(browsersync.stream())
     .pipe(livereload());
@@ -115,7 +133,7 @@ gulp.task("theme-js", () => {
 
 gulp.task("plugin-block-css", () => {
   return gulp
-    .src([`${pluginPath}/src/blocks/carousel-slider/main.pcss`], {
+    .src([`${pluginPath}/src/blocks/**/*.pcss`], {
       allowEmpty: true,
     })
     .pipe(sourcemaps.init())
@@ -125,7 +143,9 @@ gulp.task("plugin-block-css", () => {
         require("postcss-import"),
         require("postcss-extend"),
         require("tailwindcss/nesting"),
-        tailwindcss(tailwindConfig),
+        tailwindcss({
+          config: tailwindConfigPlugin,
+        }),
         require("autoprefixer"),
       ])
     )
@@ -135,7 +155,7 @@ gulp.task("plugin-block-css", () => {
       })
     )
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest(`${pluginPath}/src/blocks/carousel-slider`));
+    .pipe(gulp.dest(`${pluginPath}/src/blocks`));
 });
 
 // Reload browser afer Plugin Block Task - CSS
@@ -172,7 +192,7 @@ gulp.task("plugin-assets-css", () => {
         require("postcss-nested-ancestors"),
         require("tailwindcss/nesting"),
         require("postcss-extend"),
-        require("tailwindcss"),
+        require("tailwindcss")(tailwindConfigPlugin),
         require("autoprefixer"),
       ])
     )
@@ -255,6 +275,7 @@ gulp.task(
           // `${pluginPath}/**/*.html`,
           // `${pluginPath}/**/*.php`,
         ],
+        { ignoreInitial: false },
         gulp.series("plugin-block-css-watch")
       );
 

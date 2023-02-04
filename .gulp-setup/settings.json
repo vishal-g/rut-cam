@@ -1,4 +1,7 @@
 {
   "themePath": "../wp-content/themes/rutgers",
-  "pluginPath": "../wp-content/plugins/rutgers-plugin"
+  "pluginPath": "../wp-content/plugins/rutgers-plugin",
+  "themeJson": "../wp-content/themes/rutgers/theme.json",
+  "pluginJson": "../wp-content/plugins/rutgers-plugin/plugin.json",
+  "pluginUsesThemeStyle": true
 }

@@ -67,6 +67,10 @@ add_action( 'after_setup_theme', 'tbones_setup',99 );
  */
 function tbones_theme_enqueue_scripts() {
 	$theme = wp_get_theme();
+
+	// Lottie player - Currently not required since loading from iframe
+	// wp_enqueue_script( 'theme-lottie-js', tbones_asset('assets/build/js/vendors/lottie-player/lottie-player.js') , array(), '1.7.0' );
+
 	wp_enqueue_style( 'tbones-css', tbones_asset( 'assets/build/css/app.css' ), array(), $theme->get( 'Version' ) );
 	
 	wp_enqueue_script( 'tbones-js', tbones_asset( 'assets/build/js/app.js' ), array(), $theme->get( 'Version' ) );

@@ -3,7 +3,9 @@ const settings = require("./settings.json");
 const themePath = settings.themePath;
 const pluginPath = settings.pluginPath;
 
-const theme = require(`${themePath}/theme.json`);
+const theme = require(`${pluginPath}/plugin.json`);
+
+console.log(theme.settings.color.palette);
 
 const themeStringified = JSON.stringify(theme);
 const parsedThemeJson = JSON.parse(themeStringified);
@@ -12,7 +14,7 @@ const tailpress = require("tspace-tailwind");
 
 themeToTailwindConfig = tailpress.configMapper(parsedThemeJson);
 
-console.log(themeToTailwindConfig);
+// console.log(themeToTailwindConfig);
 
 module.exports = {
   corePlugins: {
