@@ -1,6 +1,6 @@
 <?php 
 
-function ta_register_plugins() {
+function tbt_register_plugins() {
     $plugins = [
         [
             'name' => 'Rutgers Plugin',
