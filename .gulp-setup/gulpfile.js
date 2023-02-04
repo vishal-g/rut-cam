@@ -1,7 +1,13 @@
 "use strict";
 
-// create asymbolic link at the wp root directory
-//ln -s /Users/vishaal/code/wp-sites/rutgers/.gulp-setup/node_modules /Users/vishaal/code/wp-sites/rutgers/node_modules
+/*
+Inital Settings to be done 
+- create asymbolic link at the wp root directory
+ ln -s /Users/vishaal/code/wp-sites/test-2/.gulp-setup/node_modules /Users/vishaal/code/wp-sites/test-2/node_modules
+- change browsersync domain
+- run "npm run plugin-start"
+- run "gulper" in a separate terminal tab
+*/
 
 const settings = require("./settings.json");
 
@@ -11,7 +17,12 @@ const pluginPath = settings.pluginPath;
 const tailwindConfigTheme = require("./tailwind.config");
 const themeJson = require(settings.themeJson);
 
+// Disable this line if possibility of different styling for plugin needed
+// const tailwindConfigPlugin = tailwindConfigTheme;
+
 console.log(settings.pluginUsesThemeStyle);
+
+// TO enable different styling for plugin (currently disabled since vscode was not giving prompts for tailwind classes)
 
 let tailwindConfigPlugin = {};
 let pluginJson = {};
@@ -20,7 +31,7 @@ if (settings.pluginUsesThemeStyle === true) {
   tailwindConfigPlugin = require("./tailwind.config");
   pluginJson = require(settings.themeJson);
 } else {
-  tailwindConfigPlugin = require("./tailwind.config.plugin");
+  tailwindConfigPlugin = require("./plugin.tailwind.config");
   pluginJson = require(settings.pluginJson);
 }
 
@@ -42,7 +53,7 @@ gulp.task("browser-sync", function (done) {
     // server: "./",
     // startPath: "webpage/index.html", // After it browser running [File path set]
     // //    browser: 'chrome',
-    proxy: "https://rutgers.test/",
+    proxy: "https://test-2.test/",
   });
   gulp.watch([`${themePath}/**/*.html`]).on("change", reload);
 
