@@ -139,3 +139,4 @@ wp-content/plugins/rutgers-plugin/package-lock.json
 
 .gulp-setup/temp.js
 node_modules
+.gulp-setup/settings.json

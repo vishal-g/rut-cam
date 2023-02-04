@@ -13,6 +13,7 @@ const settings = require("./settings.json");
 
 const themePath = settings.themePath;
 const pluginPath = settings.pluginPath;
+const browsersyncProxy = settings.browsersyncProxy;
 
 const tailwindConfigTheme = require("./tailwind.config");
 const themeJson = require(settings.themeJson);
@@ -53,7 +54,7 @@ gulp.task("browser-sync", function (done) {
     // server: "./",
     // startPath: "webpage/index.html", // After it browser running [File path set]
     // //    browser: 'chrome',
-    proxy: "https://test-2.test/",
+    proxy: browsersyncProxy,
   });
   gulp.watch([`${themePath}/**/*.html`]).on("change", reload);
 
