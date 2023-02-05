@@ -3,7 +3,7 @@
 /*
 Inital Settings to be done 
 - create asymbolic link at the wp root directory
- ln -s /Users/vishaal/code/wp-sites/test-2/.gulp-setup/node_modules /Users/vishaal/code/wp-sites/test-2/node_modules
+ ln -s /Users/vishaal/code/wp-sites/rutgers/.gulp-setup/node_modules /Users/vishaal/code/wp-sites/rutgers/node_modules
 - change browsersync domain
 - run "npm run plugin-start"
 - run "gulper" in a separate terminal tab
