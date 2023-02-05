@@ -15,6 +15,10 @@ const livereload = require("gulp-livereload");
 const notify = require("gulp-notify");
 var reload = browsersync.reload;
 
+const tailwindcss = require("tailwindcss");
+
+const tailwindConfigTheme = require("../../../.gulp-setup/tailwind.config");
+
 // == Browser-sync task
 gulp.task("browser-sync", function (done) {
   browsersync.init({
@@ -35,7 +39,17 @@ gulp.task("css", () => {
       allowEmpty: true,
     })
     .pipe(sourcemaps.init())
-    .pipe(postcss())
+    .pipe(
+      postcss([
+        require("postcss-import-ext-glob"),
+        require("postcss-import"),
+        require("postcss-nested-ancestors"),
+        require("postcss-extend"),
+        require("tailwindcss/nesting"),
+        require("tailwindcss")(tailwindConfigTheme),
+        require("autoprefixer"),
+      ])
+    )
     .pipe(
       rename({
         extname: ".css",

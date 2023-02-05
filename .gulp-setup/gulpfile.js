@@ -2,7 +2,7 @@
 
 /*
 Inital Settings to be done 
-- create asymbolic link at the wp root directory
+- create symbolic link at the wp root directory
  ln -s /Users/vishaal/code/wp-sites/rutgers/.gulp-setup/node_modules /Users/vishaal/code/wp-sites/rutgers/node_modules
 - change browsersync domain
 - run "npm run plugin-start"
@@ -88,8 +88,9 @@ gulp.task("theme-css", () => {
         postcss([
           require("postcss-import-ext-glob"),
           require("postcss-import"),
-          require("postcss-extend"),
           require("tailwindcss/nesting"),
+          require("postcss-nested-ancestors"),
+          require("postcss-extend"),
           tailwindcss({
             config: tailwindConfigTheme,
           }),
@@ -153,8 +154,9 @@ gulp.task("plugin-block-css", () => {
       postcss([
         require("postcss-import-ext-glob"),
         require("postcss-import"),
-        require("postcss-extend"),
         require("tailwindcss/nesting"),
+        require("postcss-nested-ancestors"),
+        require("postcss-extend"),
         tailwindcss({
           config: tailwindConfigPlugin,
         }),
@@ -201,8 +203,8 @@ gulp.task("plugin-assets-css", () => {
       postcss([
         require("postcss-import-ext-glob"),
         require("postcss-import"),
-        require("postcss-nested-ancestors"),
         require("tailwindcss/nesting"),
+        require("postcss-nested-ancestors"),
         require("postcss-extend"),
         require("tailwindcss")(tailwindConfigPlugin),
         require("autoprefixer"),
