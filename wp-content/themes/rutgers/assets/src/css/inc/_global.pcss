@@ -8,6 +8,13 @@
   }
 }
 
+.wp-block-post-content a {
+  @apply underline;
+  &:hover {
+    @apply text-clr-primary;
+  }
+}
+
 /* Testimonial Swiper Styling */
 
 .ta-testimonials-wrapper {
@@ -515,6 +522,7 @@ body .ta-text-over-image.wp-block-cover {
       right: unset;
       left: 0;
       object-position: top left !important;
+      @apply rounded;
     }
     .wp-block-cover__inner-container {
     }
