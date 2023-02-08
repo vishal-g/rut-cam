@@ -241,6 +241,9 @@ body .ta-featured-items.wp-block-group {
   @apply flex flex-col space-y-6;
   .ta-sidebar-blog-widget__blog-item {
     @apply flex flex-col space-y-3 pb-6 border-0 border-solid border-b border-clr-secondary border-opacity-30 last:border-0;
+    a {
+      @apply no-underline;
+    }
     .ta-post-title {
       @apply text-base font-bold;
       @media screen and (min-width: 1200px) {
@@ -265,7 +268,10 @@ body .ta-featured-items.wp-block-group {
   margin-bottom: 0;
   .ta-tags {
     @media screen and (min-width: 976px) {
-      @apply bg-clr-primary  text-white text-xs;
+      @apply no-underline bg-clr-primary  text-white text-xs;
+    }
+    &:hover {
+      @apply text-white;
     }
   }
 }
@@ -591,7 +597,8 @@ const ctaClass = showCTA ? "" : "ta-cta-hidden"; */
 }
 
 @media screen and (max-width: theme(screens.sm)) {
-  body .ta-carousel-container.wp-block-group {
+  body .ta-carousel-container.wp-block-group,
+  body .ta-carousel-container.wp-block-tbones-p-carousel-slider {
     margin-right: calc(var(--wp--style--root--padding-right) * -1) !important;
     margin-left: calc(var(--wp--style--root--padding-left) * -1) !important;
   }
@@ -600,7 +607,7 @@ const ctaClass = showCTA ? "" : "ta-cta-hidden"; */
 body .ta-carousel-container.wp-block-group,
 .wp-block-tbones-p-carousel-slider {
   .ta-carousel__button {
-    @apply inline-block text-center  mt-7 justify-center mx-auto text-white bg-clr-primary p-2 px-4 lg:px-6;
+    @apply no-underline	 inline-block text-center  mt-7 justify-center mx-auto text-white bg-clr-primary p-2 px-4 lg:px-6;
     @media screen and (min-width: theme(screens.lg)) and (max-width: 1100px) {
       @apply px-3;
     }
