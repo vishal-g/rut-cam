@@ -452,7 +452,7 @@ div.ta-staff-block {
 /* Featured Box */
 
 body .ta-featured-box {
-  @apply bg-clr-white rounded shadow-sh-01 max-lg:p-sp-base p-10 pb-0 text-clr-secondary;
+  @apply bg-clr-white rounded shadow-sh-01 max-lg:p-sp-base p-10 !pb-0 text-clr-secondary;
   .wp-block-button {
     &:has(.wp-block-button__link) {
       @apply mx-auto md:mx-0;
@@ -486,8 +486,14 @@ body .ta-featured-box {
       margin-block-start: var(--wp--preset--spacing--sp-sm);
     }
   }
+  p{
+    @apply text-fs-xl;
+  }
   @media screen and (max-width: theme(screens.lg)){
     gap: var(--wp--preset--spacing--sp-base);
+  }
+  .ta-featured-box__col-2-ul{
+    margin-block-start: var(--wp--preset--spacing--sp-sm);
   }
 }
 
