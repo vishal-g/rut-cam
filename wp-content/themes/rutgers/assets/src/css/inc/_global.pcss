@@ -572,9 +572,11 @@ body .ta-info-block-small {
   @apply p-sp-inner pb-0 bg-clr-white text-center min-h-full flex flex-col justify-between rounded;
   & .ta-info-block-small__title {
     @apply text-left !m-0 text-clr-secondary;
+    font-size: clamp(1.25rem, 2.5vw, 1.5rem);
   }
   & .ta-info-block-small__text {
     @apply text-left mb-auto text-clr-secondary;
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
   }
   .wp-block-buttons {
     justify-content: center;
