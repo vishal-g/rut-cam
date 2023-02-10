@@ -453,7 +453,7 @@ div.ta-staff-block {
 }
 .ta-services-columns-without-btn{
   .ta-info-block-small{
-    @apply !pb-sp-lg;
+    @apply max-md:!pb-sp-base;
   }
 }
 
@@ -579,7 +579,7 @@ body .ta-text-over-image.wp-block-cover {
 }
 /* Info block Small - Best fitted into 3 col layout */
 body .ta-info-block-small {
-  @apply p-sp-inner pb-0 bg-clr-white text-center min-h-full flex flex-col justify-between rounded;
+  @apply  p-sp-base md:p-sp-inner !pb-0 bg-clr-white text-center min-h-full flex flex-col justify-between rounded;
   & .ta-info-block-small__title {
     @apply text-left !m-0 text-clr-secondary;
     font-size: clamp(1.25rem, 2vw, 1.5rem);
