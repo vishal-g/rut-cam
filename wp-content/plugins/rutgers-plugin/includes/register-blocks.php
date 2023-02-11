@@ -4,7 +4,10 @@ function tbones_register_blocks()
 
     $blocks = [
         ['name' => 'carousel-slider'],
-        ['name' => 'carousel-slider-item']
+        ['name' => 'carousel-slider-item'],
+        [ 'name' => 'popular-recipes', 'options' => [
+            'render_callback' => 'up_popular_recipes_cb'
+          ]],
     ];
 
 
