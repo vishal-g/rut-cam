@@ -1,6 +1,7 @@
-<?php 
+<?php
 
-function tbt_register_plugins() {
+function tbt_register_plugins()
+{
     $plugins = [
         [
             'name' => 'Rutgers Plugin',
@@ -27,6 +28,12 @@ function tbt_register_plugins() {
             'name' => 'WP All In One Migration Free',
             'slug' => 'all-in-one-wp-migration',
             'required' => false
+        ],
+        [
+            'name' => 'WP Migrate',
+            'slug' => 'wp-migrate-db-pro',
+            'required' => false,
+            'source' => get_template_directory() . '/plugins/wp-migrate-db-pro.zip'
         ]
     ];
     $configs = [
@@ -36,6 +43,6 @@ function tbt_register_plugins() {
         'capability' => 'edit_theme_options',
         'has_notices' => true,
         'dismissable' => true
-    ]; 
+    ];
     tgmpa($plugins, $configs);
 }
