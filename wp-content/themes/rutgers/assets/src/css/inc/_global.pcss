@@ -402,7 +402,7 @@ div.ta-content-wrapper {
     @apply rounded md:rounded-tl md:rounded-bl  md:rounded-tr-none md:rounded-br-none
     lg:max-xl:rounded md:max-lg:w-full;
     @media screen and (max-width: theme(screens.md)) {
-      width:150px;
+      width: 150px;
     }
   }
   div.wp-block-column {
@@ -435,14 +435,14 @@ div.ta-staff-block {
       }
     }
   }
-  @media screen and (max-width: theme(screens.lg)){
-    h3.ta-staff-block-heading{
+  @media screen and (max-width: theme(screens.lg)) {
+    h3.ta-staff-block-heading {
       margin-block-start: var(--wp--preset--spacing--sp-base);
     }
-    .ta-staff-block-columns{
+    .ta-staff-block-columns {
       margin-block-start: var(--wp--preset--spacing--sp-base);
     }
-    .ta-staff-block-columns.ta-staff-block-has-empty-column{
+    .ta-staff-block-columns.ta-staff-block-has-empty-column {
       gap: var(--wp--preset--spacing--sp-0);
     }
   }
@@ -451,8 +451,8 @@ div.ta-staff-block {
 .ta-services-columns.is-layout-flex {
   gap: var(--wp--preset--spacing--sp-base);
 }
-.ta-services-columns-without-btn{
-  .ta-info-block-small{
+.ta-services-columns-without-btn {
+  .ta-info-block-small {
     @apply max-md:!pb-sp-base !pb-sp-inner;
   }
 }
@@ -482,7 +482,10 @@ body .ta-featured-box {
     }
   }
   .wp-block-button__link {
-    @apply px-14;
+    @apply px-14 no-underline;
+    &:hover {
+      @apply text-white;
+    }
   }
 
   &__col-1 {
@@ -510,13 +513,13 @@ body .ta-featured-box {
       margin-block-start: var(--wp--preset--spacing--sp-sm);
     }
   }
-  p{
+  p {
     font-size: clamp(1rem, 2.5vw, 1.25rem);
   }
-  @media screen and (max-width: theme(screens.lg)){
+  @media screen and (max-width: theme(screens.lg)) {
     gap: var(--wp--preset--spacing--sp-base);
   }
-  .ta-featured-box__col-2-ul{
+  .ta-featured-box__col-2-ul {
     margin-block-start: var(--wp--preset--spacing--sp-sm);
   }
 }
@@ -539,7 +542,7 @@ body .ta-text-over-image.wp-block-cover {
     h2 {
       font-size: clamp(1.75rem, 2vw, 2.25rem);
     }
-    p{
+    p {
       font-size: clamp(1rem, 2vw, 1.25rem);
     }
   }
@@ -552,6 +555,11 @@ body .ta-text-over-image.wp-block-cover {
   .wp-block-cover__background {
     background: none;
   }
+
+  .wp-block-cover__image-background {
+    @apply rounded;
+  }
+
   /* Left Image */
   &.ta-text-over-image__left {
     @apply justify-end;
@@ -559,7 +567,6 @@ body .ta-text-over-image.wp-block-cover {
       right: unset;
       left: 0;
       object-position: top left !important;
-      /* @apply rounded; */
     }
     .wp-block-cover__inner-container {
     }
@@ -582,7 +589,7 @@ body .ta-text-over-image.wp-block-cover {
 }
 /* Info block Small - Best fitted into 3 col layout */
 body .ta-info-block-small {
-  @apply  p-sp-base md:p-sp-inner !pb-0 bg-clr-white text-center min-h-full flex flex-col justify-between rounded;
+  @apply p-sp-base md:p-sp-inner !pb-0 bg-clr-white text-center min-h-full flex flex-col justify-between rounded;
   & .ta-info-block-small__title {
     @apply text-left !m-0 text-clr-secondary;
     font-size: clamp(1.25rem, 2vw, 1.5rem);
@@ -644,6 +651,9 @@ body .ta-carousel-container.wp-block-group,
 .wp-block-tbones-p-carousel-slider {
   .ta-carousel__button {
     @apply no-underline	 inline-block text-center  mt-7 justify-center mx-auto text-white bg-clr-primary p-2 px-4 lg:px-6;
+    &:hover {
+      @apply text-white;
+    }
     @media screen and (min-width: theme(screens.lg)) and (max-width: 1100px) {
       @apply px-3;
     }
