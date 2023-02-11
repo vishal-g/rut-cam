@@ -34,12 +34,6 @@ function tbt_register_plugins()
             'slug' => 'wp-migrate-db-pro',
             'required' => false,
             'source' => get_template_directory() . '/plugins/wp-migrate-db-pro.zip'
-        ],
-        [
-            'name' => 'WP Migrate',
-            'slug' => 'wp-migrate-db-pro',
-            'required' => false,
-            'source' => get_template_directory() . '/plugins/wp-migrate-db-pro.zip'
         ]
     ];
     $configs = [

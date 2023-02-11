@@ -4,5 +4,5 @@
   "themeJson": "../wp-content/themes/rutgers/theme.json",
   "pluginJson": "../wp-content/plugins/rutgers-plugin/plugin.json",
   "pluginUsesThemeStyle": true,
-  "browsersyncProxy": "https://rutgers.test/"
+  "browsersyncProxy": "https://rutgers.test/test-page/"
 }
