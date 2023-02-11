@@ -348,6 +348,7 @@ div.ta-content-wrapper {
     }
   }
 }
+
 /* page content wrapper styling*/
 
 /* class page  */
@@ -383,8 +384,8 @@ div.ta-content-wrapper {
   }
   &__name {
     @apply font-fw-bold text-clr-black text-fs-xl;
-    @media screen and (min-width: theme(screens.lg)) and (max-width: theme(screens.xl)) {
-      font-size: clamp(0.9rem, 1.5vw, 1.25rem);
+    @media screen and (min-width: theme(screens.lg)) {
+      font-size: clamp(1rem, 1.2vw, 1.25rem);
     }
   }
   &__title {
@@ -398,7 +399,11 @@ div.ta-content-wrapper {
     margin-block-start: var(--wp--preset--spacing--sp-0);
   }
   img {
-    @apply rounded md:rounded-none lg:max-xl:rounded md:max-lg:w-full;
+    @apply rounded md:rounded-tl md:rounded-bl  md:rounded-tr-none md:rounded-br-none
+    lg:max-xl:rounded md:max-lg:w-full;
+    @media screen and (max-width: theme(screens.md)) {
+      width:150px;
+    }
   }
   div.wp-block-column {
     @apply basis-full lg:basis-1/2;
@@ -446,6 +451,11 @@ div.ta-staff-block {
 .ta-services-columns.is-layout-flex {
   gap: var(--wp--preset--spacing--sp-base);
 }
+.ta-services-columns-without-btn{
+  .ta-info-block-small{
+    @apply max-md:!pb-sp-base !pb-sp-inner;
+  }
+}
 
 @media screen and (min-width: 1024px) and (max-width: 1160px) {
   .ta-services-columns {
@@ -482,7 +492,7 @@ body .ta-featured-box {
     h5,
     h6 {
       @apply text-fs-4-xl text-clr-secondary;
-      font-size: clamp(1.75rem, 3vw, 2.25rem);
+      font-size: clamp(1.75rem, 2.5vw, 2.25rem);
     }
   }
   &__col-2 {
@@ -527,10 +537,10 @@ body .ta-text-over-image.wp-block-cover {
       margin-block-start: var(--wp--preset--spacing--sp-sm);
     }
     h2 {
-      font-size: clamp(1.75rem, 3vw, 2.25rem);
+      font-size: clamp(1.75rem, 2vw, 2.25rem);
     }
     p{
-      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      font-size: clamp(1rem, 2vw, 1.25rem);
     }
   }
   .wp-block-cover__image-background {
@@ -557,26 +567,29 @@ body .ta-text-over-image.wp-block-cover {
 }
 @media screen and (max-width: theme(screens.md)) {
   .wp-block-cover.ta-text-over-image {
-    @apply flex-col !py-sp-sm;
+    @apply flex-col !py-sp-00;
     img.wp-block-cover__image-background {
       position: unset;
       @apply !w-full rounded-t;
     }
     .wp-block-cover__inner-container {
       @apply mx-auto !max-w-full !p-sp-base !rounded-t-none;
+      &:has(.wp-block-buttons) {
+        @apply !pb-sp-00;
+      }
     }
   }
 }
 /* Info block Small - Best fitted into 3 col layout */
 body .ta-info-block-small {
-  @apply p-sp-inner pb-0 bg-clr-white text-center min-h-full flex flex-col justify-between rounded;
+  @apply  p-sp-base md:p-sp-inner !pb-0 bg-clr-white text-center min-h-full flex flex-col justify-between rounded;
   & .ta-info-block-small__title {
     @apply text-left !m-0 text-clr-secondary;
-    font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
   }
   & .ta-info-block-small__text {
     @apply text-left mb-auto text-clr-secondary;
-    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    font-size: clamp(1rem, 2vw, 1.25rem);
   }
   .wp-block-buttons {
     justify-content: center;
