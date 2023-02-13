@@ -443,6 +443,11 @@ div.ta-staff-block {
       }
     }
   }
+  .ta-staff-block-columns{
+    > div.is-layout-flow.wp-block-column{
+      @apply rounded;
+    }
+  }
   @media screen and (max-width: theme(screens.lg)) {
     h3.ta-staff-block-heading {
       margin-block-start: var(--wp--preset--spacing--sp-base);
