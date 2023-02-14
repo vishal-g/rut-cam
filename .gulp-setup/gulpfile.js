@@ -246,11 +246,11 @@ gulp.task("plugin-assets-vendors", () => {
 gulp.task(
   "default",
   gulp.series(
-    "theme-css",
-    "plugin-block-css",
     "plugin-assets-css",
     "plugin-assets-js",
     "plugin-assets-vendors",
+    "theme-css",
+    "plugin-block-css",
     "browser-sync",
     () => {
       livereload.listen();

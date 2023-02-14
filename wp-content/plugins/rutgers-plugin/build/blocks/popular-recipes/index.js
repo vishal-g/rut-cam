@@ -139,6 +139,16 @@ module.exports = window["wp"]["components"];
 
 /***/ }),
 
+/***/ "@wordpress/core-data":
+/*!**********************************!*\
+  !*** external ["wp","coreData"] ***!
+  \**********************************/
+/***/ ((module) => {
+
+module.exports = window["wp"]["coreData"];
+
+/***/ }),
+
 /***/ "@wordpress/data":
 /*!******************************!*\
   !*** external ["wp","data"] ***!
@@ -256,10 +266,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _icons_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! .././icons.js */ "./src/blocks/icons.js");
-/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @wordpress/api-fetch */ "@wordpress/api-fetch");
-/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _main_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./main.css */ "./src/blocks/popular-recipes/main.css");
+/* harmony import */ var _wordpress_core_data__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/core-data */ "@wordpress/core-data");
+/* harmony import */ var _wordpress_core_data__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_core_data__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _icons_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! .././icons.js */ "./src/blocks/icons.js");
+/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @wordpress/api-fetch */ "@wordpress/api-fetch");
+/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _main_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./main.css */ "./src/blocks/popular-recipes/main.css");
+
 
 
 
@@ -273,7 +286,7 @@ __webpack_require__.r(__webpack_exports__);
 
 (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)("tbones-p/popular-recipes", {
   icon: {
-    src: _icons_js__WEBPACK_IMPORTED_MODULE_6__["default"].primary
+    src: _icons_js__WEBPACK_IMPORTED_MODULE_7__["default"].primary
   },
   edit(_ref) {
     let {
@@ -289,7 +302,7 @@ __webpack_require__.r(__webpack_exports__);
       className: "ta-sidebar-blog-widget"
     });
 
-    // console.log(postCuisines, isLoading);
+    // console.log(count, cuisines);
 
     const terms = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_5__.useSelect)(select => {
       return select("core").getEntityRecords("taxonomy", "cuisine", {
@@ -297,10 +310,16 @@ __webpack_require__.r(__webpack_exports__);
       });
     });
     const suggestions = {};
+
+    // console.log(terms);
+
     terms?.forEach(term => {
       suggestions[term.name] = term;
     });
     const cuisineIDs = cuisines.map(term => term.id);
+
+    // console.log(cuisineIDs);
+
     const posts = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_5__.useSelect)(select => {
       return select("core").getEntityRecords("postType", "recipe", {
         per_page: count,
@@ -310,6 +329,7 @@ __webpack_require__.r(__webpack_exports__);
         orderByRating: 1
       });
     }, [count, cuisineIDs]);
+    console.log(posts);
 
     // =============================================================
 
@@ -320,7 +340,7 @@ __webpack_require__.r(__webpack_exports__);
     //     "taxonomy",
     //     "cuisine",
     //     {
-    //       post: 367,
+    //       post: 407,
     //     },
     //   ];
 
@@ -330,26 +350,83 @@ __webpack_require__.r(__webpack_exports__);
     //   };
     // }, []);
 
-    // console.log(postCuisines);
+    // console.log(postCuisines, isLoading);
 
     // =============================================================
 
-    const postsWithCusineArr = [];
+    // let postsWithCusineArr = [];
+
     posts?.map(post => {
-      let postCuisines;
-      console.log(post);
-      postCuisines = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_5__.useSelect)(select => {
-        let {
-          getEntityRecords,
-          isResolving
-        } = select("core");
-        let taxonomyArgs = ["taxonomy", "cuisine", {
-          post: 367
-        }];
-        return getEntityRecords(...taxonomyArgs);
-      });
-      postsWithCusineArr.splice(post.id, 0, postCuisines);
+      // console.log(post.id);
+      // let [postTermIDs] = useEntityProp(
+      //   "postType",
+      //   "recipe",
+      //   "cuisine",
+      //   post.id
+      // );
+      // let { postCuisines, isLoading } = useSelect((select) => {
+      //   console.log("A");
+      //   let { getEntityRecords, isResolving } = select("core");
+      //   console.log("B");
+      //   let postTaxonomyArgs = [
+      //     "taxonomy",
+      //     "cuisine",
+      //     {
+      //       post: 407,
+      //     },
+      //   ];
+      //   console.log("C");
+      //   postCuisines = getEntityRecords(...postTaxonomyArgs);
+      //   console.log("D");
+      //   isLoading = isResolving("getEntityRecords", postTaxonomyArgs);
+      //   console.log("E");
+      //   return {
+      //     postCuisines,
+      //     isLoading,
+      //   };
+      // });
+      // console.log(postCuisines, isLoading);
+      // console.log(postTermIDs);
     });
+
+    // posts?.map((post) => {
+    //   console.log(post);
+    //   console.log("0");
+
+    //   () => {
+    //     console.log("1");
+    //   };
+
+    //   let {
+    //     postCuisines,
+    //     isLoading,
+    //   } = () => {
+    //     console.log("1");
+
+    //     // let { getEntityRecords, isResolving } = select("core");
+    //     // console.log("2");
+    //     // let taxonomyArgs = [
+    //     //   "taxonomy",
+    //     //   "cuisine",
+    //     //   {
+    //     //     post: 407,
+    //     //   },
+    //     // ];
+    //     // console.log("3");
+    //     // postCuisines = getEntityRecords(...taxonomyArgs);
+    //     // console.log("4");
+    //     // isLoading = isResolving("getEntityRecords", taxonomyArgs);
+    //     // console.log("5");
+    //     // return {
+    //     //   postCuisines,
+    //     //   isLoading,
+    //     // };
+    //   };
+
+    //   console.log(postCuisines, isLoading);
+
+    //   //   postsWithCusineArr.splice(post.id, 0, postCuisines);
+    // });
 
     //=========================================================
 

@@ -8,6 +8,8 @@ import { __ } from "@wordpress/i18n";
 import { PanelBody, QueryControls } from "@wordpress/components";
 import { useSelect } from "@wordpress/data";
 import { Spinner } from "@wordpress/components";
+import { useEntityProp } from "@wordpress/core-data";
+
 import { RawHTML } from "@wordpress/element";
 import icons from ".././icons.js";
 import { apiFetch } from "@wordpress/api-fetch";
@@ -24,7 +26,7 @@ registerBlockType("tbones-p/popular-recipes", {
       className: "ta-sidebar-blog-widget",
     });
 
-    // console.log(postCuisines, isLoading);
+    // console.log(count, cuisines);
 
     const terms = useSelect((select) => {
       return select("core").getEntityRecords("taxonomy", "cuisine", {
@@ -33,11 +35,16 @@ registerBlockType("tbones-p/popular-recipes", {
     });
     const suggestions = {};
 
+    // console.log(terms);
+
     terms?.forEach((term) => {
       suggestions[term.name] = term;
     });
 
     const cuisineIDs = cuisines.map((term) => term.id);
+
+    // console.log(cuisineIDs);
+
     const posts = useSelect(
       (select) => {
         return select("core").getEntityRecords("postType", "recipe", {
@@ -51,6 +58,8 @@ registerBlockType("tbones-p/popular-recipes", {
       [count, cuisineIDs]
     );
 
+    console.log(posts);
+
     // =============================================================
 
     // let { postCuisines, isLoading } = useSelect((select) => {
@@ -60,7 +69,7 @@ registerBlockType("tbones-p/popular-recipes", {
     //     "taxonomy",
     //     "cuisine",
     //     {
-    //       post: 367,
+    //       post: 407,
     //     },
     //   ];
 
@@ -70,33 +79,83 @@ registerBlockType("tbones-p/popular-recipes", {
     //   };
     // }, []);
 
-    // console.log(postCuisines);
+    // console.log(postCuisines, isLoading);
 
     // =============================================================
 
-    const postsWithCusineArr = [];
+    // let postsWithCusineArr = [];
 
     posts?.map((post) => {
-      let postCuisines;
-
-      console.log(post);
-
-      postCuisines = useSelect((select) => {
-        let { getEntityRecords, isResolving } = select("core");
-
-        let taxonomyArgs = [
-          "taxonomy",
-          "cuisine",
-          {
-            post: 367,
-          },
-        ];
-
-        return getEntityRecords(...taxonomyArgs);
-      });
-
-      postsWithCusineArr.splice(post.id, 0, postCuisines);
+      // console.log(post.id);
+      // let [postTermIDs] = useEntityProp(
+      //   "postType",
+      //   "recipe",
+      //   "cuisine",
+      //   post.id
+      // );
+      // let { postCuisines, isLoading } = useSelect((select) => {
+      //   console.log("A");
+      //   let { getEntityRecords, isResolving } = select("core");
+      //   console.log("B");
+      //   let postTaxonomyArgs = [
+      //     "taxonomy",
+      //     "cuisine",
+      //     {
+      //       post: 407,
+      //     },
+      //   ];
+      //   console.log("C");
+      //   postCuisines = getEntityRecords(...postTaxonomyArgs);
+      //   console.log("D");
+      //   isLoading = isResolving("getEntityRecords", postTaxonomyArgs);
+      //   console.log("E");
+      //   return {
+      //     postCuisines,
+      //     isLoading,
+      //   };
+      // });
+      // console.log(postCuisines, isLoading);
+      // console.log(postTermIDs);
     });
+
+    // posts?.map((post) => {
+    //   console.log(post);
+    //   console.log("0");
+
+    //   () => {
+    //     console.log("1");
+    //   };
+
+    //   let {
+    //     postCuisines,
+    //     isLoading,
+    //   } = () => {
+    //     console.log("1");
+
+    //     // let { getEntityRecords, isResolving } = select("core");
+    //     // console.log("2");
+    //     // let taxonomyArgs = [
+    //     //   "taxonomy",
+    //     //   "cuisine",
+    //     //   {
+    //     //     post: 407,
+    //     //   },
+    //     // ];
+    //     // console.log("3");
+    //     // postCuisines = getEntityRecords(...taxonomyArgs);
+    //     // console.log("4");
+    //     // isLoading = isResolving("getEntityRecords", taxonomyArgs);
+    //     // console.log("5");
+    //     // return {
+    //     //   postCuisines,
+    //     //   isLoading,
+    //     // };
+    //   };
+
+    //   console.log(postCuisines, isLoading);
+
+    //   //   postsWithCusineArr.splice(post.id, 0, postCuisines);
+    // });
 
     //=========================================================
 
