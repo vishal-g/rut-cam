@@ -34,6 +34,18 @@ function tbt_register_plugins()
             'slug' => 'wp-migrate-db-pro',
             'required' => false,
             'source' => get_template_directory() . '/plugins/wp-migrate-db-pro.zip'
+        ],
+        [
+            'name' => 'Lottie Player - Block',
+            'slug' => 'embed-lottie-player',
+            'required' => false,
+            'source' => get_template_directory() . '/plugins/embed-lottie-player.zip'
+        ],
+        [
+            'name' => 'LottieFiles',
+            'slug' => 'lottiefiles',
+            'required' => false,
+            'source' => get_template_directory() . '/plugins/lottiefiles.zip'
         ]
     ];
     $configs = [
