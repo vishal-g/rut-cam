@@ -618,6 +618,13 @@ body .ta-info-block-small {
   .wp-block-buttons {
     justify-content: center;
   }
+  ul{
+    margin-block-start: var(--wp--preset--spacing--sp-base);
+    li{
+        font-size: clamp(1rem, 2.5vw, 1.25rem);
+        @apply  text-left text-clr-secondary leading-7 pl-5 bg-[url("../images/bullet-icon.svg")] bg-[left_top_0.5rem] bg-no-repeat;
+    }
+  }
 }
 
 /* Template Header footer */
