@@ -378,7 +378,7 @@ div.ta-content-wrapper {
   }
 
   p {
-    @apply text-xs leading-lh-tight;
+    @apply max-lg:text-fs-sm text-xs leading-lh-tight;
   }
   & * + * {
     margin-block-start: var(--wp--preset--spacing--sp-xs);
@@ -391,7 +391,7 @@ div.ta-content-wrapper {
     }
   }
   &__name {
-    @apply font-fw-bold text-clr-black text-fs-xl;
+    @apply font-fw-bold text-clr-black text-fs-xl max-md:text-fs-2-xl ;
     @media screen and (min-width: theme(screens.lg)) {
       font-size: clamp(1rem, 1.2vw, 1.25rem);
     }
