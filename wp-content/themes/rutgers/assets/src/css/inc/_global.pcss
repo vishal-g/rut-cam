@@ -378,7 +378,7 @@ div.ta-content-wrapper {
   }
 
   p {
-    @apply text-xs leading-lh-tight;
+    @apply max-lg:text-fs-sm text-xs leading-lh-tight;
   }
   & * + * {
     margin-block-start: var(--wp--preset--spacing--sp-xs);
@@ -391,7 +391,7 @@ div.ta-content-wrapper {
     }
   }
   &__name {
-    @apply font-fw-bold text-clr-black text-fs-xl;
+    @apply font-fw-bold text-clr-black text-fs-xl max-md:text-fs-2-xl ;
     @media screen and (min-width: theme(screens.lg)) {
       font-size: clamp(1rem, 1.2vw, 1.25rem);
     }
@@ -408,10 +408,10 @@ div.ta-content-wrapper {
   }
   img {
     @apply rounded md:rounded-tl md:rounded-bl  md:rounded-tr-none md:rounded-br-none
-    lg:max-xl:rounded md:max-lg:w-full;
-    @media screen and (max-width: theme(screens.md)) {
+    lg:max-xl:rounded w-44 md:max-lg:w-full ;
+    /* @media screen and (max-width: theme(screens.md)) {
       width: 150px;
-    }
+    } */
   }
   div.wp-block-column {
     @apply basis-full lg:basis-1/2;
@@ -618,7 +618,20 @@ body .ta-info-block-small {
   .wp-block-buttons {
     justify-content: center;
   }
+  ul{
+    margin-block-start: var(--wp--preset--spacing--sp-base);
+    li{
+        font-size: clamp(1rem, 2.5vw, 1.25rem);
+        @apply  text-left text-clr-secondary leading-7 pl-5 bg-[url("../images/bullet-icon.svg")] bg-[left_top_0.5rem] bg-no-repeat;
+    }
+  }
 }
+@media screen and (max-width: theme(screens.md)){
+  .ta-info-block-small.ta-info-block-small-group{
+    margin-block-start: var(--wp--preset--spacing--sp-base)!important;
+  }
+}
+
 
 /* Template Header footer */
 
