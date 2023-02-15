@@ -1,21 +1,25 @@
 {
   "$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/trunk/schemas/json/block.json",
   "apiVersion": 2,
-  "name": "tbones-p/popular-recipes",
-  "title": "Popular Recipes",
+  "name": "tbones-p/post-list",
+  "title": "Post List",
   "category": "text",
-  "description": "Adds a list of highly rated recipes",
+  "description": "List of posts based on filters",
   "textdomain": "tbones-p",
   "attributes": {
     "title": {
       "type": "string",
-      "default": "Popular Recipes"
+      "default": "Post List"
+    },
+    "hidetitle": {
+      "type": "boolean",
+      "default": false
     },
     "count": {
       "type": "number",
       "default": 3
     },
-    "cuisines": {
+    "tags": {
       "type": "array",
       "default": []
     }

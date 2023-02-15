@@ -1,25 +1,25 @@
 <?php
 
-function up_popular_recipes_cb($atts) {
+function tbones_post_list_cb($atts)
+{
   $title = esc_html($atts['title']);
-  $cuisineIDs = array_map(function($term) {
+  $tagIDs = array_map(function ($term) {
     return $term['id'];
-  }, $atts['cuisines']);
+  }, $atts['tags']);
 
   $args = [
-    'post_type' => 'recipe',
+    'post_type' => 'post',
     'posts_per_page' => $atts['count'],
-    'orderby' => 'meta_value_num',
-    'meta_key' => 'recipe_rating',
+    'orderby' => 'date',
     'order' => 'DESC'
   ];
 
-  if(!empty($cuisineIDs)) {
+  if (!empty($tagIDs)) {
     $args['tax_query'] = [
       [
         'taxonomy' => 'cuisine',
         'field' => 'term_id',
-        'terms' => $cuisineIDs
+        'terms' => $tagIDs
       ]
     ];
   }
@@ -27,15 +27,15 @@ function up_popular_recipes_cb($atts) {
   $query = new WP_Query($args);
 
   ob_start();
-  ?>
+?>
   <div class="wp-block-tbones-p-popular-recipes">
     <h6><?php echo $title; ?></h6>
     <?php
 
-    if($query->have_posts()) {
-      while($query->have_posts()) {
+    if ($query->have_posts()) {
+      while ($query->have_posts()) {
         $query->the_post();
-        ?>
+    ?>
         <div class="single-post">
           <a class="single-post-image" href="<?php the_permalink(); ?>">
             <?php the_post_thumbnail('thumbnail'); ?>
@@ -52,13 +52,13 @@ function up_popular_recipes_cb($atts) {
             </span>
           </div>
         </div>
-        <?php
+    <?php
       }
     }
 
     ?>
   </div>
-  <?php
+<?php
 
   wp_reset_postdata();
 

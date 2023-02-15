@@ -5,23 +5,23 @@ import {
   RichText,
 } from "@wordpress/block-editor";
 import { __ } from "@wordpress/i18n";
-import { PanelBody, QueryControls } from "@wordpress/components";
+import { PanelBody, QueryControls, ToggleControl } from "@wordpress/components";
 import { useSelect } from "@wordpress/data";
 import { Spinner } from "@wordpress/components";
 import { useEntityProp } from "@wordpress/core-data";
 
-import { RawHTML } from "@wordpress/element";
+import { RawHTML, useEffect } from "@wordpress/element";
 import icons from ".././icons.js";
 import { apiFetch } from "@wordpress/api-fetch";
 
 import "./main.css";
 
-registerBlockType("tbones-p/popular-recipes", {
+registerBlockType("tbones-p/post-list", {
   icon: {
     src: icons.primary,
   },
   edit({ attributes, setAttributes }) {
-    const { title, count, cuisines } = attributes;
+    const { title, count, tags, hidetitle } = attributes;
     const blockProps = useBlockProps({
       className: "ta-sidebar-blog-widget",
     });
@@ -29,7 +29,7 @@ registerBlockType("tbones-p/popular-recipes", {
     // console.log(count, cuisines);
 
     const terms = useSelect((select) => {
-      return select("core").getEntityRecords("taxonomy", "cuisine", {
+      return select("core").getEntityRecords("taxonomy", "post_tag", {
         per_page: -1,
       });
     });
@@ -41,24 +41,56 @@ registerBlockType("tbones-p/popular-recipes", {
       suggestions[term.name] = term;
     });
 
-    const cuisineIDs = cuisines.map((term) => term.id);
+    const tagIDs = tags.map((term) => term.id);
 
-    // console.log(cuisineIDs);
+    // console.log(tagIDs);
 
     const posts = useSelect(
       (select) => {
-        return select("core").getEntityRecords("postType", "recipe", {
+        return select("core").getEntityRecords("postType", "post", {
           per_page: count,
           _embed: true,
-          cuisine: cuisineIDs,
+          tags: tagIDs,
           order: "desc",
           orderByRating: 1,
         });
       },
-      [count, cuisineIDs]
+      [count, tagIDs]
     );
 
     console.log(posts);
+
+    //  Using apiFetch
+
+    // let postTags = [];
+    // let loopPostId;
+
+    // updatePostTags = useEffect(async () => {
+    //   let response = await wp.apiFetch({
+    //     path:
+    //       "tbones/v1/tags/?" +
+    //       new URLSearchParams({
+    //         postid: loopPostId,
+    //       }),
+    //     method: "GET",
+    //   });
+    //   postTags.splice(loopPostId, 0, response);
+    //   // console.log(postTags);
+    // }, [loopPostId]);
+
+    // posts?.map((post) => {
+    //   // console.log(post.id);
+    //   loopPostId = post.id;
+    //   updatePostTags;
+    // });
+
+    // useEffect(async () => {
+    //   const response = await wp.apiFetch({
+    //     path: "/wp/v2/taxonomies/cuisine",
+    //     method: "GET",
+    //   });
+    //   console.log(response);
+    // }, []);
 
     // =============================================================
 
@@ -85,38 +117,38 @@ registerBlockType("tbones-p/popular-recipes", {
 
     // let postsWithCusineArr = [];
 
-    posts?.map((post) => {
-      // console.log(post.id);
-      // let [postTermIDs] = useEntityProp(
-      //   "postType",
-      //   "recipe",
-      //   "cuisine",
-      //   post.id
-      // );
-      // let { postCuisines, isLoading } = useSelect((select) => {
-      //   console.log("A");
-      //   let { getEntityRecords, isResolving } = select("core");
-      //   console.log("B");
-      //   let postTaxonomyArgs = [
-      //     "taxonomy",
-      //     "cuisine",
-      //     {
-      //       post: 407,
-      //     },
-      //   ];
-      //   console.log("C");
-      //   postCuisines = getEntityRecords(...postTaxonomyArgs);
-      //   console.log("D");
-      //   isLoading = isResolving("getEntityRecords", postTaxonomyArgs);
-      //   console.log("E");
-      //   return {
-      //     postCuisines,
-      //     isLoading,
-      //   };
-      // });
-      // console.log(postCuisines, isLoading);
-      // console.log(postTermIDs);
-    });
+    // posts?.map((post) => {
+    // console.log(post.id);
+    // let [postTermIDs] = useEntityProp(
+    //   "postType",
+    //   "recipe",
+    //   "cuisine",
+    //   post.id
+    // );
+    // let { postCuisines, isLoading } = useSelect((select) => {
+    //   console.log("A");
+    //   let { getEntityRecords, isResolving } = select("core");
+    //   console.log("B");
+    //   let postTaxonomyArgs = [
+    //     "taxonomy",
+    //     "cuisine",
+    //     {
+    //       post: 407,
+    //     },
+    //   ];
+    //   console.log("C");
+    //   postCuisines = getEntityRecords(...postTaxonomyArgs);
+    //   console.log("D");
+    //   isLoading = isResolving("getEntityRecords", postTaxonomyArgs);
+    //   console.log("E");
+    //   return {
+    //     postCuisines,
+    //     isLoading,
+    //   };
+    // });
+    // console.log(postCuisines, isLoading);
+    // console.log(postTermIDs);
+    // });
 
     // posts?.map((post) => {
     //   console.log(post);
@@ -163,34 +195,49 @@ registerBlockType("tbones-p/popular-recipes", {
       <>
         <InspectorControls>
           <PanelBody title={__("Settings", "tbones-p")}>
+            <ToggleControl
+              label="Hide Title"
+              help={hidetitle ? "Hiding Title" : "Showing Title"}
+              checked={hidetitle}
+              onChange={(state) => {
+                setAttributes({ hidetitle: state });
+              }}
+            />
             <QueryControls
+              label="Tags"
               numberOfItems={count}
               minItems={1}
               maxItems={10}
               onNumberOfItemsChange={(count) => setAttributes({ count })}
               categorySuggestions={suggestions}
               onCategoryChange={(newTerms) => {
-                const newCuisines = [];
+                const newTags = [];
 
-                newTerms.forEach((cuisine) => {
-                  if (typeof cuisine === "object") {
-                    return newCuisines.push(cuisine);
+                newTerms.forEach((tag) => {
+                  if (typeof tag === "object") {
+                    return newTags.push(tag);
                   }
 
-                  const cuisineTerm = terms?.find(
-                    (term) => term.name === cuisine
-                  );
+                  const tagTerm = terms?.find((term) => term.name === tag);
 
-                  if (cuisineTerm) newCuisines.push(cuisineTerm);
+                  if (tagTerm) newTags.push(tagTerm);
                 });
 
-                setAttributes({ cuisines: newCuisines });
+                setAttributes({ tags: newTags });
               }}
-              selectedCategories={cuisines}
+              selectedCategories={tags}
             />
           </PanelBody>
         </InspectorControls>
         <ul {...blockProps}>
+          <RichText
+            tagName="h6"
+            value={title}
+            withoutInteractiveFormatting
+            onChange={(title) => setAttributes({ title })}
+            placeholder={__("Title", "tbones-p")}
+          />
+
           {posts?.map((post) => {
             // console.log(post);
 

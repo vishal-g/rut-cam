@@ -19,8 +19,8 @@ if (!function_exists('add_action')) {
 }
 
 // Setup
-define('TBONES_PLUGIN_DIR', plugin_dir_path (__FILE__));
-define('TBONES_PLUGIN_DIR_URL', plugin_dir_url (__FILE__));
+define('TBONES_PLUGIN_DIR', plugin_dir_path(__FILE__));
+define('TBONES_PLUGIN_DIR_URL', plugin_dir_url(__FILE__));
 
 // Includes
 $rootFiles = glob(TBONES_PLUGIN_DIR . "includes/*.php");
@@ -33,10 +33,11 @@ foreach ($allFiles as $filename) {
 // Hooks
 register_activation_hook(__FILE__, 'tbones_activate_plugin');
 add_action('init', 'tbones_register_blocks');
-add_action('init', 'up_recipe_post_type');
+// add_action('init', 'up_recipe_post_type');
 add_action('after_setup_theme', 'tbones_setup_theme');
 add_filter('image_size_names_choose', 'tbones_custom_image_sizes');
-add_action('wp_enqueue_scripts', 'tbones_enqueue_scripts',1);
-add_action('wp_enqueue_scripts', 'tbones_enqueue_scripts_hp',98);
-add_action('save_post_recipe', 'up_save_post_recipe');
-add_filter('rest_recipe_query', 'up_rest_recipe_query', 10, 2);
+add_action('wp_enqueue_scripts', 'tbones_enqueue_scripts', 1);
+add_action('wp_enqueue_scripts', 'tbones_enqueue_scripts_hp', 98);
+// add_action('save_post_recipe', 'up_save_post_recipe');
+// add_filter('rest_recipe_query', 'up_rest_recipe_query', 10, 2);
+add_action('rest_api_init', 'tbones_rest_api_init');

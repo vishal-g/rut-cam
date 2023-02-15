@@ -87,10 +87,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/blocks/popular-recipes/main.css":
-/*!*********************************************!*\
-  !*** ./src/blocks/popular-recipes/main.css ***!
-  \*********************************************/
+/***/ "./src/blocks/post-list/main.css":
+/*!***************************************!*\
+  !*** ./src/blocks/post-list/main.css ***!
+  \***************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -250,9 +250,9 @@ module.exports = window["wp"]["i18n"];
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
-/*!*********************************************!*\
-  !*** ./src/blocks/popular-recipes/index.js ***!
-  \*********************************************/
+/*!***************************************!*\
+  !*** ./src/blocks/post-list/index.js ***!
+  \***************************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
@@ -271,7 +271,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _icons_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! .././icons.js */ "./src/blocks/icons.js");
 /* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @wordpress/api-fetch */ "@wordpress/api-fetch");
 /* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _main_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./main.css */ "./src/blocks/popular-recipes/main.css");
+/* harmony import */ var _main_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./main.css */ "./src/blocks/post-list/main.css");
 
 
 
@@ -284,7 +284,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)("tbones-p/popular-recipes", {
+(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)("tbones-p/post-list", {
   icon: {
     src: _icons_js__WEBPACK_IMPORTED_MODULE_7__["default"].primary
   },
@@ -296,7 +296,8 @@ __webpack_require__.r(__webpack_exports__);
     const {
       title,
       count,
-      cuisines
+      tags,
+      hidetitle
     } = attributes;
     const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)({
       className: "ta-sidebar-blog-widget"
@@ -305,7 +306,7 @@ __webpack_require__.r(__webpack_exports__);
     // console.log(count, cuisines);
 
     const terms = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_5__.useSelect)(select => {
-      return select("core").getEntityRecords("taxonomy", "cuisine", {
+      return select("core").getEntityRecords("taxonomy", "post_tag", {
         per_page: -1
       });
     });
@@ -316,20 +317,52 @@ __webpack_require__.r(__webpack_exports__);
     terms?.forEach(term => {
       suggestions[term.name] = term;
     });
-    const cuisineIDs = cuisines.map(term => term.id);
+    const tagIDs = tags.map(term => term.id);
 
-    // console.log(cuisineIDs);
+    // console.log(tagIDs);
 
     const posts = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_5__.useSelect)(select => {
-      return select("core").getEntityRecords("postType", "recipe", {
+      return select("core").getEntityRecords("postType", "post", {
         per_page: count,
         _embed: true,
-        cuisine: cuisineIDs,
+        tags: tagIDs,
         order: "desc",
         orderByRating: 1
       });
-    }, [count, cuisineIDs]);
+    }, [count, tagIDs]);
     console.log(posts);
+
+    //  Using apiFetch
+
+    // let postTags = [];
+    // let loopPostId;
+
+    // updatePostTags = useEffect(async () => {
+    //   let response = await wp.apiFetch({
+    //     path:
+    //       "tbones/v1/tags/?" +
+    //       new URLSearchParams({
+    //         postid: loopPostId,
+    //       }),
+    //     method: "GET",
+    //   });
+    //   postTags.splice(loopPostId, 0, response);
+    //   // console.log(postTags);
+    // }, [loopPostId]);
+
+    // posts?.map((post) => {
+    //   // console.log(post.id);
+    //   loopPostId = post.id;
+    //   updatePostTags;
+    // });
+
+    // useEffect(async () => {
+    //   const response = await wp.apiFetch({
+    //     path: "/wp/v2/taxonomies/cuisine",
+    //     method: "GET",
+    //   });
+    //   console.log(response);
+    // }, []);
 
     // =============================================================
 
@@ -356,38 +389,38 @@ __webpack_require__.r(__webpack_exports__);
 
     // let postsWithCusineArr = [];
 
-    posts?.map(post => {
-      // console.log(post.id);
-      // let [postTermIDs] = useEntityProp(
-      //   "postType",
-      //   "recipe",
-      //   "cuisine",
-      //   post.id
-      // );
-      // let { postCuisines, isLoading } = useSelect((select) => {
-      //   console.log("A");
-      //   let { getEntityRecords, isResolving } = select("core");
-      //   console.log("B");
-      //   let postTaxonomyArgs = [
-      //     "taxonomy",
-      //     "cuisine",
-      //     {
-      //       post: 407,
-      //     },
-      //   ];
-      //   console.log("C");
-      //   postCuisines = getEntityRecords(...postTaxonomyArgs);
-      //   console.log("D");
-      //   isLoading = isResolving("getEntityRecords", postTaxonomyArgs);
-      //   console.log("E");
-      //   return {
-      //     postCuisines,
-      //     isLoading,
-      //   };
-      // });
-      // console.log(postCuisines, isLoading);
-      // console.log(postTermIDs);
-    });
+    // posts?.map((post) => {
+    // console.log(post.id);
+    // let [postTermIDs] = useEntityProp(
+    //   "postType",
+    //   "recipe",
+    //   "cuisine",
+    //   post.id
+    // );
+    // let { postCuisines, isLoading } = useSelect((select) => {
+    //   console.log("A");
+    //   let { getEntityRecords, isResolving } = select("core");
+    //   console.log("B");
+    //   let postTaxonomyArgs = [
+    //     "taxonomy",
+    //     "cuisine",
+    //     {
+    //       post: 407,
+    //     },
+    //   ];
+    //   console.log("C");
+    //   postCuisines = getEntityRecords(...postTaxonomyArgs);
+    //   console.log("D");
+    //   isLoading = isResolving("getEntityRecords", postTaxonomyArgs);
+    //   console.log("E");
+    //   return {
+    //     postCuisines,
+    //     isLoading,
+    //   };
+    // });
+    // console.log(postCuisines, isLoading);
+    // console.log(postTermIDs);
+    // });
 
     // posts?.map((post) => {
     //   console.log(post);
@@ -432,7 +465,17 @@ __webpack_require__.r(__webpack_exports__);
 
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
       title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Settings", "tbones-p")
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.QueryControls, {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ToggleControl, {
+      label: "Hide Title",
+      help: hidetitle ? "Hiding Title" : "Showing Title",
+      checked: hidetitle,
+      onChange: state => {
+        setAttributes({
+          hidetitle: state
+        });
+      }
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.QueryControls, {
+      label: "Tags",
       numberOfItems: count,
       minItems: 1,
       maxItems: 10,
@@ -441,20 +484,28 @@ __webpack_require__.r(__webpack_exports__);
       }),
       categorySuggestions: suggestions,
       onCategoryChange: newTerms => {
-        const newCuisines = [];
-        newTerms.forEach(cuisine => {
-          if (typeof cuisine === "object") {
-            return newCuisines.push(cuisine);
+        const newTags = [];
+        newTerms.forEach(tag => {
+          if (typeof tag === "object") {
+            return newTags.push(tag);
           }
-          const cuisineTerm = terms?.find(term => term.name === cuisine);
-          if (cuisineTerm) newCuisines.push(cuisineTerm);
+          const tagTerm = terms?.find(term => term.name === tag);
+          if (tagTerm) newTags.push(tagTerm);
         });
         setAttributes({
-          cuisines: newCuisines
+          tags: newTags
         });
       },
-      selectedCategories: cuisines
-    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", blockProps, posts?.map(post => {
+      selectedCategories: tags
+    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", blockProps, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+      tagName: "h6",
+      value: title,
+      withoutInteractiveFormatting: true,
+      onChange: title => setAttributes({
+        title
+      }),
+      placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Title", "tbones-p")
+    }), posts?.map(post => {
       // console.log(post);
 
       const featuredImage = post._embedded && post._embedded["wp:featuredmedia"] && post._embedded["wp:featuredmedia"].length > 0 && post._embedded["wp:featuredmedia"][0];
