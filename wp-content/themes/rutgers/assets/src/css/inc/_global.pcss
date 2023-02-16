@@ -539,6 +539,11 @@ body .ta-featured-box {
     margin-block-start: var(--wp--preset--spacing--sp-sm);
   }
 }
+@media screen and (max-width: theme(screens.lg)){
+  body .ta-featured-box{
+    margin-block-start: var(--wp--preset--spacing--sp-base);
+  }
+}
 
 /* Text Over Image Section */
 body .ta-text-over-image.wp-block-cover {
@@ -855,4 +860,10 @@ body .ta-carousel-container.wp-block-group,
 .sfas-carousel,
 .ta-testimonials-swiper {
   padding-bottom: 50px;
+}
+
+@media screen and (max-width: theme(screens.lg)){
+  div.wp-block-tbones-p-carousel-slider.ta-carousel-container{
+    margin-block-start: var(--wp--preset--spacing--sp-base);
+  }
 }
