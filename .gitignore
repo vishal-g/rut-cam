@@ -146,3 +146,8 @@ wp-content/themes/rutgers/package-lock.json
 node_modules
 .gulp-setup/settings.json
 .gulp-setup/package-lock.json
+
+!/wp-content/uploads/2023/01/images/*
+!/wp-content/uploads/2023/01/RU_1.json
+!/wp-content/uploads/2023/01/RU_1_bak.json
+

@@ -58,7 +58,7 @@ registerBlockType("tbones-p/post-list", {
       [count, tagIDs]
     );
 
-    console.log(posts);
+    // console.log(posts);
 
     //  Using apiFetch
 
@@ -92,39 +92,64 @@ registerBlockType("tbones-p/post-list", {
     //   console.log(response);
     // }, []);
 
-    // =============================================================
+    // =============Independently working=============================
 
-    // let { postCuisines, isLoading } = useSelect((select) => {
+    // let { postTags, isLoading } = useSelect((select) => {
     //   let { getEntityRecords, isResolving } = select("core");
 
     //   let taxonomyArgs = [
     //     "taxonomy",
-    //     "cuisine",
+    //     "post_tag",
     //     {
-    //       post: 407,
+    //       post: 429,
     //     },
     //   ];
 
     //   return {
-    //     postCuisines: getEntityRecords(...taxonomyArgs),
+    //     postTags: getEntityRecords(...taxonomyArgs),
     //     isLoading: isResolving("getEntityRecords", taxonomyArgs),
     //   };
     // }, []);
 
-    // console.log(postCuisines, isLoading);
+    // console.log(postTags, isLoading);
 
-    // =============================================================
+    // ====================LEON'S SOLUTION=========================================
 
     // let postsWithCusineArr = [];
 
+    // const { getEntityRecords } = useSelect((select) => {
+    //   let { getEntityRecords } = select("core");
+    //   return getEntityRecords;
+    // }, []);
+
+    // console.log(getEntityRecords);
+
     // posts?.map((post) => {
-    // console.log(post.id);
+    //   console.log(post.id);
+
+    //   let taxonomyArgs = [
+    //     "taxonomy",
+    //     "post_tag",
+    //     {
+    //       post: post.id,
+    //     },
+    //   ];
+
+    //   postsWithCusineArr = getEntityRecords(...taxonomyArgs);
+
+    //   console.log(postsWithCusineArr);
+
+    //=====================================================================
+
     // let [postTermIDs] = useEntityProp(
     //   "postType",
-    //   "recipe",
-    //   "cuisine",
+    //   "post",
+    //   "post_tag",
     //   post.id
     // );
+
+    // console.log(postTermIDs);
+
     // let { postCuisines, isLoading } = useSelect((select) => {
     //   console.log("A");
     //   let { getEntityRecords, isResolving } = select("core");
@@ -149,6 +174,8 @@ registerBlockType("tbones-p/post-list", {
     // console.log(postCuisines, isLoading);
     // console.log(postTermIDs);
     // });
+
+    //===========================================================
 
     // posts?.map((post) => {
     //   console.log(post);
@@ -204,12 +231,12 @@ registerBlockType("tbones-p/post-list", {
               }}
             />
             <QueryControls
-              label="Tags"
               numberOfItems={count}
               minItems={1}
               maxItems={10}
               onNumberOfItemsChange={(count) => setAttributes({ count })}
               categorySuggestions={suggestions}
+              categoryLabel={"Tags"}
               onCategoryChange={(newTerms) => {
                 const newTags = [];
 
@@ -230,16 +257,17 @@ registerBlockType("tbones-p/post-list", {
           </PanelBody>
         </InspectorControls>
         <ul {...blockProps}>
-          <RichText
-            tagName="h6"
-            value={title}
-            withoutInteractiveFormatting
-            onChange={(title) => setAttributes({ title })}
-            placeholder={__("Title", "tbones-p")}
-          />
+          {!hidetitle && (
+            <RichText
+              multiline={false}
+              tagName="h3"
+              value={title}
+              onChange={(title) => setAttributes({ title: title })}
+            />
+          )}
 
           {posts?.map((post) => {
-            // console.log(post);
+            console.log(post);
 
             const featuredImage =
               post._embedded &&
@@ -300,8 +328,8 @@ registerBlockType("tbones-p/post-list", {
 
             return (
               <>
-                <li class="ta-sidebar-blog-widget__blog-item">
-                  <ul class="ta-category-listing">
+                <li className="ta-sidebar-blog-widget__blog-item">
+                  <ul className="ta-category-listing">
                     <li>
                       {/* {isLoading && <Spinner />}
                       {!isLoading &&
@@ -323,24 +351,26 @@ registerBlockType("tbones-p/post-list", {
                         })} */}
                     </li>
                   </ul>
-                  <div class="ta-post-title">
+                  <div className="ta-post-title">
                     <a href={post.link}>
                       <RawHTML>{post.title.rendered}</RawHTML>
                     </a>
                   </div>
-                  <div class="ta-author-data flex flex-row space-x-3 justify-start">
-                    <div class="ta-name-initials">
-                      <a href="#">TA</a>
+                  <div className="ta-author-data flex flex-row space-x-3 justify-start">
+                    <div className="ta-name-initials">
+                      <a href="#">
+                        {post._embedded.author[0].name.slice(0, 2)}
+                      </a>
                     </div>
-                    <div class="basis-[100%]">
-                      <div class="font-bold ta-author">
+                    <div className="basis-[100%]">
+                      <div className="font-bold ta-author">
                         <a href="#">{post._embedded.author[0].name}</a>
                       </div>
-                      <p class="ta-post-date">{postCreationDate}</p>
+                      <p className="ta-post-date">{postCreationDate}</p>
                     </div>
                     <img
                       src="/wp-content/uploads/2022/12/bookmark_icon_black.svg"
-                      class="w-4 h-4 basis-1/5"
+                      className="w-4 h-4 basis-1/5"
                       alt=""
                     />
                   </div>

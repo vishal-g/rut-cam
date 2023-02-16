@@ -8,7 +8,8 @@
   }
 }
 
-.wp-block-post-content a {
+.wp-block-post-content a,
+.wp-site-blocks a {
   @apply underline;
   &:hover {
     @apply text-clr-primary;
@@ -245,10 +246,23 @@ body .ta-featured-items.wp-block-group {
 }
 
 /* Student Success Stories / Sidebar Blog Widget  */
+
+/* for backward compatibility */
 .ta-sidebar-blog-widget {
   @apply flex flex-col space-y-6;
+}
+
+.wp-block-tbones-p-post-list,
+.ta-sidebar-blog-widget {
+  .ta-sidebar-blog-widget {
+    @apply flex flex-col space-y-6;
+  }
+
   .ta-sidebar-blog-widget__blog-item {
     @apply flex flex-col space-y-3 pb-6 border-0 border-solid border-b border-clr-secondary border-opacity-30 last:border-0;
+    &:last-child {
+      @apply pb-0;
+    }
     a {
       @apply no-underline;
     }
@@ -273,7 +287,7 @@ body .ta-featured-items.wp-block-group {
 }
 
 .ta-category-listing {
-  margin-bottom: 0;
+  @apply mb-0 flex gap-1;
   .ta-tags {
     @media screen and (min-width: 976px) {
       @apply no-underline bg-clr-primary  text-white text-xs;
@@ -391,7 +405,7 @@ div.ta-content-wrapper {
     }
   }
   &__name {
-    @apply font-fw-bold text-clr-black text-fs-xl max-md:text-fs-2-xl ;
+    @apply font-fw-bold text-clr-black text-fs-xl max-md:text-fs-2-xl;
     @media screen and (min-width: theme(screens.lg)) {
       font-size: clamp(1rem, 1.2vw, 1.25rem);
     }
@@ -408,7 +422,7 @@ div.ta-content-wrapper {
   }
   img {
     @apply rounded md:rounded-tl md:rounded-bl  md:rounded-tr-none md:rounded-br-none
-    lg:max-xl:rounded w-44 md:max-lg:w-full ;
+    lg:max-xl:rounded w-44 md:max-lg:w-full;
     /* @media screen and (max-width: theme(screens.md)) {
       width: 150px;
     } */
@@ -618,20 +632,19 @@ body .ta-info-block-small {
   .wp-block-buttons {
     justify-content: center;
   }
-  ul{
+  ul {
     margin-block-start: var(--wp--preset--spacing--sp-base);
-    li{
-        font-size: clamp(1rem, 2.5vw, 1.25rem);
-        @apply  text-left text-clr-secondary leading-7 pl-5 bg-[url("../images/bullet-icon.svg")] bg-[left_top_0.5rem] bg-no-repeat;
+    li {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      @apply text-left text-clr-secondary leading-7 pl-5 bg-[url("../images/bullet-icon.svg")] bg-[left_top_0.5rem] bg-no-repeat;
     }
   }
 }
-@media screen and (max-width: theme(screens.md)){
-  .ta-info-block-small.ta-info-block-small-group{
-    margin-block-start: var(--wp--preset--spacing--sp-base)!important;
+@media screen and (max-width: theme(screens.md)) {
+  .ta-info-block-small.ta-info-block-small-group {
+    margin-block-start: var(--wp--preset--spacing--sp-base) !important;
   }
 }
-
 
 /* Template Header footer */
 
