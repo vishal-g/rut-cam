@@ -241,10 +241,10 @@ gulp.task(
   "default",
   gulp.series(
     "plugin-assets-css",
-    "plugin-assets-js",
-    "plugin-assets-vendors",
-    "theme-css",
     "plugin-block-css",
+    "theme-css",
+    "plugin-assets-vendors",
+    "plugin-assets-js",
     "browser-sync",
     () => {
       livereload.listen();
@@ -293,6 +293,7 @@ gulp.task(
           `${pluginPath}/src/assets/css/**/*`,
           `${pluginPath}/**/*.html`,
           `${pluginPath}/**/*.php`,
+          `${pluginPath}/**/*.js`,
         ],
         gulp.series("plugin-assets-css")
       );
