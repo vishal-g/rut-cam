@@ -7,13 +7,8 @@ import {
 import { __ } from "@wordpress/i18n";
 import { PanelBody, QueryControls, ToggleControl } from "@wordpress/components";
 import { useSelect } from "@wordpress/data";
-import { Spinner } from "@wordpress/components";
-import { useEntityProp } from "@wordpress/core-data";
-
-import { RawHTML, useEffect } from "@wordpress/element";
+import { RawHTML } from "@wordpress/element";
 import icons from ".././icons.js";
-import { apiFetch } from "@wordpress/api-fetch";
-
 import "./main.css";
 
 registerBlockType("tbones-p/post-list", {
@@ -267,7 +262,7 @@ registerBlockType("tbones-p/post-list", {
           )}
 
           {posts?.map((post) => {
-            console.log(post);
+            // console.log(post);
 
             const featuredImage =
               post._embedded &&
@@ -325,38 +320,37 @@ registerBlockType("tbones-p/post-list", {
             // });
 
             // console.log(postCuisiness);
+            let ourFilteredTags = [];
+
+            let ourTags = terms ? [...terms] : [];
+
+            if (ourTags) {
+              ourFilteredTags = ourTags.filter(
+                (t) => post.tags.indexOf(t.id) > -1
+              );
+            }
 
             return (
               <>
                 <li className="ta-sidebar-blog-widget__blog-item">
                   <ul className="ta-category-listing">
-                    <li>
-                      {/* {isLoading && <Spinner />}
-                      {!isLoading &&
-                        cuisines &&
-                        cuisines.map((item, index) => {
-                          const comma = cuisines[index + 1] ? "," : "";
-
-                          return (
-                            <>
-                              <a
-                                href={item.meta.more_info_url}
-                                className="ta-tags"
-                              >
-                                {item.name}
-                              </a>
-                              {comma}
-                            </>
-                          );
-                        })} */}
-                    </li>
+                    {ourFilteredTags &&
+                      ourFilteredTags.map((item, index) => {
+                        return (
+                          <li>
+                            <a href="#" className="ta-tags">
+                              {item.name}
+                            </a>
+                          </li>
+                        );
+                      })}
                   </ul>
                   <div className="ta-post-title">
                     <a href={post.link}>
                       <RawHTML>{post.title.rendered}</RawHTML>
                     </a>
                   </div>
-                  <div className="ta-author-data flex flex-row space-x-3 justify-start">
+                  <div className="ta-author-data">
                     <div className="ta-name-initials">
                       <a href="#">
                         {post._embedded.author[0].name.slice(0, 2)}
@@ -375,28 +369,6 @@ registerBlockType("tbones-p/post-list", {
                     />
                   </div>
                 </li>
-
-                {/* <div class="ta-sidebar-blog-widget__blog-item">
-                  {featuredImage && (
-                    <a class="single-post-image" href={post.link}>
-                      <img
-                        src={
-                          featuredImage.media_details.sizes.thumbnail.source_url
-                        }
-                        alt={featuredImage.alt_text}
-                      />
-                    </a>
-                  )}
-
-                  <div class="single-post-detail">
-                    <a href={post.link}>
-                      <RawHTML>{post.title.rendered}</RawHTML>
-                    </a>
-                    <span>
-                      by <a href={post.link}>{post._embedded.author[0].name}</a>
-                    </span>
-                  </div>
-                </div> */}
               </>
             );
           })}
