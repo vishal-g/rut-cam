@@ -538,6 +538,9 @@ body .ta-featured-box {
   .ta-featured-box__col-2-ul {
     margin-block-start: var(--wp--preset--spacing--sp-sm);
   }
+  &:not(:has(.wp-block-buttons)) {
+    @apply !pb-sp-base lg:!p-10;
+  }
 }
 @media screen and (max-width: theme(screens.lg)){
   body .ta-featured-box{
