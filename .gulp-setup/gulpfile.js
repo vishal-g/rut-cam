@@ -16,7 +16,6 @@ const pluginPath = settings.pluginPath;
 const browsersyncProxy = settings.browsersyncProxy;
 
 const tailwindConfigTheme = require("./tailwind.config");
-const themeJson = require(settings.themeJson);
 
 // Disable this line if possibility of different styling for plugin needed
 // const tailwindConfigPlugin = tailwindConfigTheme;
@@ -26,15 +25,8 @@ console.log(settings.pluginUsesThemeStyle);
 // TO enable different styling for plugin (currently disabled since vscode was not giving prompts for tailwind classes)
 
 let tailwindConfigPlugin = {};
-let pluginJson = {};
 
-if (settings.pluginUsesThemeStyle === true) {
-  tailwindConfigPlugin = require("./tailwind.config");
-  pluginJson = require(settings.themeJson);
-} else {
-  tailwindConfigPlugin = require("./plugin.tailwind.config");
-  pluginJson = require(settings.pluginJson);
-}
+tailwindConfigPlugin = require("./plugin.tailwind.config");
 
 const gulp = require("gulp");
 
@@ -206,7 +198,9 @@ gulp.task("plugin-assets-css", () => {
         require("tailwindcss/nesting"),
         require("postcss-nested-ancestors"),
         require("postcss-extend"),
-        require("tailwindcss")(tailwindConfigPlugin),
+        tailwindcss({
+          config: tailwindConfigPlugin,
+        }),
         require("autoprefixer"),
       ])
     )
@@ -214,11 +208,11 @@ gulp.task("plugin-assets-css", () => {
       rename({
         extname: ".css",
       })
-        .pipe(sourcemaps.write())
-        .pipe(gulp.dest(`${pluginPath}/src/assets/build/css`))
-        .pipe(browsersync.stream())
-        .pipe(livereload())
-    );
+    )
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest(`${pluginPath}/build/assets/css`))
+    .pipe(browsersync.stream())
+    .pipe(livereload());
 });
 
 // Plugin Assets tasks - Common Js
@@ -284,11 +278,7 @@ gulp.task(
       //-----------------------------------------------------------------------------
 
       gulp.watch(
-        [
-          `${pluginPath}/src/blocks/**/*.pcss`,
-          // `${pluginPath}/**/*.html`,
-          // `${pluginPath}/**/*.php`,
-        ],
+        [`${pluginPath}/src/blocks/**/*.pcss`],
         { ignoreInitial: false },
         gulp.series("plugin-block-css-watch")
       );
@@ -299,7 +289,11 @@ gulp.task(
       // );
 
       gulp.watch(
-        [`${pluginPath}/src/assets/css/**/*`],
+        [
+          `${pluginPath}/src/assets/css/**/*`,
+          `${pluginPath}/**/*.html`,
+          `${pluginPath}/**/*.php`,
+        ],
         gulp.series("plugin-assets-css")
       );
 
