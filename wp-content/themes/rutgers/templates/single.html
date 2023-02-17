@@ -1,0 +1,55 @@
+<!-- wp:template-part {"slug":"header","theme":"rutgers","tagName":"header"} /-->
+
+<!-- wp:group {"className":"ta-qucklinks-2","layout":{"type":"constrained"}} -->
+<div class="wp-block-group ta-qucklinks-2">
+  <!-- wp:navigation {"ref":19,"overlayMenu":"never","style":{"typography":{"fontStyle":"normal","fontWeight":"700"},"spacing":{"blockGap":"var:preset|spacing|10"}},"fontSize":"fs-small"} /-->
+</div>
+<!-- /wp:group -->
+
+<!-- wp:group {"className":"ta-mobile-search","layout":{"type":"constrained"}} -->
+<div class="wp-block-group ta-mobile-search">
+  <!-- wp:search {"label":"","showLabel":false,"placeholder":"Search","width":100,"widthUnit":"%","buttonText":"Search","buttonPosition":"button-inside","buttonUseIcon":true} /-->
+</div>
+<!-- /wp:group -->
+
+<!-- wp:group {"className":"alignfull","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull">
+  <!-- wp:columns {"align":"","className":"ta-content-wrapper"} -->
+  <div class="wp-block-columns ta-content-wrapper">
+    <!-- wp:column {"width":"70%","className":"ta-left-content"} -->
+    <div class="wp-block-column ta-left-content" style="flex-basis: 70%">
+      <!-- wp:heading -->
+      <h2>Rutgers-Camden Blog</h2>
+      <!-- /wp:heading -->
+
+      <!-- wp:post-terms {"term":"post_tag"} /-->
+
+      <!-- wp:post-title /-->
+
+      <!-- wp:post-featured-image /-->
+
+      <!-- wp:post-author {"showAvatar":false} /-->
+
+      <!-- wp:post-content /-->
+
+      <!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between"}} -->
+      <div class="wp-block-group">
+        <!-- wp:post-navigation-link {"type":"previous"} /-->
+
+        <!-- wp:post-navigation-link /-->
+      </div>
+      <!-- /wp:group -->
+    </div>
+    <!-- /wp:column -->
+
+    <!-- wp:column {"width":"30%","className":"ta-right-content"} -->
+    <div class="wp-block-column ta-right-content" style="flex-basis: 30%">
+      <!-- wp:template-part {"slug":"sidebar-1","theme":"rutgers"} /-->
+    </div>
+    <!-- /wp:column -->
+  </div>
+  <!-- /wp:columns -->
+</div>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","theme":"rutgers"} /-->
