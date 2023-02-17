@@ -187,14 +187,19 @@
 /* Headers */
 
 .ta-header-1 {
-  @apply bg-clr-white py-4 px-8 lg:shadow-sh-01;
+  @apply bg-clr-white py-4  lg:shadow-sh-01;
   .wp-block-site-logo .custom-logo {
     @apply w-40 !max-h-[85px] lg:w-80;
   }
 }
 
-.ta-header-2 {
-  @apply hidden lg:block;
+body .wp-site-blocks .ta-header-2-wrapper,
+body .wp-site-blocks .ta-header-1 {
+  margin-block-start: 0;
+}
+
+body .wp-block-group.ta-header-2 {
+  @apply hidden lg:flex;
 }
 
 /* Featured Items */
@@ -244,6 +249,8 @@ body .ta-featured-items.wp-block-group {
     }
   }
 }
+
+/* ==========================To be removed================================= */
 
 /* Student Success Stories / Sidebar Blog Widget  */
 
@@ -298,6 +305,8 @@ body .ta-featured-items.wp-block-group {
   }
 }
 
+/* ==========================To be removed ends================================= */
+
 /* Video Popup */
 .wpzoom-video-popup-block_icon {
   path {
@@ -308,6 +317,13 @@ body .ta-featured-items.wp-block-group {
 /* Footer Styling */
 .ta-footer-container.is-layout-constrained {
   @apply p-sp-base mt-10;
+
+  a {
+    @apply no-underline;
+    &:hover {
+      @apply text-clr-white;
+    }
+  }
 
   & > .wp-block-group:first-child {
     @apply mt-sp-lg;
