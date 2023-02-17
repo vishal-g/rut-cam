@@ -1,0 +1,97 @@
+.wp-block-tbones-p-post-list {
+  margin-bottom: 2rem;
+}
+.wp-block-tbones-p-post-list h6,
+.editor-styles-wrapper .wp-block-tbones-p-post-list h6 {
+  margin-bottom: 1.25rem;
+  margin-top: 0px;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 500;
+}
+.wp-block-tbones-p-post-list .single-post {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+}
+.wp-block-tbones-p-post-list .single-post-image {
+  flex-shrink: 0;
+}
+.wp-block-tbones-p-post-list .single-post-image img {
+  width: 4rem;
+  border-radius: 0.5rem;
+}
+.wp-block-tbones-p-post-list .single-post-detail {
+  margin-left: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+.wp-block-tbones-p-post-list .single-post-detail > a {
+  display: block;
+  font-weight: 500;
+}
+.wp-block-tbones-p-post-list .single-post-detail > span {
+  --tw-text-opacity: 1;
+  color: rgb(107 114 128 / var(--tw-text-opacity));
+}
+
+/* Student Success Stories / Sidebar Blog Widget  */
+
+/* for backward compatibility */
+
+body .wp-block-tbones-p-post-list.ta-sidebar-blog-widget {
+  @apply flex flex-col space-y-6;
+}
+
+body .wp-block-tbones-p-post-list,
+body .ta-sidebar-blog-widget {
+  & {
+    .ta-sidebar-blog-widget {
+      @apply flex flex-col space-y-6;
+    }
+
+    .ta-sidebar-blog-widget__blog-item {
+      @apply flex flex-col space-y-3 pb-6 border-0 border-solid border-b border-clr-secondary border-opacity-30 last:border-0;
+      &:last-child {
+        @apply pb-0;
+      }
+      a {
+        @apply no-underline;
+      }
+
+      .ta-author-data {
+        @apply flex flex-row space-x-3 justify-start;
+      }
+
+      .ta-post-title {
+        @apply text-base font-bold;
+        @media screen and (min-width: 1200px) {
+          color: green !important;
+        }
+      }
+      .ta-author {
+        @apply text-base font-bold;
+      }
+      .ta-post-date {
+        @apply text-sm;
+      }
+      .ta-name-initials {
+        a {
+          @apply rounded-full flex leading-4 items-center justify-center bg-clr-secondary  uppercase w-12 h-12 text-white;
+        }
+      }
+    }
+  }
+
+  .ta-category-listing {
+    @apply mb-0 flex gap-1;
+    .ta-tags {
+      @media screen and (min-width: 976px) {
+        @apply no-underline bg-clr-primary  text-white text-xs;
+      }
+      &:hover {
+        @apply text-white;
+      }
+    }
+  }
+}

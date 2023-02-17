@@ -1,9 +1,15 @@
 const settings = require("./settings.json");
+console.log("Inside plugin.tailwind.config.js");
 
-const themePath = settings.themePath;
 const pluginPath = settings.pluginPath;
 
-const theme = require(`${pluginPath}/plugin.json`);
+if (settings.pluginUsesThemeStyle === true) {
+  theme = require(settings.themeJson);
+} else {
+  theme = require(settings.pluginJson);
+}
+
+// const theme = require(`${pluginPath}/plugin.json`);
 
 console.log(theme.settings.color.palette);
 
@@ -21,14 +27,14 @@ module.exports = {
     preflight: false,
   },
   content: [
-    `${themePath}/*.php`,
-    `${themePath}/*.html`,
-    `${themePath}/theme.json`,
-    `${themePath}/safelist.txt`,
-    `${themePath}/**/*.php`,
-    `${themePath}/**/*.html`,
-    `${themePath}/assets/src/css/*.css`,
-    `${themePath}/assets/src/js/*.js`,
+    `${pluginPath}/*.php`,
+    `${pluginPath}/*.html`,
+    `${pluginPath}/theme.json`,
+    `${pluginPath}/safelist.txt`,
+    `${pluginPath}/**/*.php`,
+    `${pluginPath}/**/*.html`,
+    `${pluginPath}/assets/src/css/*.css`,
+    `${pluginPath}/assets/src/js/*.js`,
     // './safelist.txt'
   ],
   theme: {
