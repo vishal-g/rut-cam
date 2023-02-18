@@ -2,3 +2,52 @@
 .ta-page-title {
   @apply text-clr-primary;
 }
+
+.ta-query-loop-wrapper {
+  .wp-block-post {
+    @apply p-sp-lg bg-white rounded;
+    @extend .ta-bottom-aligned-button-parent;
+    &:hover {
+      @apply shadow;
+    }
+    & > .wp-block-columns {
+      @apply gap-sp-base;
+    }
+  }
+
+  .wp-block-post-title,
+  .wp-block-post-title a {
+    @apply text-fs-3-xl no-underline text-clr-secondary mt-5;
+  }
+
+  .wp-block-post-author__content {
+    @apply flex;
+    .wp-block-post-author__byline {
+      @apply text-fs-xl w-auto;
+    }
+  }
+  .wp-post-image {
+    @apply rounded;
+  }
+
+  .wp-block-read-more {
+    @extend .ta-bottom-aligned-button;
+  }
+}
+
+/* Single blog page -  single.html */
+
+.ta-single-post-content-wrapper {
+  .wp-block-post-title {
+    @apply mt-5;
+  }
+  .wp-post-image {
+    @apply rounded;
+  }
+  .wp-block-post-author__content {
+    @apply flex;
+    .wp-block-post-author__byline {
+      @apply text-fs-xl w-auto;
+    }
+  }
+}
