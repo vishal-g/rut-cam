@@ -151,3 +151,4 @@ node_modules
 !/wp-content/uploads/2023/01/RU_1.json
 !/wp-content/uploads/2023/01/RU_1_bak.json
 
+.gulp-setup/settings.json
