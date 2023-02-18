@@ -16,19 +16,22 @@
 <div class="wp-block-group alignfull">
   <!-- wp:columns {"align":"","className":"ta-content-wrapper"} -->
   <div class="wp-block-columns ta-content-wrapper">
-    <!-- wp:column {"width":"70%","className":"ta-left-content"} -->
-    <div class="wp-block-column ta-left-content" style="flex-basis: 70%">
+    <!-- wp:column {"width":"70%","className":"ta-left-content ta-single-post-content-wrapper"} -->
+    <div
+      class="wp-block-column ta-left-content ta-single-post-content-wrapper"
+      style="flex-basis: 70%"
+    >
       <!-- wp:heading -->
       <h2>Rutgers-Camden Blog</h2>
       <!-- /wp:heading -->
 
-      <!-- wp:post-terms {"term":"post_tag"} /-->
+      <!-- wp:post-terms {"term":"post_tag","className":"ta-category-listing"} /-->
 
-      <!-- wp:post-title /-->
+      <!-- wp:post-title {"level":1} /-->
 
       <!-- wp:post-featured-image /-->
 
-      <!-- wp:post-author {"showAvatar":false} /-->
+      <!-- wp:post-author {"showAvatar":false,"byline":"By "} /-->
 
       <!-- wp:post-content /-->
 
