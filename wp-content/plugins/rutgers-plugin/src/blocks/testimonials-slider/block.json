@@ -1,0 +1,15 @@
+{
+  "$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/trunk/schemas/json/block.json",
+  "apiVersion": 2,
+  "name": "tbones-p/testimonials-slider",
+  "title": "Testimonials Slider",
+  "category": "text",
+  "description": "Adds a testimonials slider",
+  "textdomain": "tbones-p",
+  "attributes": {},
+  "editorScript": "file:./index.js",
+  "style": "file:./index.css",
+  "editorStyle": "file:./editor.css",
+  "providesContext": {},
+  "example": {}
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/trunk/schemas/json/block.json",
+  "apiVersion": 2,
+  "name": "tbones-p/testimonials-slider-item",
+  "title": "Testimonials Item",
+  "category": "text",
+  "description": "Adds a Single Testimonials Slider Item",
+  "textdomain": "tbones-p",
+  "attributes": {
+    "text": {
+      "type": "string",
+      "source": "html",
+      "selector": ".ta-testimonials-text"
+    },
+    "name": {
+      "type": "string",
+      "source": "html",
+      "selector": ".ta-testimonial-name"
+    },
+    "title": {
+      "type": "string",
+      "source": "html",
+      "selector": ".ta-testimonial-title"
+    }
+  },
+  "editorScript": "file:./index.js",
+  "style": "file:./index.css"
+}
