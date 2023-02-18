@@ -125,3 +125,49 @@ div div.ta-quick-links {
     }
   }
 }
+
+/* Main Navigation Style using Core block */
+
+.ta-desktop-nav {
+  .wp-block-navigation__container {
+    @apply hidden  gap-0  lg:flex flex-row justify-end lg:space-x-4 lg:text-lg xl:text-lg xl:space-x-8;
+
+    .wp-block-navigation-item {
+      @apply inline-block relative;
+      a {
+        @apply font-bold lg:text-fs-base no-underline;
+        @media screen and (min-width: theme(screens.lg)) {
+          font-size: clamp(0.9rem, 1.5vw, 1.25rem);
+        }
+      }
+      /* submenu container */
+      .wp-block-navigation__submenu-container {
+        @apply border-none bg-white p-3 space-y-1 z-50;
+        li {
+        }
+        p {
+          @apply text-fs-sm;
+        }
+        /* submenu single item */
+        .wp-block-navigation-item {
+          @apply p-3 py-1;
+          &:hover {
+            @apply bg-clr-base rounded;
+            .wp-block-navigation-item__description {
+              @apply text-clr-black;
+            }
+          }
+          .wp-block-navigation-item__content {
+            @apply block text-sm;
+          }
+          .wp-block-navigation-item__label {
+            @apply block text-clr-primary font-bold;
+          }
+          .wp-block-navigation-item__description {
+            @apply font-normal block;
+          }
+        }
+      }
+    }
+  }
+}
