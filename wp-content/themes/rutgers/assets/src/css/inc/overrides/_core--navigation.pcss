@@ -128,7 +128,7 @@ div div.ta-quick-links {
 
 /* Main Navigation Style using Core block */
 
-.ta-desktop-nav {
+.ta-desktop-nav.wp-block-navigation {
   .wp-block-navigation__container {
     @apply gap-0  lg:flex flex-row justify-end lg:space-x-4 lg:text-lg xl:text-lg xl:space-x-8;
 
@@ -170,38 +170,40 @@ div div.ta-quick-links {
       }
     }
   }
-  wp-block-navigation__responsive-container-content {
-    @apply pt-7;
+
+  /* Making about nav's submenu right aligned */
+  .ta-about-nav {
+    .wp-block-navigation__submenu-container {
+      @media screen and (min-width: 1024px) {
+        right: -10vw;
+        left: unset;
+      }
+    }
   }
+
+  /* Fixing Responsiveness for the Main Menu */
+
   .wp-block-navigation__responsive-container-open {
-    display: flex;
+    @apply flex;
   }
+
+  .wp-block-navigation__responsive-container-close {
+    @apply top-6;
+  }
+
   .wp-block-navigation__responsive-container {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    @apply hidden;
+    &.is-menu-open {
+      @apply flex;
+    }
   }
-}
 
-/* Responsive breakpoint */
-
-@media (min-width: theme(screens.lg)) {
-  .wp-block-navigation__responsive-container:not(.hidden-by-default):not(
-      .is-menu-open
-    ) {
-    display: block;
-    width: 100%;
-    position: relative;
-    z-index: auto;
-    background-color: inherit;
+  @media screen and (min-width: 1024px) {
+    .wp-block-navigation__responsive-container-open {
+      @apply hidden;
+    }
+    .wp-block-navigation__responsive-container {
+      @apply block;
+    }
   }
-  .wp-block-navigation__responsive-container-open:not(.always-shown) {
-    display: none;
-  }
-}
-
-@media (min-width: 600px) {
 }
