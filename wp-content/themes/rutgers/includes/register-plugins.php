@@ -25,11 +25,6 @@ function tbt_register_plugins()
             'required' => false
         ],
         [
-            'name' => 'WP All In One Migration Free',
-            'slug' => 'all-in-one-wp-migration',
-            'required' => false
-        ],
-        [
             'name' => 'WP Migrate',
             'slug' => 'wp-migrate-db-pro',
             'required' => false,
@@ -40,12 +35,6 @@ function tbt_register_plugins()
             'slug' => 'embed-lottie-player',
             'required' => false,
             'source' => get_template_directory() . '/plugins/embed-lottie-player.zip'
-        ],
-        [
-            'name' => 'LottieFiles',
-            'slug' => 'lottiefiles',
-            'required' => false,
-            'source' => get_template_directory() . '/plugins/lottiefiles.zip'
         ]
     ];
     $configs = [
