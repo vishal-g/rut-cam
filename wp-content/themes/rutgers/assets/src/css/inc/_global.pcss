@@ -647,12 +647,15 @@ body .ta-info-block-small {
   @apply p-sp-base md:p-sp-inner !pb-0 bg-clr-white text-center min-h-full flex flex-col justify-between rounded;
 
   &.ta-info-block-small-carousel {
-    @apply p-0 justify-start;
+    @apply p-0 justify-start relative;
     .wp-block-image img {
       @apply rounded-tl rounded-tr;
     }
     .ta-info-box-carousel-text-wrapper {
       @apply p-5 pb-0 m-0 w-full;
+    }
+    .wp-block-buttons {
+      @extend .ta-bottom-aligned-button;
     }
   }
 
