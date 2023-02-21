@@ -1,14 +1,19 @@
 <?php
 
-function tbt_enqueue() {
-  
+function tbt_enqueue()
+{
+
+
+    $themecsspath = get_stylesheet_directory() . ('/assets/build/css/app.css');
+    $themejspath = get_stylesheet_directory() . ('/assets/build/js/app.js');
+
+
     // Lottie player - Currently not required since loading from iframe
     // wp_enqueue_script( 'theme-lottie-js', tbones_asset('assets/build/js/vendors/lottie-player/lottie-player.js') , array(), '1.7.0' );
 
-    wp_enqueue_style( 'tbones-css', get_stylesheet_directory_uri() . ( '/assets/build/css/app.css' ), array(), null);
+    wp_enqueue_style('tbones-css', get_stylesheet_directory_uri() . ('/assets/build/css/app.css'), array(),  filemtime($themecsspath));
 
-    wp_enqueue_script( 'tbones-js',  get_stylesheet_directory_uri() . ( '/assets/build/js/app.js' ), array(), null );
-
+    wp_enqueue_script('tbones-js',  get_stylesheet_directory_uri() . ('/assets/build/js/app.js'), array(), filemtime($themejspath));
 }
 
 
