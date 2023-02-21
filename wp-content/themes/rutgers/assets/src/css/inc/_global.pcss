@@ -15,6 +15,11 @@
     @apply text-clr-primary;
   }
 }
+.wp-block-post-content .ta-qucklinks-2 a {
+  &:hover {
+    @apply text-clr-white;
+  }
+}
 
 .wp-block-post-content .wp-element-button,
 .wp-block-post-content .wp-block-button__link {
@@ -23,6 +28,27 @@
     @apply text-clr-white;
   }
 }
+.ta-quick-links {
+  .wp-container-5 {
+    > p {
+      @apply pb-sp-xs text-fs-base leading-6 font-fw-bold;
+    }
+  }
+}
+
+/* menu style */
+@media screen and (min-width: 1024px) {
+  #site-menu-wrapper {
+    > ul {
+      > li {
+        > a {
+          font-size: clamp(0.86rem, 1.3vw, 1.25rem);
+        }
+      }
+    }
+  }
+}
+/* menu style */
 
 /* Sidebar Widgets */
 
@@ -153,6 +179,10 @@ body .wp-site-blocks .ta-header-1 {
 
 body .wp-block-group.ta-header-2 {
   @apply hidden lg:flex;
+}
+.ta-header-2,
+.ta-header-2-wrapper {
+  @apply hidden lg:block;
 }
 
 /* Featured Items */

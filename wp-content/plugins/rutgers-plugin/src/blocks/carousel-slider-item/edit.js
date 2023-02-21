@@ -179,6 +179,8 @@ export default function ({ attributes, setAttributes, context, isSelected }) {
             </div>
           )}
 
+          {/* {console.log(showCTA, isSelected, activeSocialLink)} */}
+
           {showCTA && isSelected && activeSocialLink !== null && (
             <div className="ta-editor-form-wrapper">
               {/* {console.log(cta)} */}
