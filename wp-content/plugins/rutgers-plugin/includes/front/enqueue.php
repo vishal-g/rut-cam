@@ -22,7 +22,7 @@ function tbones_enqueue_scripts()
 function tbones_enqueue_scripts_hp()
 {
    // Custom Scripts
-   wp_enqueue_script('tbones-plugin-js', TBONES_PLUGIN_DIR_URL . 'build/assets/js/app.js', array("swiper-js"));
+   wp_enqueue_script('tbones-plugin-js', TBONES_PLUGIN_DIR_URL . 'build/assets/js/app.js', array("swiper-js"), "1.0.1");
 }
 
 // Loading plugin assests on both front and editor - using hook - enqueue_block_assets
