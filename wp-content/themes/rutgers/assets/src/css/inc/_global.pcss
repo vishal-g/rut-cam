@@ -568,6 +568,18 @@ body .ta-featured-box {
 
 /* Text Over Image Section */
 body .ta-text-over-image.wp-block-cover {
+  &.is-style-bottom-button {
+    .wp-block-cover__inner-container {
+      @extend .ta-bottom-aligned-button-parent;
+      & > .wp-block-group {
+        @apply static;
+      }
+    }
+    .wp-block-buttons {
+      @extend .ta-bottom-aligned-button;
+    }
+  }
+
   &.wp-block-cover {
     justify-content: unset;
     align-items: unset;
@@ -633,6 +645,17 @@ body .ta-text-over-image.wp-block-cover {
 /* Info block Small - Best fitted into 3 col layout */
 body .ta-info-block-small {
   @apply p-sp-base md:p-sp-inner !pb-0 bg-clr-white text-center min-h-full flex flex-col justify-between rounded;
+
+  &.ta-info-block-small-carousel {
+    @apply p-0;
+    .wp-block-image img {
+      @apply rounded-tl rounded-tr;
+    }
+    .ta-info-box-carousel-text-wrapper {
+      @apply p-5 pb-0 m-0 w-full;
+    }
+  }
+
   & .ta-info-block-small__title {
     @apply text-left !m-0 text-clr-secondary;
     font-size: clamp(1.25rem, 2vw, 1.5rem);
@@ -721,15 +744,20 @@ body .ta-carousel-container.wp-block-group,
 /* Styling for bottom aligned button */
 
 .ta-bottom-aligned-button-parent {
-  @apply relative pb-16;
+  @apply relative pb-20;
 }
 
 .ta-bottom-aligned-button {
   transform: translate(-50%, 0);
 
-  @apply absolute transform -translate-x-2/4 left-1/2 bottom-0 no-underline	 inline-block text-center  mt-7 justify-center mx-auto text-white bg-clr-primary p-2 px-4 lg:px-6;
+  @apply absolute !m-0 transform -translate-x-2/4 left-1/2 bottom-0 no-underline	 inline-block text-center  mt-7 justify-center mx-auto text-white bg-clr-primary p-2 px-4 lg:px-6;
+  width: max-content;
   &:hover {
     @apply text-white;
+  }
+
+  .wp-block-button__link {
+    padding: 0;
   }
   @media screen and (min-width: theme(screens.lg)) and (max-width: 1100px) {
     @apply px-3;

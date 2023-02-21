@@ -1,15 +1,15 @@
 // Navigation toggle
 window.onload = function () {
-  const btn = document.getElementById("menu-btn");
-  const menu = document.getElementById("menu");
+  // const btn = document.getElementById("menu-btn");
+  // const menu = document.getElementById("menu");
 
-  btn.addEventListener("click", navToggle);
+  // btn.addEventListener("click", navToggle);
 
-  function navToggle() {
-    btn.classList.toggle("open");
-    menu.classList.toggle("flex");
-    menu.classList.toggle("hidden");
-  }
+  // function navToggle() {
+  //   btn.classList.toggle("open");
+  //   menu.classList.toggle("flex");
+  //   menu.classList.toggle("hidden");
+  // }
   var swiper = new Swiper(".swiper", {
     slidesPerView: 3,
     centeredSlides: true,
