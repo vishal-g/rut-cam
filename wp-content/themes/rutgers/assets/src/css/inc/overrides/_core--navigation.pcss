@@ -11,6 +11,7 @@ div div.ta-quick-links {
     @apply flex flex-row flex-wrap items-center  gap-x-9;
     .wp-block-navigation-item__content {
       @apply no-underline pb-2 text-base border-0 border-b-2 border-solid border-transparent   text-clr-primary font-bold leading-4;
+      font-size: clamp(0.860rem, 1.4vw, 1rem);
       &:hover {
         @apply border-0 border-b-2  border-clr-primary;
       }
@@ -137,7 +138,7 @@ div div.ta-quick-links {
       a {
         @apply font-bold lg:text-fs-base no-underline;
         @media screen and (min-width: theme(screens.lg)) {
-          font-size: clamp(0.9rem, 1.5vw, 1.25rem);
+          font-size: clamp(0.860rem, 1.3vw, 1.25rem);
         }
       }
       /* submenu container */
