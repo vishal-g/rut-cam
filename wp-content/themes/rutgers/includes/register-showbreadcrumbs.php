@@ -11,7 +11,7 @@ class ShowBreadcrumbsMetaBox{
 
 	private $meta_fields = array(
                 array(
-                    'label' => 'class name',
+                    'label' => 'Hide or Show Breadcrumbs',
                     'id' => 'show_breadcrumbs',
                     'default' => 'show',
                     'type' => 'radio',
@@ -43,7 +43,7 @@ class ShowBreadcrumbsMetaBox{
 
 	public function meta_box_callback( $post ) {
 		wp_nonce_field( 'ShowBreadcrumbs_data', 'ShowBreadcrumbs_nonce' );
-                echo 'add class (show or hide)';
+                // echo 'add class (show or hide)';
 		$this->field_generator( $post );
 	}
 	public function field_generator( $post ) {
