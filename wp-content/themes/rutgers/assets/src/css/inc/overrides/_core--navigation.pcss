@@ -1,7 +1,7 @@
 /* Quick Links */
 
-div div.ta-quick-links {
-  @apply gap-x-5 mt-9 mb-7 ;
+div div.wp-block-group.ta-quick-links {
+  @apply gap-x-5 mt-5 mb-3;
 
   & > p {
     @apply font-bold text-base pb-2;
@@ -11,7 +11,7 @@ div div.ta-quick-links {
     @apply flex flex-row flex-wrap items-center gap-x-5;
     .wp-block-navigation-item__content {
       @apply no-underline pb-2 text-base border-0 border-b-2 border-solid border-transparent   text-clr-primary font-bold leading-4;
-      font-size: clamp(0.860rem, 1.3vw, 1rem);
+      font-size: clamp(0.86rem, 1.3vw, 1rem);
       &:hover {
         @apply border-0 border-b-2  border-clr-primary;
       }
@@ -133,12 +133,23 @@ div div.ta-quick-links {
   .wp-block-navigation__container {
     @apply gap-0  lg:flex flex-row justify-end lg:space-x-4 lg:text-lg xl:text-lg xl:space-x-8;
 
+    .active-nav-item-parent {
+      @apply text-clr-primary;
+    }
+
+    .active-nav-item {
+      @apply bg-clr-base rounded;
+      .wp-block-navigation-item__description {
+        @apply text-clr-black;
+      }
+    }
+
     .wp-block-navigation-item {
       @apply inline-block relative;
       a {
         @apply font-bold lg:text-fs-base no-underline;
         @media screen and (min-width: theme(screens.lg)) {
-          font-size: clamp(0.860rem, 1.3vw, 1.25rem);
+          font-size: clamp(0.86rem, 1.3vw, 1.25rem);
         }
       }
       /* submenu container */

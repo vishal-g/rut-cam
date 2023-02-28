@@ -30,3 +30,20 @@ add_action('wp_enqueue_scripts', 'tbt_enqueue', 99);
 add_action('init', 'tbt_block_course_theme_unregister_patterns', 15);
 // add_action('init', 'tbt_cc_gutenberg_register_files');
 
+
+// Add active menu class to parent of active link
+add_action('wp_footer', function () {
+?>
+    <script>
+        document.body.querySelectorAll('.wp-block-navigation').forEach(function(navBlock) {
+            navBlock.querySelectorAll('[href="' + window.location.href + '"]').forEach(function(navActiveLink) {
+                navActiveLink.parentNode.classList.add('active-nav-item');
+
+                if (navActiveLink.parentNode.closest(".wp-block-navigation-submenu").classList.add(
+                        'active-nav-item-parent'));
+
+            });
+        });
+    </script>
+<?php
+});
