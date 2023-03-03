@@ -11,6 +11,9 @@ function tbt_registrations()
 		),
 		'core/cover' => array(
 			'bottom-button'    => __('Bottom Button', 'tbones')
+		),
+		'core/group' => array(
+			'centered-text'    => __('Centered Text', 'tbones')
 		)
 	);
 

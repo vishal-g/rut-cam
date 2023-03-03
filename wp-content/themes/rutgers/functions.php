@@ -55,3 +55,11 @@ document.body.querySelectorAll('.wp-block-navigation').forEach(function(navBlock
 </script>
 <?php
 });
+
+// Adding json mime type to upload json file via media folder
+function my_mime_types($mimes)
+{
+    $mimes['json'] = 'text/plain';
+    return $mimes;
+}
+add_filter('upload_mimes', 'my_mime_types');

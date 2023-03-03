@@ -571,6 +571,7 @@ body .ta-text-over-image.wp-block-cover {
   &.is-style-bottom-button {
     .wp-block-cover__inner-container {
       @extend .ta-bottom-aligned-button-parent;
+      @apply !pb-20;
       & > .wp-block-group {
         @apply static;
       }
@@ -643,6 +644,11 @@ body .ta-text-over-image.wp-block-cover {
   }
 }
 /* Info block Small - Best fitted into 3 col layout */
+
+body .wp-block-column .ta-info-block-small {
+  @apply h-full;
+}
+
 body .ta-info-block-small {
   @apply p-sp-base md:p-sp-inner !pb-0 bg-clr-white text-center flex flex-col justify-between rounded;
 
@@ -958,3 +964,9 @@ body.ta-hide-breadcrumbs {
 }
 
 /* changes related breadcrumbs */
+
+/* Style related */
+/* Group with centered text */
+.is-style-centered-content * {
+  @apply text-center;
+}
