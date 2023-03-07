@@ -88,6 +88,11 @@
           "fontFamily": "\"Source Sans\", sans-serif",
           "name": "Source Sans",
           "slug": "ff-source-sans"
+        },
+        {
+          "fontFamily": "\"Source Sans\", sans-serif",
+          "slug": "system-fonts",
+          "name": "System fonts"
         }
       ],
       "fontSizes": [
