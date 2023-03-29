@@ -34,25 +34,30 @@ add_action('init', 'tbt_block_course_theme_unregister_patterns', 15);
 // Add active menu class to parent of active link
 add_action('wp_footer', function () {
 ?>
-<script>
-document.body.querySelectorAll('.wp-block-navigation').forEach(function(navBlock) {
-    navBlock.querySelectorAll('[href="' + window.location.href + '"]').forEach(function(navActiveLink) {
+    <script>
+        document.body.querySelectorAll('.wp-block-navigation').forEach(function(navBlock) {
+            navBlock.querySelectorAll('[href="' + window.location.href + '"]').forEach(function(navActiveLink) {
 
-        if (navActiveLink.parentNode.closest(".wp-block-navigation-submenu")) {
+                if (navActiveLink.parentNode.closest(".wp-block-navigation-submenu")) {
 
-            navActiveLink.parentNode.closest(".wp-block-navigation-submenu").classList.add(
+                    navActiveLink.parentNode.closest(".wp-block-navigation-submenu").classList.add(
+                        'active-nav-item-parent');
+
+                    navActiveLink.parentNode.classList.add('active-nav-item');
+
+                } else {
+                    navActiveLink.parentNode.classList.add('active-nav-item-top-lvl');
+
+                };
+
+            });
+        });
+
+        document.body.querySelectorAll('.wp-block-navigation__container .current-menu-item').forEach(function(currentItem) {
+            currentItem.parentNode.closest(".wp-block-navigation-submenu").classList.add(
                 'active-nav-item-parent');
-
-            navActiveLink.parentNode.classList.add('active-nav-item');
-
-        } else {
-            navActiveLink.parentNode.classList.add('active-nav-item-top-lvl');
-
-        };
-
-    });
-});
-</script>
+        });
+    </script>
 <?php
 });
 
