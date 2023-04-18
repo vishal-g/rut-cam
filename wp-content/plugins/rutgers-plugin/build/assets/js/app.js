@@ -46,7 +46,7 @@ window.onload = function () {
       },
       // when window width is >= 976px
       1024: {
-        slidesPerView: 3,
+        slidesPerView: 2.75,
         spaceBetween: 100,
       },
     },
