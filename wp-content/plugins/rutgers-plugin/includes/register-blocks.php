@@ -5,6 +5,8 @@ function tbones_register_blocks()
     $blocks = [
         ['name' => 'carousel-slider'],
         ['name' => 'carousel-slider-item'],
+        ['name' => 'video-slider'],
+        ['name' => 'video-slider-item'],
         ['name' => 'testimonials-slider'],
         ['name' => 'testimonials-slider-item'],
         ['name' => 'post-list', 'options' => [
