@@ -277,11 +277,12 @@ body .ta-featured-items.wp-block-group {
 }
 
 .ta-category-listing {
-  @apply mb-0 flex gap-1;
+  @apply mb-0 block gap-1;
   .ta-tags,
   [rel="tag"],
   a {
     @extend .ta-tags;
+    @apply inline-block mb-1 mr-1;
     @media screen and (min-width: 976px) {
       @apply no-underline bg-clr-primary  text-white text-xs;
     }
