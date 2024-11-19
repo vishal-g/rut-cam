@@ -12,6 +12,7 @@ Thumbs.db
 **/package-lock.json
 .htaccess
 .samples
+.well-known/*
 
 # wordpress specific
 wp-config.php
@@ -23,6 +24,7 @@ wp-content/advanced-cache.php
 wp-content/wp-cache-config.php
 wp-content/cache/*
 wp-content/cache/supercache/*
+wp-content/languages/*
 
 # wpengine specific
 .smushit-status
