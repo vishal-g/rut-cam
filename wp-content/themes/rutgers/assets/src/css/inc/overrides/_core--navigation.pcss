@@ -172,6 +172,9 @@ div div.wp-block-group.ta-quick-links {
       a {
         @apply font-bold lg:text-fs-base no-underline;
         @media screen and (min-width: theme(screens.lg)) {
+          font-size: clamp(0.86rem, 1.3vw, 15px);
+        }
+        @media screen and (min-width: 1400) {
           font-size: clamp(0.86rem, 1.3vw, 1.25rem);
         }
       }
