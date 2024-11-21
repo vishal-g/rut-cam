@@ -12,6 +12,7 @@ function tbones_register_blocks()
         ['name' => 'post-list', 'options' => [
             'render_callback' => 'tbones_post_list_cb'
         ]],
+        ['name' => 'custom-search'],
     ];
 
 
