@@ -33,10 +33,23 @@ jQuery(document).ready(function($) {
     });
 
     // Add a click event for the search button
+    // $('#search-btn').click(function(event) {
+    //     event.preventDefault(); 
+    //     var actionUrl = $('#search-form').attr('action'); 
+    //     var searchParams = $('#search-form').serialize(); 
+    //     window.open(actionUrl + '?' + searchParams, '_blank'); 
+    // });
     $('#search-btn').click(function(event) {
         event.preventDefault(); 
         var actionUrl = $('#search-form').attr('action'); 
         var searchParams = $('#search-form').serialize(); 
-        window.open(actionUrl + '?' + searchParams, '_blank'); 
+    
+        // Check the search option and open accordingly
+        var searchOption = $('input[name="search-option"]:checked').val();
+        if (searchOption === 'site') {
+            window.location.href = actionUrl + '?' + searchParams; // Open in the same tab
+        } else {
+            window.open(actionUrl + '?' + searchParams, '_blank'); // Open in a new tab
+        }
     });
 });
