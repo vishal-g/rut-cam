@@ -22,7 +22,8 @@ jQuery(document).ready(function($) {
         var actionUrl = '';
 
         if (searchOption === 'site') {
-            actionUrl = '/'; 
+            // actionUrl = '/'; 
+            actionUrl = window.location.origin + '/search'; 
         } else if (searchOption === 'rutgers') {
             actionUrl = 'https://search.rutgers.edu/websites';
         } else if (searchOption === 'people') {
@@ -32,24 +33,25 @@ jQuery(document).ready(function($) {
         $('#search-form').attr('action', actionUrl);
     });
 
-    // Add a click event for the search button
-    // $('#search-btn').click(function(event) {
-    //     event.preventDefault(); 
-    //     var actionUrl = $('#search-form').attr('action'); 
-    //     var searchParams = $('#search-form').serialize(); 
-    //     window.open(actionUrl + '?' + searchParams, '_blank'); 
-    // });
     $('#search-btn').click(function(event) {
         event.preventDefault(); 
         var actionUrl = $('#search-form').attr('action'); 
-        var searchParams = $('#search-form').serialize(); 
-    
-        // Check the search option and open accordingly
+        var searchParams = $('#search-form').serialize();
+        var siteUrl = $('#search-form').data('site-url');
+
+        // Check the search option and modify searchParams accordingly
         var searchOption = $('input[name="search-option"]:checked').val();
+        if (searchOption === 'rutgers' || searchOption === 'people') {
+            searchParams = searchParams.replace(/s=/g, 'q=');
+        }
+
         if (searchOption === 'site') {
-            window.location.href = actionUrl + '?' + searchParams; // Open in the same tab
+            // window.location.href = actionUrl + '?' + searchParams; 
+            window.location.href = siteUrl + '?' + searchParams;
+            console.log('siteurl',siteUrl);
         } else {
-            window.open(actionUrl + '?' + searchParams, '_blank'); // Open in a new tab
+            window.open(actionUrl + '?' + searchParams, '_blank'); 
         }
     });
+
 });

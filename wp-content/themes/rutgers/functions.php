@@ -93,7 +93,7 @@ function add_search_icon_to_header() {
                 </div>
                 
                 <!-- Search Form -->
-                <form id="search-form" method="get" action="">
+                <form id="search-form" method="get" action="" data-site-url="<?php echo esc_url( get_site_url() ); ?>">
                     <div class="search-inputfield">
                         <input type="text" name="s" id="search-textfield" placeholder="Search" required>
                        
@@ -107,17 +107,7 @@ function add_search_icon_to_header() {
                         </button>
                     </div>
 
-                    <!-- <div class="search-radio-buttons">
-                        <div class="radio-wrapper">
-                        <input type="radio" name="search-option" value="site" checked><label> Search this site</label>
-                        </div>
-                        <div class="radio-wrapper">
-                        <input type="radio" name="search-option" value="rutgers"> <label>Search all Rutgers</label>
-                        </div>
-                        <div class="radio-wrapper">
-                        <input type="radio" name="search-option" value="people"><label> Search People</label>
-                        </div>
-                    </div> -->
+
 
                     <div class="search-radio-buttons">
                         <div class="radio-wrapper">
